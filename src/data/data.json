@@ -1,0 +1,1058 @@
+{
+  "thailand": {
+    "id": "thailand",
+    "name": "Thailand",
+    "country": "Thailand",
+    "continent": "Asia",
+    "heroImage": "https://images.pexels.com/photos/1007657/pexels-photo-1007657.jpeg?auto=compress&cs=tinysrgb&w=1920",
+    "gallery": [
+      "https://images.pexels.com/photos/1007657/pexels-photo-1007657.jpeg?auto=compress&cs=tinysrgb&w=800",
+      "https://images.pexels.com/photos/1371360/pexels-photo-1371360.jpeg?auto=compress&cs=tinysrgb&w=800",
+      "https://images.pexels.com/photos/1659438/pexels-photo-1659438.jpeg?auto=compress&cs=tinysrgb&w=800",
+      "https://images.pexels.com/photos/1007657/pexels-photo-1007657.jpeg?auto=compress&cs=tinysrgb&w=800",
+      "https://images.pexels.com/photos/1371360/pexels-photo-1371360.jpeg?auto=compress&cs=tinysrgb&w=800"
+    ],
+    "description": "Experience the Land of Smiles with its stunning beaches, ancient temples, vibrant street food culture, and warm hospitality.",
+    "highlights": [
+      "Beautiful tropical beaches",
+      "Ancient Buddhist temples",
+      "World-famous street food",
+      "Floating markets",
+      "Traditional Thai massage",
+      "Island hopping adventures"
+    ],
+    "bestTimeToVisit": {
+      "months": "November to March",
+      "weather": "Cool and dry season with pleasant temperatures",
+      "temperature": "20-30°C (68-86°F)"
+    },
+    "visaRequirements": {
+      "required": false,
+      "details": "Most nationalities get 30-day visa exemption on arrival. Longer stays require visa.",
+      "processingTime": "Visa on arrival"
+    },
+    "currency": {
+      "code": "THB",
+      "name": "Thai Baht",
+      "exchangeRate": "1 USD = 35 THB (approx.)"
+    },
+    "language": {
+      "primary": "Thai",
+      "others": ["English (tourist areas)"]
+    },
+    "weather": {
+      "climate": "Tropical",
+      "rainySeasons": "May to October",
+      "drySeasons": "November to April"
+    },
+    "budgetRange": {
+      "budget": "$25-50/day",
+      "midRange": "$50-100/day",
+      "luxury": "$100-300/day"
+    },
+    "itineraries": [
+      {
+        "id": "cultural-temples",
+        "title": "Cultural & Temples Tour",
+        "duration": "10 days",
+        "price": 899,
+        "highlights": [
+          "Grand Palace Bangkok",
+          "Ayutthaya ruins",
+          "Chiang Mai temples",
+          "Traditional cooking class"
+        ],
+        "dayByDay": [
+          {
+            "day": 1,
+            "title": "Arrival in Bangkok",
+            "activities": [
+              "Airport transfer",
+              "Check-in hotel",
+              "Explore Khao San Road",
+              "Welcome dinner"
+            ]
+          },
+          {
+            "day": 2,
+            "title": "Bangkok Temples",
+            "activities": [
+              "Wat Pho Temple",
+              "Grand Palace",
+              "Wat Arun",
+              "Chao Phraya River cruise"
+            ]
+          },
+          {
+            "day": 3,
+            "title": "Floating Markets",
+            "activities": [
+              "Damnoen Saduak Floating Market",
+              "Maeklong Railway Market",
+              "Thai cooking class"
+            ]
+          }
+        ]
+      }
+    ],
+    "attractions": [
+      {
+        "name": "Grand Palace",
+        "type": "Historical Site",
+        "coordinates": [13.75, 100.4915],
+        "description": "Magnificent royal palace complex in Bangkok"
+      },
+      {
+        "name": "Phi Phi Islands",
+        "type": "Natural Beauty",
+        "coordinates": [7.7407, 98.7784],
+        "description": "Stunning limestone islands with crystal clear waters"
+      }
+    ],
+    "reviews": [
+      {
+        "id": "1",
+        "name": "Sarah Johnson",
+        "rating": 5,
+        "date": "2024-01-15",
+        "comment": "Amazing country with incredible food and friendly people. The temples are breathtaking!",
+        "avatar": "https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=150",
+        "tripType": "Cultural Tour"
+      }
+    ],
+    "customizationOptions": {
+      "accommodations": [
+        "Beach Resorts",
+        "City Hotels",
+        "Boutique Guesthouses",
+        "Luxury Villas"
+      ],
+      "transportation": [
+        "Tuk-tuks",
+        "Motorbike taxis",
+        "BTS Skytrain",
+        "Domestic flights"
+      ],
+      "activities": [
+        "Temple visits",
+        "Island hopping",
+        "Cooking classes",
+        "Muay Thai shows"
+      ],
+      "specialRequirements": [
+        "Vegetarian meals",
+        "Family-friendly",
+        "Adventure activities"
+      ]
+    }
+  },
+  "bali-indonesia": {
+    "id": "bali-indonesia",
+    "name": "Bali",
+    "country": "Indonesia",
+    "continent": "Asia",
+    "heroImage": "https://images.pexels.com/photos/2474690/pexels-photo-2474690.jpeg?auto=compress&cs=tinysrgb&w=1920",
+    "gallery": [
+      "https://images.pexels.com/photos/2474690/pexels-photo-2474690.jpeg?auto=compress&cs=tinysrgb&w=800",
+      "https://images.pexels.com/photos/2166559/pexels-photo-2166559.jpeg?auto=compress&cs=tinysrgb&w=800",
+      "https://images.pexels.com/photos/2166553/pexels-photo-2166553.jpeg?auto=compress&cs=tinysrgb&w=800"
+    ],
+    "description": "Discover the Island of Gods with its stunning rice terraces, ancient temples, beautiful beaches, and rich Hindu culture.",
+    "highlights": [
+      "Iconic rice terraces",
+      "Hindu temples and ceremonies",
+      "World-class beaches",
+      "Yoga and wellness retreats",
+      "Traditional art and crafts",
+      "Volcanic landscapes"
+    ],
+    "bestTimeToVisit": {
+      "months": "April to October",
+      "weather": "Dry season with sunny days",
+      "temperature": "26-30°C (79-86°F)"
+    },
+    "visaRequirements": {
+      "required": true,
+      "details": "Visa on arrival for most countries (30 days). Free visa for some nationalities.",
+      "processingTime": "On arrival"
+    },
+    "currency": {
+      "code": "IDR",
+      "name": "Indonesian Rupiah",
+      "exchangeRate": "1 USD = 15,000 IDR (approx.)"
+    },
+    "language": {
+      "primary": "Indonesian",
+      "others": ["Balinese", "English (tourist areas)"]
+    },
+    "weather": {
+      "climate": "Tropical",
+      "rainySeasons": "November to March",
+      "drySeasons": "April to October"
+    },
+    "budgetRange": {
+      "budget": "$20-40/day",
+      "midRange": "$40-80/day",
+      "luxury": "$80-250/day"
+    },
+    "itineraries": [
+      {
+        "id": "cultural-nature",
+        "title": "Culture & Nature Experience",
+        "duration": "8 days",
+        "price": 749,
+        "highlights": [
+          "Ubud rice terraces",
+          "Temple ceremonies",
+          "Beach relaxation",
+          "Traditional villages"
+        ],
+        "dayByDay": [
+          {
+            "day": 1,
+            "title": "Arrival in Denpasar",
+            "activities": [
+              "Airport pickup",
+              "Transfer to Ubud",
+              "Welcome dinner"
+            ]
+          }
+        ]
+      }
+    ],
+    "attractions": [
+      {
+        "name": "Tegallalang Rice Terraces",
+        "type": "Natural Beauty",
+        "coordinates": [-8.4305, 115.2981],
+        "description": "Stunning stepped rice terraces in Ubud"
+      }
+    ],
+    "reviews": [
+      {
+        "id": "1",
+        "name": "Mike Chen",
+        "rating": 5,
+        "date": "2024-01-10",
+        "comment": "Bali exceeded all expectations. The culture is fascinating and the landscapes are incredible.",
+        "avatar": "https://images.pexels.com/photos/2379005/pexels-photo-2379005.jpeg?auto=compress&cs=tinysrgb&w=150",
+        "tripType": "Cultural Tour"
+      }
+    ],
+    "customizationOptions": {
+      "accommodations": [
+        "Beach Resorts",
+        "Jungle Lodges",
+        "Yoga Retreats",
+        "Luxury Villas"
+      ],
+      "transportation": ["Scooter rental", "Private driver", "Local buses"],
+      "activities": [
+        "Temple visits",
+        "Yoga classes",
+        "Surfing",
+        "Volcano hiking"
+      ],
+      "specialRequirements": [
+        "Wellness focus",
+        "Adventure activities",
+        "Cultural immersion"
+      ]
+    }
+  },
+  "vietnam": {
+    "id": "vietnam",
+    "name": "Vietnam",
+    "country": "Vietnam",
+    "continent": "Asia",
+    "heroImage": "https://images.pexels.com/photos/1371360/pexels-photo-1371360.jpeg?auto=compress&cs=tinysrgb&w=1920",
+    "gallery": [
+      "https://images.pexels.com/photos/1371360/pexels-photo-1371360.jpeg?auto=compress&cs=tinysrgb&w=800",
+      "https://images.pexels.com/photos/2422915/pexels-photo-2422915.jpeg?auto=compress&cs=tinysrgb&w=800"
+    ],
+    "description": "Explore Vietnam's rich history, stunning landscapes from Ha Long Bay to Mekong Delta, and incredible street food culture.",
+    "highlights": [
+      "Ha Long Bay limestone karsts",
+      "Historic Hoi An ancient town",
+      "Bustling Ho Chi Minh City",
+      "Sapa mountain terraces",
+      "Delicious street food",
+      "War history museums"
+    ],
+    "bestTimeToVisit": {
+      "months": "March to May, September to November",
+      "weather": "Pleasant temperatures and less rainfall",
+      "temperature": "20-28°C (68-82°F)"
+    },
+    "visaRequirements": {
+      "required": true,
+      "details": "E-visa available online for most countries. 30-day single entry.",
+      "processingTime": "3-5 business days"
+    },
+    "currency": {
+      "code": "VND",
+      "name": "Vietnamese Dong",
+      "exchangeRate": "1 USD = 24,000 VND (approx.)"
+    },
+    "language": {
+      "primary": "Vietnamese",
+      "others": ["English (tourist areas)", "French (limited)"]
+    },
+    "weather": {
+      "climate": "Tropical monsoon",
+      "rainySeasons": "May to October (south), July to January (north)",
+      "drySeasons": "November to April (south), February to August (north)"
+    },
+    "budgetRange": {
+      "budget": "$20-35/day",
+      "midRange": "$35-70/day",
+      "luxury": "$70-200/day"
+    },
+    "itineraries": [
+      {
+        "id": "north-to-south",
+        "title": "North to South Adventure",
+        "duration": "14 days",
+        "price": 1199,
+        "highlights": [
+          "Ha Long Bay cruise",
+          "Hoi An lantern festival",
+          "Mekong Delta tour",
+          "Cu Chi Tunnels"
+        ],
+        "dayByDay": [
+          {
+            "day": 1,
+            "title": "Arrival in Hanoi",
+            "activities": [
+              "Airport transfer",
+              "Old Quarter walking tour",
+              "Street food dinner"
+            ]
+          }
+        ]
+      }
+    ],
+    "attractions": [
+      {
+        "name": "Ha Long Bay",
+        "type": "Natural Wonder",
+        "coordinates": [20.9101, 107.1839],
+        "description": "UNESCO World Heritage site with limestone pillars"
+      }
+    ],
+    "reviews": [
+      {
+        "id": "1",
+        "name": "Emma Wilson",
+        "rating": 5,
+        "date": "2024-01-08",
+        "comment": "Vietnam is incredible! The food is amazing and the people are so welcoming.",
+        "avatar": "https://images.pexels.com/photos/1181690/pexels-photo-1181690.jpeg?auto=compress&cs=tinysrgb&w=150",
+        "tripType": "Adventure Tour"
+      }
+    ],
+    "customizationOptions": {
+      "accommodations": [
+        "Boutique Hotels",
+        "Homestays",
+        "Luxury Resorts",
+        "Budget Hostels"
+      ],
+      "transportation": [
+        "Motorbike tours",
+        "Sleeper trains",
+        "Domestic flights",
+        "Private cars"
+      ],
+      "activities": [
+        "Cooking classes",
+        "Boat cruises",
+        "Trekking",
+        "Historical tours"
+      ],
+      "specialRequirements": [
+        "Food tours",
+        "Photography focus",
+        "Adventure activities"
+      ]
+    }
+  },
+  "dubai-uae": {
+    "id": "dubai-uae",
+    "name": "Dubai",
+    "country": "UAE",
+    "continent": "Asia",
+    "heroImage": "https://images.pexels.com/photos/1470502/pexels-photo-1470502.jpeg?auto=compress&cs=tinysrgb&w=1920",
+    "gallery": [
+      "https://images.pexels.com/photos/1470502/pexels-photo-1470502.jpeg?auto=compress&cs=tinysrgb&w=800",
+      "https://images.pexels.com/photos/1591373/pexels-photo-1591373.jpeg?auto=compress&cs=tinysrgb&w=800"
+    ],
+    "description": "Experience the future in this dazzling city of skyscrapers, luxury shopping, desert adventures, and world-class dining.",
+    "highlights": [
+      "Burj Khalifa - world's tallest building",
+      "Luxury shopping malls",
+      "Desert safari adventures",
+      "Palm Jumeirah artificial island",
+      "Traditional souks",
+      "World-class dining scene"
+    ],
+    "bestTimeToVisit": {
+      "months": "November to March",
+      "weather": "Pleasant temperatures and low humidity",
+      "temperature": "20-30°C (68-86°F)"
+    },
+    "visaRequirements": {
+      "required": true,
+      "details": "Visa on arrival for many countries. 30-day tourist visa.",
+      "processingTime": "On arrival or online"
+    },
+    "currency": {
+      "code": "AED",
+      "name": "UAE Dirham",
+      "exchangeRate": "1 USD = 3.67 AED"
+    },
+    "language": {
+      "primary": "Arabic",
+      "others": ["English (widely spoken)", "Hindi", "Urdu"]
+    },
+    "weather": {
+      "climate": "Desert",
+      "rainySeasons": "Minimal rainfall year-round",
+      "drySeasons": "Year-round dry climate"
+    },
+    "budgetRange": {
+      "budget": "$60-100/day",
+      "midRange": "$100-200/day",
+      "luxury": "$200-500/day"
+    },
+    "itineraries": [
+      {
+        "id": "luxury-experience",
+        "title": "Luxury Dubai Experience",
+        "duration": "5 days",
+        "price": 1599,
+        "highlights": [
+          "Burj Khalifa visit",
+          "Desert safari",
+          "Dubai Mall shopping",
+          "Marina cruise"
+        ],
+        "dayByDay": [
+          {
+            "day": 1,
+            "title": "Arrival & Modern Dubai",
+            "activities": [
+              "Airport transfer",
+              "Burj Khalifa visit",
+              "Dubai Mall exploration"
+            ]
+          }
+        ]
+      }
+    ],
+    "attractions": [
+      {
+        "name": "Burj Khalifa",
+        "type": "Architectural Marvel",
+        "coordinates": [25.1972, 55.2744],
+        "description": "World's tallest building with observation decks"
+      }
+    ],
+    "reviews": [
+      {
+        "id": "1",
+        "name": "David Brown",
+        "rating": 5,
+        "date": "2024-01-12",
+        "comment": "Dubai is absolutely stunning! The architecture and luxury are beyond imagination.",
+        "avatar": "https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&w=150",
+        "tripType": "Luxury Tour"
+      }
+    ],
+    "customizationOptions": {
+      "accommodations": [
+        "Luxury Hotels",
+        "7-Star Resorts",
+        "Boutique Hotels",
+        "Serviced Apartments"
+      ],
+      "transportation": [
+        "Metro system",
+        "Taxis",
+        "Luxury car rentals",
+        "Private drivers"
+      ],
+      "activities": [
+        "Shopping",
+        "Desert safaris",
+        "Water sports",
+        "Fine dining"
+      ],
+      "specialRequirements": [
+        "Luxury focus",
+        "Shopping tours",
+        "Business facilities"
+      ]
+    }
+  },
+  "mauritius": {
+    "id": "mauritius",
+    "name": "Mauritius",
+    "country": "Mauritius",
+    "continent": "Africa",
+    "heroImage": "https://images.pexels.com/photos/1287460/pexels-photo-1287460.jpeg?auto=compress&cs=tinysrgb&w=1920",
+    "gallery": [
+      "https://images.pexels.com/photos/1287460/pexels-photo-1287460.jpeg?auto=compress&cs=tinysrgb&w=800",
+      "https://images.pexels.com/photos/1024993/pexels-photo-1024993.jpeg?auto=compress&cs=tinysrgb&w=800"
+    ],
+    "description": "Paradise island in the Indian Ocean with pristine beaches, luxury resorts, diverse culture, and stunning coral reefs.",
+    "highlights": [
+      "Pristine white sand beaches",
+      "Crystal clear lagoons",
+      "Luxury beach resorts",
+      "Diverse cultural heritage",
+      "Water sports paradise",
+      "Tropical botanical gardens"
+    ],
+    "bestTimeToVisit": {
+      "months": "May to December",
+      "weather": "Dry season with pleasant temperatures",
+      "temperature": "20-26°C (68-79°F)"
+    },
+    "visaRequirements": {
+      "required": false,
+      "details": "Visa-free entry for most countries up to 90 days.",
+      "processingTime": "No visa required"
+    },
+    "currency": {
+      "code": "MUR",
+      "name": "Mauritian Rupee",
+      "exchangeRate": "1 USD = 45 MUR (approx.)"
+    },
+    "language": {
+      "primary": "English",
+      "others": ["French", "Mauritian Creole", "Hindi"]
+    },
+    "weather": {
+      "climate": "Tropical",
+      "rainySeasons": "January to April",
+      "drySeasons": "May to December"
+    },
+    "budgetRange": {
+      "budget": "$50-80/day",
+      "midRange": "$80-150/day",
+      "luxury": "$150-400/day"
+    },
+    "itineraries": [
+      {
+        "id": "beach-paradise",
+        "title": "Beach Paradise Getaway",
+        "duration": "7 days",
+        "price": 1899,
+        "highlights": [
+          "Beach relaxation",
+          "Snorkeling",
+          "Island tours",
+          "Spa treatments"
+        ],
+        "dayByDay": [
+          {
+            "day": 1,
+            "title": "Arrival & Beach Time",
+            "activities": [
+              "Airport transfer",
+              "Resort check-in",
+              "Beach relaxation"
+            ]
+          }
+        ]
+      }
+    ],
+    "attractions": [
+      {
+        "name": "Le Morne Brabant",
+        "type": "Natural Landmark",
+        "coordinates": [-20.4568, 57.3111],
+        "description": "UNESCO World Heritage mountain with hiking trails"
+      }
+    ],
+    "reviews": [
+      {
+        "id": "1",
+        "name": "Lisa Garcia",
+        "rating": 5,
+        "date": "2024-01-14",
+        "comment": "Mauritius is pure paradise! The beaches are incredible and the resorts are world-class.",
+        "avatar": "https://images.pexels.com/photos/1130626/pexels-photo-1130626.jpeg?auto=compress&cs=tinysrgb&w=150",
+        "tripType": "Beach Holiday"
+      }
+    ],
+    "customizationOptions": {
+      "accommodations": [
+        "Beach Resorts",
+        "Luxury Villas",
+        "Boutique Hotels",
+        "All-Inclusive Resorts"
+      ],
+      "transportation": [
+        "Car rentals",
+        "Taxis",
+        "Hotel transfers",
+        "Helicopter tours"
+      ],
+      "activities": ["Water sports", "Spa treatments", "Island tours", "Golf"],
+      "specialRequirements": [
+        "Honeymoon packages",
+        "Family-friendly",
+        "Luxury focus"
+      ]
+    }
+  },
+  "singapore": {
+    "id": "singapore",
+    "name": "Singapore",
+    "country": "Singapore",
+    "continent": "Asia",
+    "heroImage": "https://images.pexels.com/photos/2265876/pexels-photo-2265876.jpeg?auto=compress&cs=tinysrgb&w=1920",
+    "gallery": [
+      "https://images.pexels.com/photos/2265876/pexels-photo-2265876.jpeg?auto=compress&cs=tinysrgb&w=800",
+      "https://images.pexels.com/photos/1134166/pexels-photo-1134166.jpeg?auto=compress&cs=tinysrgb&w=800"
+    ],
+    "description": "Modern city-state blending cultures, featuring futuristic architecture, world-class dining, and efficient urban planning.",
+    "highlights": [
+      "Gardens by the Bay",
+      "Marina Bay Sands",
+      "Diverse food scene",
+      "Sentosa Island",
+      "Cultural districts",
+      "Shopping paradise"
+    ],
+    "bestTimeToVisit": {
+      "months": "February to April",
+      "weather": "Less humid with occasional showers",
+      "temperature": "25-31°C (77-88°F)"
+    },
+    "visaRequirements": {
+      "required": false,
+      "details": "Visa-free entry for most countries up to 90 days.",
+      "processingTime": "No visa required"
+    },
+    "currency": {
+      "code": "SGD",
+      "name": "Singapore Dollar",
+      "exchangeRate": "1 USD = 1.35 SGD (approx.)"
+    },
+    "language": {
+      "primary": "English",
+      "others": ["Mandarin", "Malay", "Tamil"]
+    },
+    "weather": {
+      "climate": "Tropical",
+      "rainySeasons": "November to January",
+      "drySeasons": "February to October"
+    },
+    "budgetRange": {
+      "budget": "$50-80/day",
+      "midRange": "$80-150/day",
+      "luxury": "$150-350/day"
+    },
+    "itineraries": [
+      {
+        "id": "city-highlights",
+        "title": "Singapore City Highlights",
+        "duration": "4 days",
+        "price": 999,
+        "highlights": [
+          "Marina Bay area",
+          "Gardens by the Bay",
+          "Chinatown",
+          "Sentosa Island"
+        ],
+        "dayByDay": [
+          {
+            "day": 1,
+            "title": "Marina Bay & Gardens",
+            "activities": [
+              "Marina Bay Sands",
+              "Gardens by the Bay",
+              "Light show"
+            ]
+          }
+        ]
+      }
+    ],
+    "attractions": [
+      {
+        "name": "Gardens by the Bay",
+        "type": "Modern Attraction",
+        "coordinates": [1.2816, 103.8636],
+        "description": "Futuristic garden with Supertree structures"
+      }
+    ],
+    "reviews": [
+      {
+        "id": "1",
+        "name": "Robert Johnson",
+        "rating": 5,
+        "date": "2024-01-16",
+        "comment": "Singapore is incredibly clean and efficient. The food scene is absolutely amazing!",
+        "avatar": "https://images.pexels.com/photos/1043471/pexels-photo-1043471.jpeg?auto=compress&cs=tinysrgb&w=150",
+        "tripType": "City Break"
+      }
+    ],
+    "customizationOptions": {
+      "accommodations": [
+        "Luxury Hotels",
+        "Boutique Hotels",
+        "Business Hotels",
+        "Budget Hostels"
+      ],
+      "transportation": ["MRT system", "Taxis", "Grab rides", "Walking"],
+      "activities": [
+        "Food tours",
+        "Shopping",
+        "Cultural visits",
+        "Theme parks"
+      ],
+      "specialRequirements": [
+        "Business facilities",
+        "Family-friendly",
+        "Food focus"
+      ]
+    }
+  },
+  "sri-lanka": {
+    "id": "sri-lanka",
+    "name": "Sri Lanka",
+    "country": "Sri Lanka",
+    "continent": "Asia",
+    "heroImage": "https://images.pexels.com/photos/1659438/pexels-photo-1659438.jpeg?auto=compress&cs=tinysrgb&w=1920",
+    "gallery": [
+      "https://images.pexels.com/photos/1659438/pexels-photo-1659438.jpeg?auto=compress&cs=tinysrgb&w=800",
+      "https://images.pexels.com/photos/2422915/pexels-photo-2422915.jpeg?auto=compress&cs=tinysrgb&w=800"
+    ],
+    "description": "Pearl of the Indian Ocean with ancient temples, tea plantations, wildlife safaris, and beautiful beaches.",
+    "highlights": [
+      "Ancient Buddhist temples",
+      "Tea plantation tours",
+      "Wildlife safaris",
+      "Beautiful beaches",
+      "Cultural triangle",
+      "Scenic train journeys"
+    ],
+    "bestTimeToVisit": {
+      "months": "December to March",
+      "weather": "Dry season with pleasant temperatures",
+      "temperature": "22-30°C (72-86°F)"
+    },
+    "visaRequirements": {
+      "required": true,
+      "details": "Electronic Travel Authorization (ETA) required online.",
+      "processingTime": "24-48 hours"
+    },
+    "currency": {
+      "code": "LKR",
+      "name": "Sri Lankan Rupee",
+      "exchangeRate": "1 USD = 320 LKR (approx.)"
+    },
+    "language": {
+      "primary": "Sinhala",
+      "others": ["Tamil", "English"]
+    },
+    "weather": {
+      "climate": "Tropical",
+      "rainySeasons": "May to September (southwest), October to January (northeast)",
+      "drySeasons": "December to March"
+    },
+    "budgetRange": {
+      "budget": "$20-40/day",
+      "midRange": "$40-80/day",
+      "luxury": "$80-200/day"
+    },
+    "itineraries": [
+      {
+        "id": "cultural-nature",
+        "title": "Cultural & Nature Tour",
+        "duration": "10 days",
+        "price": 1299,
+        "highlights": [
+          "Sigiriya Rock",
+          "Kandy Temple",
+          "Tea plantations",
+          "Safari"
+        ],
+        "dayByDay": [
+          {
+            "day": 1,
+            "title": "Arrival in Colombo",
+            "activities": ["Airport transfer", "City tour", "Welcome dinner"]
+          }
+        ]
+      }
+    ],
+    "attractions": [
+      {
+        "name": "Sigiriya Rock Fortress",
+        "type": "Historical Site",
+        "coordinates": [7.957, 80.7603],
+        "description": "Ancient rock fortress with stunning frescoes"
+      }
+    ],
+    "reviews": [
+      {
+        "id": "1",
+        "name": "Maria Rodriguez",
+        "rating": 5,
+        "date": "2024-01-18",
+        "comment": "Sri Lanka is a hidden gem! The culture is rich and the landscapes are breathtaking.",
+        "avatar": "https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=150",
+        "tripType": "Cultural Tour"
+      }
+    ],
+    "customizationOptions": {
+      "accommodations": [
+        "Beach Resorts",
+        "Hill Country Hotels",
+        "Eco Lodges",
+        "Heritage Hotels"
+      ],
+      "transportation": [
+        "Private cars",
+        "Trains",
+        "Tuk-tuks",
+        "Domestic flights"
+      ],
+      "activities": [
+        "Temple visits",
+        "Tea tours",
+        "Wildlife safaris",
+        "Beach time"
+      ],
+      "specialRequirements": [
+        "Cultural focus",
+        "Wildlife photography",
+        "Adventure activities"
+      ]
+    }
+  },
+  "ooty-india": {
+    "id": "ooty-india",
+    "name": "Ooty",
+    "country": "India",
+    "continent": "Asia",
+    "heroImage": "https://images.pexels.com/photos/1107717/pexels-photo-1107717.jpeg?auto=compress&cs=tinysrgb&w=1920",
+    "gallery": [
+      "https://images.pexels.com/photos/1107717/pexels-photo-1107717.jpeg?auto=compress&cs=tinysrgb&w=800",
+      "https://images.pexels.com/photos/2132180/pexels-photo-2132180.jpeg?auto=compress&cs=tinysrgb&w=800"
+    ],
+    "description": "Queen of Hill Stations in Tamil Nadu with cool climate, tea gardens, colonial architecture, and scenic mountain views.",
+    "highlights": [
+      "Nilgiri Mountain Railway",
+      "Tea gardens and factories",
+      "Botanical gardens",
+      "Colonial architecture",
+      "Cool mountain climate",
+      "Scenic viewpoints"
+    ],
+    "bestTimeToVisit": {
+      "months": "April to June, September to November",
+      "weather": "Pleasant cool weather",
+      "temperature": "15-25°C (59-77°F)"
+    },
+    "visaRequirements": {
+      "required": true,
+      "details": "Tourist visa required for most countries. E-visa available.",
+      "processingTime": "3-5 business days"
+    },
+    "currency": {
+      "code": "INR",
+      "name": "Indian Rupee",
+      "exchangeRate": "1 USD = 83 INR (approx.)"
+    },
+    "language": {
+      "primary": "Tamil",
+      "others": ["English", "Hindi"]
+    },
+    "weather": {
+      "climate": "Subtropical highland",
+      "rainySeasons": "June to September",
+      "drySeasons": "October to May"
+    },
+    "budgetRange": {
+      "budget": "$15-30/day",
+      "midRange": "$30-60/day",
+      "luxury": "$60-150/day"
+    },
+    "itineraries": [
+      {
+        "id": "hill-station-retreat",
+        "title": "Hill Station Retreat",
+        "duration": "5 days",
+        "price": 599,
+        "highlights": [
+          "Toy train ride",
+          "Tea plantation tour",
+          "Botanical gardens",
+          "Lake boating"
+        ],
+        "dayByDay": [
+          {
+            "day": 1,
+            "title": "Arrival & Local Sightseeing",
+            "activities": ["Check-in hotel", "Botanical gardens", "Ooty Lake"]
+          }
+        ]
+      }
+    ],
+    "attractions": [
+      {
+        "name": "Nilgiri Mountain Railway",
+        "type": "Heritage Railway",
+        "coordinates": [11.4064, 76.6932],
+        "description": "UNESCO World Heritage toy train"
+      }
+    ],
+    "reviews": [
+      {
+        "id": "1",
+        "name": "Priya Sharma",
+        "rating": 5,
+        "date": "2024-01-20",
+        "comment": "Ooty is perfect for a peaceful getaway. The toy train ride is magical!",
+        "avatar": "https://images.pexels.com/photos/1181690/pexels-photo-1181690.jpeg?auto=compress&cs=tinysrgb&w=150",
+        "tripType": "Hill Station"
+      }
+    ],
+    "customizationOptions": {
+      "accommodations": [
+        "Hill Resorts",
+        "Colonial Hotels",
+        "Homestays",
+        "Budget Hotels"
+      ],
+      "transportation": ["Toy train", "Private cars", "Local buses", "Taxis"],
+      "activities": ["Tea tours", "Nature walks", "Boating", "Photography"],
+      "specialRequirements": [
+        "Family-friendly",
+        "Nature focus",
+        "Photography tours"
+      ]
+    }
+  },
+  "goa-india": {
+    "id": "goa-india",
+    "name": "Goa",
+    "country": "India",
+    "continent": "Asia",
+    "heroImage": "https://images.pexels.com/photos/1285625/pexels-photo-1285625.jpeg?auto=compress&cs=tinysrgb&w=1920",
+    "gallery": [
+      "https://images.pexels.com/photos/1285625/pexels-photo-1285625.jpeg?auto=compress&cs=tinysrgb&w=800",
+      "https://images.pexels.com/photos/1591373/pexels-photo-1591373.jpeg?auto=compress&cs=tinysrgb&w=800"
+    ],
+    "description": "India's beach paradise with Portuguese heritage, vibrant nightlife, beautiful beaches, and laid-back coastal culture.",
+    "highlights": [
+      "Beautiful sandy beaches",
+      "Portuguese colonial architecture",
+      "Vibrant nightlife",
+      "Delicious seafood",
+      "Water sports activities",
+      "Spice plantations"
+    ],
+    "bestTimeToVisit": {
+      "months": "November to March",
+      "weather": "Pleasant and dry with cool evenings",
+      "temperature": "20-32°C (68-90°F)"
+    },
+    "visaRequirements": {
+      "required": true,
+      "details": "Tourist visa required for most countries. E-visa available.",
+      "processingTime": "3-5 business days"
+    },
+    "currency": {
+      "code": "INR",
+      "name": "Indian Rupee",
+      "exchangeRate": "1 USD = 83 INR (approx.)"
+    },
+    "language": {
+      "primary": "Konkani",
+      "others": ["English", "Hindi", "Portuguese"]
+    },
+    "weather": {
+      "climate": "Tropical",
+      "rainySeasons": "June to September",
+      "drySeasons": "October to May"
+    },
+    "budgetRange": {
+      "budget": "$20-40/day",
+      "midRange": "$40-80/day",
+      "luxury": "$80-200/day"
+    },
+    "itineraries": [
+      {
+        "id": "beach-heritage",
+        "title": "Beach & Heritage Tour",
+        "duration": "6 days",
+        "price": 799,
+        "highlights": [
+          "Beach hopping",
+          "Old Goa churches",
+          "Spice plantation",
+          "River cruise"
+        ],
+        "dayByDay": [
+          {
+            "day": 1,
+            "title": "Arrival & North Goa",
+            "activities": ["Airport transfer", "Calangute Beach", "Baga Beach"]
+          }
+        ]
+      }
+    ],
+    "attractions": [
+      {
+        "name": "Basilica of Bom Jesus",
+        "type": "Historical Site",
+        "coordinates": [15.5007, 73.9114],
+        "description": "UNESCO World Heritage church in Old Goa"
+      }
+    ],
+    "reviews": [
+      {
+        "id": "1",
+        "name": "James Wilson",
+        "rating": 5,
+        "date": "2024-01-22",
+        "comment": "Goa is the perfect beach destination! Great food, beautiful beaches, and amazing nightlife.",
+        "avatar": "https://images.pexels.com/photos/1043471/pexels-photo-1043471.jpeg?auto=compress&cs=tinysrgb&w=150",
+        "tripType": "Beach Holiday"
+      }
+    ],
+    "customizationOptions": {
+      "accommodations": [
+        "Beach Resorts",
+        "Heritage Hotels",
+        "Beach Shacks",
+        "Luxury Villas"
+      ],
+      "transportation": [
+        "Scooter rentals",
+        "Taxis",
+        "Local buses",
+        "Private cars"
+      ],
+      "activities": [
+        "Beach activities",
+        "Water sports",
+        "Heritage tours",
+        "Nightlife"
+      ],
+      "specialRequirements": [
+        "Beach focus",
+        "Nightlife",
+        "Heritage tours",
+        "Water sports"
+      ]
+    }
+  }
+}

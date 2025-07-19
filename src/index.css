@@ -1,0 +1,22 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Smooth scrolling for all elements */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Enhanced smooth scrolling for tab content */
+@media (prefers-reduced-motion: no-preference) {
+  #tab-content-area {
+    scroll-margin-top: 120px; /* Account for sticky header */
+  }
+}
+
+/* Ensure smooth scrolling works on mobile devices */
+@supports (-webkit-overflow-scrolling: touch) {
+  html {
+    -webkit-overflow-scrolling: touch;
+  }
+}
