@@ -1,10 +1,10 @@
-import React from 'react';
-import HeroSection from '../components/HeroSection';
-import FeaturedDestinations from '../components/FeaturedDestinations';
-import ServicesSection from '../components/ServicesSection';
-import SpecialOffers from '../components/SpecialOffers';
-import Testimonials from '../components/Testimonials';
-import Newsletter from '../components/Newsletter';
+import React from "react";
+import HeroSection from "../components/HeroSection";
+import FeaturedDestinations from "../components/FeaturedDestinations";
+import ServicesSection from "../components/ServicesSection";
+import SpecialOffers from "../components/SpecialOffers";
+import Testimonials from "../components/Testimonials";
+import Newsletter from "../components/Newsletter";
 
 const Home = () => {
   return (
@@ -12,7 +12,7 @@ const Home = () => {
       <HeroSection />
       <FeaturedDestinations />
       <ServicesSection />
-      <SpecialOffers />
+      {/* <SpecialOffers /> */}
       <Testimonials />
       <Newsletter />
     </div>

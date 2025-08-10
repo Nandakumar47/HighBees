@@ -2,7 +2,7 @@ export interface User {
   id: string;
   name: string;
   email: string;
-  role: 'admin' | 'user';
+  role: "admin" | "user";
 }
 
 export interface Enquiry {
@@ -22,7 +22,7 @@ export interface Enquiry {
   message?: string;
   communicationHistory?: Array<{
     date: string;
-    type: 'email' | 'phone' | 'note';
+    type: "email" | "phone" | "note";
     content: string;
     agent: string;
   }>;
@@ -40,7 +40,7 @@ export interface ContactMessage {
   priority: string;
   communicationHistory?: Array<{
     date: string;
-    type: 'email' | 'phone' | 'note';
+    type: "email" | "phone" | "note";
     content: string;
     agent: string;
   }>;
@@ -59,4 +59,18 @@ export interface ApiResponse<T> {
   data: T;
   success: boolean;
   message?: string;
+}
+export interface Destination {
+  id: number;
+  name: string;
+  country: string;
+  slug: string;
+  image: string;
+  description: string;
+  highlight?: string;
+  price?: string;
+  rating?: string;
+  reviews?: string;
+  duration?: string;
+  travelers?: string;
 }
