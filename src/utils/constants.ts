@@ -45,10 +45,10 @@ export const DEMO_CREDENTIALS = {
 } as const;
 
 export const CONTACT_INFO = {
-  phone: "+1 (555) 123-4567",
+  phone: "+9 170198 67571",
   email: "info@highbeesholidays.com",
   address: "123 Travel Street, Adventure City, AC 12345",
-  whatsapp: "+918086558072",
+  whatsapp: "+9170198 67571",
 } as const;
 
 export const ANIMATION_DURATIONS = {

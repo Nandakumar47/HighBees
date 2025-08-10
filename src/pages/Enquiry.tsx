@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import {
   ChevronRight,
   ChevronLeft,
@@ -9,9 +9,9 @@ import {
 } from "lucide-react";
 import LoadingButton from "../components/LoadingButton";
 import { useLoading } from "../hooks/useLoading";
-import { getAllDestinations } from "../data/destinationsData";
 import Select from "../components/common/Input/Select";
 import Input from "../components/common/Input/Input";
+import axios from "axios";
 
 interface EnquiryProps {
   initialDestination?: string;
@@ -19,7 +19,13 @@ interface EnquiryProps {
   embedded?: boolean;
   title?: string;
 }
-
+interface ApiDestination {
+  id: number;
+  name: string;
+  country?: string;
+  hero_image: string;
+  description: string;
+}
 const Enquiry: React.FC<EnquiryProps> = ({
   initialDestination = "",
   hideDestinationField = false,
@@ -47,20 +53,41 @@ const Enquiry: React.FC<EnquiryProps> = ({
   const [errors, setErrors] = useState<FormErrors>({});
   const [isSubmitted, setIsSubmitted] = useState(false);
   const { isLoading, withLoading } = useLoading();
+  const [destinations, setDestinations] = useState<string[]>([]);
 
-  // Get destinations from centralized data
-  const allDestinations = getAllDestinations();
-  const destinations = useMemo(
-    () => [
-      ...allDestinations.map(
-        (dest) =>
-          dest.name + (dest.country !== dest.name ? `, ${dest.country}` : "")
-      ),
-      "Other (Please specify in message)",
-    ],
-    [allDestinations]
-  );
-
+  useEffect(() => {
+    setDestinationsToState();
+  }, []);
+  const setDestinationsToState = async () => {
+    try {
+      const allDestinations = await getDestinations();
+      const destinationOption = [
+        ...allDestinations.map(
+          (dest) =>
+            dest.name + (dest.country !== dest.name ? `, ${dest.country}` : "")
+        ),
+        "Other (Please specify in message)",
+      ];
+      setDestinations(destinationOption);
+    } catch (error) {
+      console.log(error);
+      setDestinations([]);
+    }
+  };
+  const getDestinations = async (
+    offset?: number,
+    limit?: number
+  ): Promise<ApiDestination[]> => {
+    try {
+      const response = await axios.get("/destinations", {
+        params: { offset, limit },
+      });
+      return response.data.data.destinations;
+    } catch (error) {
+      console.error("Error fetching destinations:", error);
+      return [];
+    }
+  };
   const validateStep1 = () => {
     const newErrors: FormErrors = {};
 
@@ -115,6 +142,26 @@ const Enquiry: React.FC<EnquiryProps> = ({
     return Object.keys(newErrors).length === 0;
   };
 
+  const createEnquiry = async () => {
+    try {
+      const response = await axios.post("/enquiry/create", {
+        name: formData.name,
+        email: formData.email,
+        phoneNumber: formData.phone,
+        numberOfAdults: formData.adults,
+        numberOfChildren: formData.children,
+        destination: formData.destination,
+        departureCity: formData.departureCity,
+        expectedDepartureDate: formData.departureDate, // YYYY-MM-DD format
+        durationOfStay: formData.duration,
+        maximumBudget: formData.budget,
+      });
+
+      console.log("Enquiry created successfully:", response.data);
+    } catch (error) {
+      console.error("Error creating enquiry:", error);
+    }
+  };
   const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
   ) => {
@@ -152,8 +199,7 @@ const Enquiry: React.FC<EnquiryProps> = ({
     }
 
     await withLoading(async () => {
-      // Simulate form submission
-      await new Promise((resolve) => setTimeout(resolve, 2000));
+      createEnquiry();
       setIsSubmitted(true);
     });
   };
