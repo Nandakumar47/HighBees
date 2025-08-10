@@ -42,7 +42,7 @@ export default function DestinationCard({ destination }: DestinationCardProps) {
             <MapPin className="w-4 h-4" />
             <span className="text-sm">{destination.country}</span>
           </div>
-          <div className="flex items-center space-x-1">
+          {/* <div className="flex items-center space-x-1">
             <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
             {destination.rating && (
               <span className="text-sm font-medium">{destination.rating}</span>
@@ -52,7 +52,7 @@ export default function DestinationCard({ destination }: DestinationCardProps) {
                 ({destination.reviews})
               </span>
             )}
-          </div>
+          </div> */}
         </div>
 
         <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-primary-500 transition-colors">

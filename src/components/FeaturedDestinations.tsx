@@ -15,14 +15,13 @@ const FeaturedDestinations = () => {
     const loadDestinations = async () => {
       await withLoading(async () => {
         const allDestinations = await getDestinations();
-
         // Convert to the format expected by the component
         const destinationsData = allDestinations.map((dest) => ({
           id: dest.id,
           name: dest.name,
           country: dest.country || dest.name,
           slug: dest.name.toLowerCase(),
-          image: dest.heroImage,
+          image: dest.hero_image,
           description: dest.description,
         }));
 
@@ -37,7 +36,7 @@ const FeaturedDestinations = () => {
       const response = await axios.get("/destinations", {
         params: { offset, limit },
       });
-      return response.data;
+      return response.data.data.destinations;
     } catch (error) {
       console.error("Error fetching destinations:", error);
       return [];
