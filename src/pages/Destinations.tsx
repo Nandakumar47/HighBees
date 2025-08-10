@@ -5,26 +5,19 @@ import { CardSkeleton } from "../components/common/SkeletonLoader/SkeletonLoader
 import axios from "axios";
 import { Destination } from "../types";
 import DestinationCard from "../components/common/DestinationCard";
-// const continents = [
-//   { id: "all", name: "All Continents" },
-//   { id: "asia", name: "Asia" },
-//   { id: "africa", name: "Africa" },
-//   { id: "europe", name: "Europe" },
-//   { id: "americas", name: "Americas" },
-//   { id: "oceania", name: "Oceania" },
-// ];
+const countries = [
+  { id: "all", name: "All countries" },
+  { id: "india", name: "India" },
+  { id: "africa", name: "Africa" },
+  { id: "europe", name: "Europe" },
+  { id: "americas", name: "Americas" },
+  { id: "oceania", name: "Oceania" },
+];
 
-// const priceRanges = [
-//   { id: "all", name: "All Prices" },
-//   { id: "budget", name: "Under $1,000" },
-//   { id: "mid", name: "$1,000 - $2,000" },
-//   { id: "luxury", name: "Over $2,000" },
-// ];
 type DestinationsType = Array<Destination>;
 const Destinations = () => {
   const [searchTerm, setSearchTerm] = useState("");
-  // const [selectedContinent, setSelectedContinent] = useState("all");
-  // const [selectedPriceRange, setSelectedPriceRange] = useState("all");
+  const [selectedCountry, setSelectedCountry] = useState("all");
   const [destinations, setDestinations] = useState<DestinationsType>([]);
   const { isLoading, withLoading } = useLoading(true);
 
@@ -94,31 +87,18 @@ const Destinations = () => {
               />
             </div>
 
-            {/* Continent Filter */}
-            {/* <select
-              value={selectedContinent}
-              onChange={(e) => setSelectedContinent(e.target.value)}
+            {/* country Filter */}
+            <select
+              value={selectedCountry}
+              onChange={(e) => setSelectedCountry(e.target.value)}
               className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
             >
-              {continents.map((continent) => (
-                <option key={continent.id} value={continent.id}>
-                  {continent.name}
+              {countries.map((country) => (
+                <option key={country.id} value={country.id}>
+                  {country.name}
                 </option>
               ))}
-            </select> */}
-
-            {/* Price Range Filter */}
-            {/* <select
-              value={selectedPriceRange}
-              onChange={(e) => setSelectedPriceRange(e.target.value)}
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
-            >
-              {priceRanges.map((range) => (
-                <option key={range.id} value={range.id}>
-                  {range.name}
-                </option>
-              ))}
-            </select> */}
+            </select>
           </div>
 
           <div className="text-sm text-gray-600">
