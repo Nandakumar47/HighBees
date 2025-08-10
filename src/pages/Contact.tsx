@@ -11,20 +11,35 @@ import {
 import LoadingButton from "../components/LoadingButton";
 import { useLoading } from "../hooks/useLoading";
 import Input from "../components/common/Input/Input";
+import axios from "axios";
+
+interface FormData {
+  name: string;
+  email: string;
+  phone: string;
+  message: string;
+}
+
+interface FormErrors {
+  name?: string;
+  email?: string;
+  phone?: string;
+  message?: string;
+}
 
 const Contact = () => {
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<FormData>({
     name: "",
     email: "",
     phone: "",
     message: "",
   });
-  const [errors, setErrors] = useState({});
+  const [errors, setErrors] = useState<FormErrors>({});
   const [isSubmitted, setIsSubmitted] = useState(false);
   const { isLoading, withLoading } = useLoading();
 
   const validateForm = () => {
-    const newErrors = {};
+    const newErrors: FormErrors = {};
 
     if (!formData.name.trim()) {
       newErrors.name = "Name is required";
@@ -36,6 +51,14 @@ const Contact = () => {
       newErrors.email = "Email is invalid";
     }
 
+    if (!formData.phone.trim()) {
+      newErrors.phone = "Phone number is required";
+    } else if (
+      !/^[+]?[1-9][\d]{0,15}$/.test(formData.phone.replace(/[\s\-()]/g, ""))
+    ) {
+      newErrors.phone = "Please enter a valid phone number";
+    }
+
     if (!formData.message.trim()) {
       newErrors.message = "Message is required";
     }
@@ -44,7 +67,9 @@ const Contact = () => {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleInputChange = (e) => {
+  const handleInputChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     const { name, value } = e.target;
     setFormData((prev) => ({
       ...prev,
@@ -52,7 +77,7 @@ const Contact = () => {
     }));
 
     // Clear error when user starts typing
-    if (errors[name]) {
+    if (errors[name as keyof FormErrors]) {
       setErrors((prev) => ({
         ...prev,
         [name]: "",
@@ -60,7 +85,7 @@ const Contact = () => {
     }
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     if (!validateForm()) {
@@ -68,15 +93,7 @@ const Contact = () => {
     }
 
     await withLoading(async () => {
-      // Simulate form submission
-      await new Promise((resolve) => setTimeout(resolve, 1500));
-      setIsSubmitted(true);
-      setFormData({
-        name: "",
-        email: "",
-        phone: "",
-        message: "",
-      });
+      sendEnquiry();
     });
   };
 
@@ -106,25 +123,46 @@ const Contact = () => {
       description: "Eastern Standard Time",
     },
   ];
-
+  const sendEnquiry = async () => {
+    try {
+      const response = await axios.post("/contact", {
+        name: formData.name,
+        contactNo: formData.phone,
+        emailId: formData.email,
+        message: formData.message,
+      });
+      if (response.status === 201) {
+        setIsSubmitted(true);
+        setFormData({
+          name: "",
+          email: "",
+          phone: "",
+          message: "",
+        });
+      }
+      console.log("Enquiry created successfully:", response.data);
+    } catch (error) {
+      console.error("Error creating enquiry:", error);
+    }
+  };
   return (
     <div className="min-h-screen bg-gray-50 pt-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {/* Header */}
-        <div className="text-center mb-16">
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+        <div className="text-center mb-12 lg:mb-16">
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
             Get in Touch
           </h1>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto px-4">
             Ready to start planning your next adventure? We're here to help make
             your travel dreams come true.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12">
           {/* Contact Form */}
           <div className="lg:col-span-2">
-            <div className="bg-white rounded-2xl shadow-lg p-8">
+            <div className="bg-white rounded-2xl shadow-lg p-6 sm:p-8">
               <h2 className="text-2xl font-bold text-gray-900 mb-6">
                 Send us a Message
               </h2>
@@ -160,11 +198,12 @@ const Contact = () => {
                     <Input
                       id="phone"
                       name="phone"
-                      label="Phone Number"
+                      label="Phone Number *"
                       type="tel"
                       value={formData.phone}
                       onChange={handleInputChange}
                       disabled={isLoading}
+                      error={errors.phone}
                       placeholder="+1 (555) 123-4567"
                     />
                   </div>
@@ -183,14 +222,16 @@ const Contact = () => {
                       onChange={handleInputChange}
                       disabled={isLoading}
                       rows={6}
-                      className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors resize-none disabled:bg-gray-100 disabled:cursor-not-allowed ${
-                        errors.message ? "border-red-500" : "border-gray-300"
+                      className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 focus:border-primary-500 transition-all duration-200 resize-none disabled:bg-gray-100 disabled:cursor-not-allowed ${
+                        errors.message
+                          ? "border-red-500 focus:ring-red-500 focus:border-red-500"
+                          : "border-gray-300"
                       }`}
                       placeholder="Tell us about your travel plans, preferences, and any specific requirements..."
                     />
                     {errors.message && (
                       <div className="flex items-center space-x-1 mt-1">
-                        <AlertCircle className="w-4 h-4 text-red-500" />
+                        <AlertCircle className="w-4 h-4 text-red-500 flex-shrink-0" />
                         <span className="text-sm text-red-500">
                           {errors.message}
                         </span>
@@ -202,17 +243,18 @@ const Contact = () => {
                     type="submit"
                     isLoading={isLoading}
                     loadingText="Sending Message..."
-                    className="w-full transform hover:scale-105"
+                    className="w-full shadow-sm hover:shadow-md min-h-[56px]"
                     variant="primary"
                     size="lg"
+                    icon={Send}
+                    iconPosition="left"
                   >
-                    <Send className="w-5 h-5" />
-                    <span>Send Message</span>
+                    Send Message
                   </LoadingButton>
                 </form>
               ) : (
                 <div className="text-center py-8">
-                  <div className="bg-green-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                  <div className="bg-green-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 shadow-sm">
                     <CheckCircle className="w-8 h-8 text-green-500" />
                   </div>
                   <h3 className="text-2xl font-bold text-gray-900 mb-2">
@@ -224,7 +266,7 @@ const Contact = () => {
                   </p>
                   <button
                     onClick={() => setIsSubmitted(false)}
-                    className="text-primary-500 hover:text-primary-600 font-medium transition-colors"
+                    className="text-primary-500 hover:text-primary-600 font-medium transition-colors hover:underline"
                   >
                     Send another message
                   </button>
@@ -234,9 +276,9 @@ const Contact = () => {
           </div>
 
           {/* Contact Information */}
-          <div className="space-y-8">
+          <div className="space-y-6 lg:space-y-8">
             {/* Contact Details */}
-            <div className="bg-white rounded-2xl shadow-lg p-6">
+            <div className="bg-white rounded-2xl shadow-lg p-4 sm:p-6">
               <h3 className="text-xl font-bold text-gray-900 mb-6">
                 Contact Information
               </h3>
@@ -245,10 +287,10 @@ const Contact = () => {
                   const Icon = info.icon;
                   return (
                     <div key={index} className="flex items-start space-x-4">
-                      <div className="bg-primary-100 rounded-lg p-2 mt-1">
+                      <div className="bg-primary-100 rounded-lg p-2 mt-1 flex-shrink-0">
                         <Icon className="w-5 h-5 text-primary-500" />
                       </div>
-                      <div>
+                      <div className="min-w-0 flex-1">
                         <h4 className="font-semibold text-gray-900 mb-1">
                           {info.title}
                         </h4>
@@ -268,7 +310,7 @@ const Contact = () => {
             </div>
 
             {/* Quick Response */}
-            <div className="bg-gradient-to-br from-primary-500 to-primary-700 rounded-2xl p-6 text-white">
+            {/* <div className="bg-gradient-to-br from-primary-500 to-primary-700 rounded-2xl p-6 text-white shadow-lg">
               <h3 className="text-xl font-bold mb-4">Need Immediate Help?</h3>
               <p className="mb-4 opacity-90">
                 For urgent travel assistance or last-minute bookings, call our
@@ -278,10 +320,10 @@ const Contact = () => {
                 <Phone className="w-5 h-5" />
                 <span className="font-semibold">+1 (555) 911-HELP</span>
               </div>
-              <button className="bg-white bg-opacity-20 hover:bg-opacity-30 border border-white border-opacity-30 text-white font-semibold py-2 px-4 rounded-lg transition-all duration-200 w-full">
+              <button className="bg-white bg-opacity-20 hover:bg-opacity-30 border border-white border-opacity-30 text-white font-semibold py-2 px-4 rounded-lg transition-all duration-200 w-full hover:bg-opacity-40 transform hover:scale-105">
                 Call Now
               </button>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>

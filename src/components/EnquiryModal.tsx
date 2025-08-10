@@ -141,9 +141,10 @@ const EnquiryModal: React.FC<EnquiryModalProps> = ({
                 loadingText="Updating..."
                 disabled={currentStatus === enquiry.status}
                 variant="primary"
+                icon={Save}
+                iconPosition="left"
               >
-                <Save className="w-4 h-4" />
-                <span>Update Status</span>
+                Update Status
               </LoadingButton>
             </div>
           </div>

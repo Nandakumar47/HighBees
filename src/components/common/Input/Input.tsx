@@ -1,10 +1,9 @@
 import React from "react";
-import { DivideIcon as LucideIcon } from "lucide-react";
 
 interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   label?: string;
   error?: string;
-  icon?: LucideIcon;
+  icon?: React.ComponentType<{ className?: string }>;
   iconPosition?: "left" | "right";
   helperText?: string;
   endAdornment?: React.ReactNode;
@@ -24,10 +23,10 @@ const Input: React.FC<InputProps> = ({
   const inputId = id || `input-${Math.random().toString(36).substr(2, 9)}`;
 
   const baseInputClasses =
-    "w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors disabled:bg-gray-100 disabled:cursor-not-allowed";
+    "w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-offset-2 transition-all duration-200 disabled:bg-gray-100 disabled:cursor-not-allowed";
   const errorClasses = error
     ? "border-red-500 focus:ring-red-500 focus:border-red-500"
-    : "border-gray-300";
+    : "border-gray-300 focus:ring-primary-500 focus:border-primary-500";
   const iconClasses = Icon ? (iconPosition === "left" ? "pl-10" : "pr-10") : "";
 
   const inputClasses = `${baseInputClasses} ${errorClasses} ${iconClasses} ${className}`;
@@ -59,7 +58,11 @@ const Input: React.FC<InputProps> = ({
         )}
       </div>
 
-      {error && <p className="text-sm text-red-600">{error}</p>}
+      {error && (
+        <div className="flex items-center space-x-1">
+          <span className="text-sm text-red-600">{error}</span>
+        </div>
+      )}
 
       {helperText && !error && (
         <p className="text-sm text-gray-500">{helperText}</p>

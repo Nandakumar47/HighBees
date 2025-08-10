@@ -123,9 +123,10 @@ const Newsletter = () => {
                     loadingText="Subscribing..."
                     className="w-full"
                     variant="primary"
+                    icon={Send}
+                    iconPosition="left"
                   >
-                    <Send className="w-5 h-5" />
-                    <span>Subscribe Now</span>
+                    Subscribe Now
                   </LoadingButton>
 
                   <p className="text-xs text-gray-500 text-center">
