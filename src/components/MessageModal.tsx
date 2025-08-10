@@ -1,7 +1,16 @@
-import React, { useState } from 'react';
-import { X, Mail, Phone, Calendar, MessageSquare, Save, Clock } from 'lucide-react';
-import LoadingButton from './LoadingButton';
-import { useLoading } from '../hooks/useLoading';
+import React, { useState } from "react";
+import {
+  X,
+  Mail,
+  Phone,
+  Calendar,
+  MessageSquare,
+  Save,
+  Clock,
+} from "lucide-react";
+import LoadingButton from "./LoadingButton";
+import Select from "./common/Input/Select";
+import { useLoading } from "../hooks/useLoading";
 
 interface Message {
   id: number;
@@ -15,7 +24,7 @@ interface Message {
   priority: string;
   communicationHistory?: Array<{
     date: string;
-    type: 'email' | 'phone' | 'note';
+    type: "email" | "phone" | "note";
     content: string;
     agent: string;
   }>;
@@ -28,42 +37,57 @@ interface MessageModalProps {
   onStatusUpdate: (id: number, newStatus: string) => void;
 }
 
-const MessageModal: React.FC<MessageModalProps> = ({ message, isOpen, onClose, onStatusUpdate }) => {
-  const [currentStatus, setCurrentStatus] = useState(message?.status || '');
+const MessageModal: React.FC<MessageModalProps> = ({
+  message,
+  isOpen,
+  onClose,
+  onStatusUpdate,
+}) => {
+  const [currentStatus, setCurrentStatus] = useState(message?.status || "");
   const { isLoading, withLoading } = useLoading();
 
   const statusOptions = [
-    { value: 'New', label: 'New', color: 'bg-blue-100 text-blue-800' },
-    { value: 'In Progress', label: 'In Progress', color: 'bg-yellow-100 text-yellow-800' },
-    { value: 'Responded', label: 'Responded', color: 'bg-green-100 text-green-800' },
-    { value: 'Closed', label: 'Closed', color: 'bg-gray-100 text-gray-800' }
+    { value: "New", label: "New", color: "bg-blue-100 text-blue-800" },
+    {
+      value: "In Progress",
+      label: "In Progress",
+      color: "bg-yellow-100 text-yellow-800",
+    },
+    {
+      value: "Responded",
+      label: "Responded",
+      color: "bg-green-100 text-green-800",
+    },
+    { value: "Closed", label: "Closed", color: "bg-gray-100 text-gray-800" },
   ];
 
   const handleStatusUpdate = async () => {
     if (!message || currentStatus === message.status) return;
-    
+
     await withLoading(async () => {
       // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 1000));
+      await new Promise((resolve) => setTimeout(resolve, 1000));
       onStatusUpdate(message.id, currentStatus);
     });
   };
 
   const getStatusColor = (status: string) => {
-    const statusOption = statusOptions.find(option => option.value === status);
-    return statusOption?.color || 'bg-gray-100 text-gray-800';
+    const statusOption = statusOptions.find(
+      (option) => option.value === status
+    );
+    return statusOption?.color || "bg-gray-100 text-gray-800";
   };
 
   const getPriorityColor = (priority: string) => {
     switch (priority) {
-      case 'High':
-        return 'bg-red-100 text-red-800';
-      case 'Medium':
-        return 'bg-yellow-100 text-yellow-800';
-      case 'Low':
-        return 'bg-green-100 text-green-800';
+      case "High":
+        return "bg-red-100 text-red-800";
+      case "Medium":
+        return "bg-yellow-100 text-yellow-800";
+      case "Low":
+        return "bg-green-100 text-green-800";
       default:
-        return 'bg-gray-100 text-gray-800';
+        return "bg-gray-100 text-gray-800";
     }
   };
 
@@ -75,7 +99,9 @@ const MessageModal: React.FC<MessageModalProps> = ({ message, isOpen, onClose, o
         {/* Header */}
         <div className="flex items-center justify-between p-6 border-b border-gray-200">
           <div>
-            <h2 className="text-2xl font-bold text-gray-900">Message Details</h2>
+            <h2 className="text-2xl font-bold text-gray-900">
+              Message Details
+            </h2>
             <p className="text-gray-600">ID: #{message.id}</p>
           </div>
           <button
@@ -90,29 +116,39 @@ const MessageModal: React.FC<MessageModalProps> = ({ message, isOpen, onClose, o
           {/* Status Management */}
           <div className="bg-gray-50 rounded-lg p-4">
             <div className="flex items-center justify-between mb-4">
-              <h3 className="text-lg font-semibold text-gray-900">Status Management</h3>
+              <h3 className="text-lg font-semibold text-gray-900">
+                Status Management
+              </h3>
               <div className="flex items-center space-x-2">
-                <span className={`inline-flex px-3 py-1 text-sm font-semibold rounded-full ${getStatusColor(message.status)}`}>
+                <span
+                  className={`inline-flex px-3 py-1 text-sm font-semibold rounded-full ${getStatusColor(
+                    message.status
+                  )}`}
+                >
                   {message.status}
                 </span>
-                <span className={`inline-flex px-3 py-1 text-sm font-semibold rounded-full ${getPriorityColor(message.priority)}`}>
+                <span
+                  className={`inline-flex px-3 py-1 text-sm font-semibold rounded-full ${getPriorityColor(
+                    message.priority
+                  )}`}
+                >
                   {message.priority} Priority
                 </span>
               </div>
             </div>
             <div className="flex items-center space-x-4">
-              <select
+              <Select
                 value={currentStatus}
                 onChange={(e) => setCurrentStatus(e.target.value)}
                 disabled={isLoading}
-                className="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 disabled:bg-gray-100 disabled:cursor-not-allowed"
+                placeholder="Select status"
               >
-                {statusOptions.map(option => (
+                {statusOptions.map((option) => (
                   <option key={option.value} value={option.value}>
                     {option.label}
                   </option>
                 ))}
-              </select>
+              </Select>
               <LoadingButton
                 onClick={handleStatusUpdate}
                 isLoading={isLoading}
@@ -128,7 +164,9 @@ const MessageModal: React.FC<MessageModalProps> = ({ message, isOpen, onClose, o
 
           {/* Customer Information */}
           <div>
-            <h3 className="text-lg font-semibold text-gray-900 mb-4">Customer Information</h3>
+            <h3 className="text-lg font-semibold text-gray-900 mb-4">
+              Customer Information
+            </h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="space-y-4">
                 <div className="flex items-center space-x-3">
@@ -137,7 +175,9 @@ const MessageModal: React.FC<MessageModalProps> = ({ message, isOpen, onClose, o
                   </div>
                   <div>
                     <p className="text-sm text-gray-500">Full Name</p>
-                    <p className="font-semibold text-gray-900">{message.name}</p>
+                    <p className="font-semibold text-gray-900">
+                      {message.name}
+                    </p>
                   </div>
                 </div>
                 <div className="flex items-center space-x-3">
@@ -146,7 +186,9 @@ const MessageModal: React.FC<MessageModalProps> = ({ message, isOpen, onClose, o
                   </div>
                   <div>
                     <p className="text-sm text-gray-500">Email Address</p>
-                    <p className="font-semibold text-gray-900">{message.email}</p>
+                    <p className="font-semibold text-gray-900">
+                      {message.email}
+                    </p>
                   </div>
                 </div>
                 {message.phone && (
@@ -156,7 +198,9 @@ const MessageModal: React.FC<MessageModalProps> = ({ message, isOpen, onClose, o
                     </div>
                     <div>
                       <p className="text-sm text-gray-500">Phone Number</p>
-                      <p className="font-semibold text-gray-900">{message.phone}</p>
+                      <p className="font-semibold text-gray-900">
+                        {message.phone}
+                      </p>
                     </div>
                   </div>
                 )}
@@ -168,7 +212,9 @@ const MessageModal: React.FC<MessageModalProps> = ({ message, isOpen, onClose, o
                   </div>
                   <div>
                     <p className="text-sm text-gray-500">Submitted</p>
-                    <p className="font-semibold text-gray-900">{message.submittedAt}</p>
+                    <p className="font-semibold text-gray-900">
+                      {message.submittedAt}
+                    </p>
                   </div>
                 </div>
               </div>
@@ -177,7 +223,9 @@ const MessageModal: React.FC<MessageModalProps> = ({ message, isOpen, onClose, o
 
           {/* Message Content */}
           <div>
-            <h3 className="text-lg font-semibold text-gray-900 mb-4">Message Content</h3>
+            <h3 className="text-lg font-semibold text-gray-900 mb-4">
+              Message Content
+            </h3>
             <div className="space-y-4">
               <div className="bg-gray-50 rounded-lg p-4">
                 <h4 className="font-semibold text-gray-900 mb-2">Subject</h4>
@@ -185,37 +233,51 @@ const MessageModal: React.FC<MessageModalProps> = ({ message, isOpen, onClose, o
               </div>
               <div className="bg-gray-50 rounded-lg p-4">
                 <h4 className="font-semibold text-gray-900 mb-2">Message</h4>
-                <p className="text-gray-700 leading-relaxed whitespace-pre-wrap">{message.message}</p>
+                <p className="text-gray-700 leading-relaxed whitespace-pre-wrap">
+                  {message.message}
+                </p>
               </div>
             </div>
           </div>
 
           {/* Communication History */}
-          {message.communicationHistory && message.communicationHistory.length > 0 && (
-            <div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-4">Communication History</h3>
-              <div className="space-y-4">
-                {message.communicationHistory.map((comm, index) => (
-                  <div key={index} className="bg-gray-50 rounded-lg p-4">
-                    <div className="flex items-center justify-between mb-2">
-                      <div className="flex items-center space-x-2">
-                        <span className={`inline-flex px-2 py-1 text-xs font-semibold rounded-full ${
-                          comm.type === 'email' ? 'bg-blue-100 text-blue-800' :
-                          comm.type === 'phone' ? 'bg-green-100 text-green-800' :
-                          'bg-gray-100 text-gray-800'
-                        }`}>
-                          {comm.type.charAt(0).toUpperCase() + comm.type.slice(1)}
+          {message.communicationHistory &&
+            message.communicationHistory.length > 0 && (
+              <div>
+                <h3 className="text-lg font-semibold text-gray-900 mb-4">
+                  Communication History
+                </h3>
+                <div className="space-y-4">
+                  {message.communicationHistory.map((comm, index) => (
+                    <div key={index} className="bg-gray-50 rounded-lg p-4">
+                      <div className="flex items-center justify-between mb-2">
+                        <div className="flex items-center space-x-2">
+                          <span
+                            className={`inline-flex px-2 py-1 text-xs font-semibold rounded-full ${
+                              comm.type === "email"
+                                ? "bg-blue-100 text-blue-800"
+                                : comm.type === "phone"
+                                ? "bg-green-100 text-green-800"
+                                : "bg-gray-100 text-gray-800"
+                            }`}
+                          >
+                            {comm.type.charAt(0).toUpperCase() +
+                              comm.type.slice(1)}
+                          </span>
+                          <span className="text-sm text-gray-600">
+                            by {comm.agent}
+                          </span>
+                        </div>
+                        <span className="text-sm text-gray-500">
+                          {comm.date}
                         </span>
-                        <span className="text-sm text-gray-600">by {comm.agent}</span>
                       </div>
-                      <span className="text-sm text-gray-500">{comm.date}</span>
+                      <p className="text-gray-700">{comm.content}</p>
                     </div>
-                    <p className="text-gray-700">{comm.content}</p>
-                  </div>
-                ))}
+                  ))}
+                </div>
               </div>
-            </div>
-          )}
+            )}
         </div>
 
         {/* Footer */}

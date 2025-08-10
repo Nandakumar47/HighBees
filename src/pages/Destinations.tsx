@@ -1,10 +1,12 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Search } from "lucide-react";
+import Select from "../components/common/Input/Select";
 import { useLoading } from "../hooks/useLoading";
 import { CardSkeleton } from "../components/common/SkeletonLoader/SkeletonLoader";
 import axios from "axios";
 import { Destination } from "../types";
 import DestinationCard from "../components/common/DestinationCard";
+import Input from "../components/common/Input/Input";
 const countries = [
   { id: "all", name: "All countries" },
   { id: "india", name: "India" },
@@ -15,6 +17,13 @@ const countries = [
 ];
 
 type DestinationsType = Array<Destination>;
+interface ApiDestination {
+  id: number;
+  name: string;
+  country?: string;
+  hero_image: string;
+  description: string;
+}
 const Destinations = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCountry, setSelectedCountry] = useState("all");
@@ -40,7 +49,10 @@ const Destinations = () => {
 
     loadDestinations();
   }, [withLoading]);
-  const getDestinations = async (offset?: number, limit?: number) => {
+  const getDestinations = async (
+    offset?: number,
+    limit?: number
+  ): Promise<ApiDestination[]> => {
     try {
       const response = await axios.get("/destinations", {
         params: { offset, limit },
@@ -76,29 +88,26 @@ const Destinations = () => {
         <div className="bg-white rounded-2xl shadow-lg p-6 mb-8">
           <div className="grid grid-cols-4 gap-4 mb-6">
             {/* Search */}
-            <div className="relative">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
-              <input
-                type="text"
-                placeholder="Search destinations..."
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
-              />
-            </div>
+            <Input
+              type="text"
+              placeholder="Search destinations..."
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              icon={Search}
+            />
 
             {/* country Filter */}
-            <select
+            <Select
               value={selectedCountry}
               onChange={(e) => setSelectedCountry(e.target.value)}
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
+              placeholder="All countries"
             >
               {countries.map((country) => (
                 <option key={country.id} value={country.id}>
                   {country.name}
                 </option>
               ))}
-            </select>
+            </Select>
           </div>
 
           <div className="text-sm text-gray-600">

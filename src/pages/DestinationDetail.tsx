@@ -17,13 +17,13 @@ import {
   Check,
   ArrowRight,
   MessageSquare,
-  Phone,
-  Mail,
   MessageCircle,
 } from "lucide-react";
 import { Destination } from "../data/destinationsData";
 import PageLoader from "../components/PageLoader";
 import LoadingButton from "../components/LoadingButton";
+import Input from "../components/common/Input/Input";
+import Select from "../components/common/Input/Select";
 import BackButton from "../components/common/BackButton/BackButton";
 import { useLoading } from "../hooks/useLoading";
 import { ROUTES, CONTACT_INFO } from "../utils/constants";
@@ -139,15 +139,6 @@ Looking forward to your expert guidance!`;
         "Enquiry submitted successfully! We'll get back to you within 24 hours."
       );
     });
-  };
-
-  const handleInterestToggle = (interest: string) => {
-    setEnquiryForm((prev) => ({
-      ...prev,
-      interests: prev.interests.includes(interest)
-        ? prev.interests.filter((i) => i !== interest)
-        : [...prev.interests, interest],
-    }));
   };
 
   if (pageLoading) {
@@ -753,119 +744,86 @@ Looking forward to your expert guidance!`;
             <div className="bg-white rounded-2xl shadow-lg p-8">
               <form onSubmit={handleEnquirySubmit} className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div>
-                    <label
-                      htmlFor="name"
-                      className="block text-sm font-medium text-gray-700 mb-2"
-                    >
-                      Full Name *
-                    </label>
-                    <input
-                      type="text"
-                      id="name"
-                      value={enquiryForm.name}
-                      onChange={(e) =>
-                        setEnquiryForm((prev) => ({
-                          ...prev,
-                          name: e.target.value,
-                        }))
-                      }
-                      disabled={enquiryLoading}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 disabled:bg-gray-100 disabled:cursor-not-allowed"
-                      required
-                    />
-                  </div>
-                  <div>
-                    <label
-                      htmlFor="email"
-                      className="block text-sm font-medium text-gray-700 mb-2"
-                    >
-                      Email Address *
-                    </label>
-                    <input
-                      type="email"
-                      id="email"
-                      value={enquiryForm.email}
-                      onChange={(e) =>
-                        setEnquiryForm((prev) => ({
-                          ...prev,
-                          email: e.target.value,
-                        }))
-                      }
-                      disabled={enquiryLoading}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 disabled:bg-gray-100 disabled:cursor-not-allowed"
-                      required
-                    />
-                  </div>
+                  <Input
+                    id="name"
+                    label="Full Name *"
+                    type="text"
+                    value={enquiryForm.name}
+                    onChange={(e) =>
+                      setEnquiryForm((prev) => ({
+                        ...prev,
+                        name: (e.target as HTMLInputElement).value,
+                      }))
+                    }
+                    disabled={enquiryLoading}
+                    required
+                    placeholder="Enter your full name"
+                  />
+                  <Input
+                    id="email"
+                    label="Email Address *"
+                    type="email"
+                    value={enquiryForm.email}
+                    onChange={(e) =>
+                      setEnquiryForm((prev) => ({
+                        ...prev,
+                        email: (e.target as HTMLInputElement).value,
+                      }))
+                    }
+                    disabled={enquiryLoading}
+                    required
+                    placeholder="you@example.com"
+                  />
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                  <Input
+                    id="phone"
+                    label="Phone Number"
+                    type="tel"
+                    value={enquiryForm.phone}
+                    onChange={(e) =>
+                      setEnquiryForm((prev) => ({
+                        ...prev,
+                        phone: (e.target as HTMLInputElement).value,
+                      }))
+                    }
+                    disabled={enquiryLoading}
+                    placeholder="Optional"
+                  />
+                  <Select
+                    id="travelers"
+                    label="Number of Travelers *"
+                    value={enquiryForm.travelers}
+                    onChange={(e) =>
+                      setEnquiryForm((prev) => ({
+                        ...prev,
+                        travelers: parseInt(
+                          (e.target as HTMLSelectElement).value
+                        ),
+                      }))
+                    }
+                    disabled={enquiryLoading}
+                    required
+                  >
+                    {[1, 2, 3, 4, 5, 6, 7, 8].map((num) => (
+                      <option key={num} value={num}>
+                        {num} {num === 1 ? "Traveler" : "Travelers"}
+                      </option>
+                    ))}
+                  </Select>
                   <div>
-                    <label
-                      htmlFor="phone"
-                      className="block text-sm font-medium text-gray-700 mb-2"
-                    >
-                      Phone Number
-                    </label>
-                    <input
-                      type="tel"
-                      id="phone"
-                      value={enquiryForm.phone}
-                      onChange={(e) =>
-                        setEnquiryForm((prev) => ({
-                          ...prev,
-                          phone: e.target.value,
-                        }))
-                      }
-                      disabled={enquiryLoading}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 disabled:bg-gray-100 disabled:cursor-not-allowed"
-                    />
-                  </div>
-                  <div>
-                    <label
-                      htmlFor="travelers"
-                      className="block text-sm font-medium text-gray-700 mb-2"
-                    >
-                      Number of Travelers *
-                    </label>
-                    <select
-                      id="travelers"
-                      value={enquiryForm.travelers}
-                      onChange={(e) =>
-                        setEnquiryForm((prev) => ({
-                          ...prev,
-                          travelers: parseInt(e.target.value),
-                        }))
-                      }
-                      disabled={enquiryLoading}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 disabled:bg-gray-100 disabled:cursor-not-allowed"
-                      required
-                    >
-                      {[1, 2, 3, 4, 5, 6, 7, 8].map((num) => (
-                        <option key={num} value={num}>
-                          {num} {num === 1 ? "Traveler" : "Travelers"}
-                        </option>
-                      ))}
-                    </select>
-                  </div>
-                  <div>
-                    <label
-                      htmlFor="duration"
-                      className="block text-sm font-medium text-gray-700 mb-2"
-                    >
-                      Trip Duration *
-                    </label>
-                    <select
+                    <Select
                       id="duration"
+                      label="Trip Duration *"
                       value={enquiryForm.duration}
                       onChange={(e) =>
                         setEnquiryForm((prev) => ({
                           ...prev,
-                          duration: e.target.value,
+                          duration: (e.target as HTMLSelectElement).value,
                         }))
                       }
                       disabled={enquiryLoading}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 disabled:bg-gray-100 disabled:cursor-not-allowed"
                       required
                     >
                       <option value="">Select duration</option>
@@ -874,62 +832,7 @@ Looking forward to your expert guidance!`;
                       <option value="8-10 days">8-10 days</option>
                       <option value="11-14 days">11-14 days</option>
                       <option value="15+ days">15+ days</option>
-                    </select>
-                  </div>
-                </div>
-
-                <div>
-                  <label
-                    htmlFor="budget"
-                    className="block text-sm font-medium text-gray-700 mb-2"
-                  >
-                    Budget Range *
-                  </label>
-                  <select
-                    id="budget"
-                    value={enquiryForm.budget}
-                    onChange={(e) =>
-                      setEnquiryForm((prev) => ({
-                        ...prev,
-                        budget: e.target.value,
-                      }))
-                    }
-                    disabled={enquiryLoading}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 disabled:bg-gray-100 disabled:cursor-not-allowed"
-                    required
-                  >
-                    <option value="">Select budget range</option>
-                    <option value="under-2000">Under $2,000</option>
-                    <option value="2000-5000">$2,000 - $5,000</option>
-                    <option value="5000-10000">$5,000 - $10,000</option>
-                    <option value="10000+">$10,000+</option>
-                  </select>
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-3">
-                    Interests & Activities
-                  </label>
-                  <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-                    {destination.customizationOptions.activities.map(
-                      (activity) => (
-                        <label
-                          key={activity}
-                          className="flex items-center space-x-2 cursor-pointer"
-                        >
-                          <input
-                            type="checkbox"
-                            checked={enquiryForm.interests.includes(activity)}
-                            onChange={() => handleInterestToggle(activity)}
-                            disabled={enquiryLoading}
-                            className="rounded border-gray-300 text-primary-600 focus:ring-primary-500 disabled:cursor-not-allowed"
-                          />
-                          <span className="text-sm text-gray-700">
-                            {activity}
-                          </span>
-                        </label>
-                      )
-                    )}
+                    </Select>
                   </div>
                 </div>
 
@@ -961,37 +864,13 @@ Looking forward to your expert guidance!`;
                     type="submit"
                     isLoading={enquiryLoading}
                     loadingText="Submitting Enquiry..."
-                    className="flex-1 sm:flex-none"
+                    className="w-full sm:w-auto shadow-md hover:shadow-lg"
                     variant="primary"
                     size="lg"
+                    icon={MessageSquare}
                   >
-                    <MessageSquare className="w-5 h-5" />
-                    <span>Submit Enquiry</span>
+                    Submit Enquiry
                   </LoadingButton>
-
-                  <div className="flex gap-2">
-                    <a
-                      href="tel:+1234567890"
-                      className="flex items-center justify-center space-x-2 px-6 py-3 border-2 border-primary-500 text-primary-500 hover:bg-primary-500 hover:text-white font-semibold rounded-lg transition-all duration-200"
-                    >
-                      <Phone className="w-5 h-5" />
-                      <span>Call Us</span>
-                    </a>
-                    <button
-                      onClick={handleWhatsAppInquiry}
-                      className="flex items-center justify-center space-x-2 px-6 py-3 border-2 border-green-500 text-green-500 hover:bg-green-500 hover:text-white font-semibold rounded-lg transition-all duration-200"
-                    >
-                      <MessageCircle className="w-5 h-5" />
-                      <span>WhatsApp</span>
-                    </button>
-                    <a
-                      href="mailto:info@highbeesholidays.com"
-                      className="flex items-center justify-center space-x-2 px-6 py-3 border-2 border-primary-500 text-primary-500 hover:bg-primary-500 hover:text-white font-semibold rounded-lg transition-all duration-200"
-                    >
-                      <Mail className="w-5 h-5" />
-                      <span>Email</span>
-                    </a>
-                  </div>
                 </div>
               </form>
             </div>

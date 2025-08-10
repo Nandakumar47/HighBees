@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { MapPin, Star, Calendar, Users, ArrowRight } from "lucide-react";
+import { MapPin, Calendar, Users, ArrowRight } from "lucide-react";
 import { Destination } from "../../../types";
 
 interface DestinationCardProps {
