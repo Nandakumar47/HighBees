@@ -16,14 +16,11 @@ import {
   X,
   Check,
   ArrowRight,
-  MessageSquare,
   MessageCircle,
 } from "lucide-react";
 import { Destination } from "../data/destinationsData";
 import PageLoader from "../components/PageLoader";
-import LoadingButton from "../components/LoadingButton";
-import Input from "../components/common/Input/Input";
-import Select from "../components/common/Input/Select";
+import Enquiry from "./Enquiry";
 import BackButton from "../components/common/BackButton/BackButton";
 import { useLoading } from "../hooks/useLoading";
 import { ROUTES, CONTACT_INFO } from "../utils/constants";
@@ -37,19 +34,7 @@ const DestinationDetail = () => {
   const [selectedGalleryImage, setSelectedGalleryImage] = useState<number>(0);
   const [isGalleryModalOpen, setIsGalleryModalOpen] = useState(false);
   const [activeTab, setActiveTab] = useState("overview");
-  const [enquiryForm, setEnquiryForm] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    travelers: 2,
-    duration: "",
-    budget: "",
-    interests: [] as string[],
-    message: "",
-  });
   const { isLoading: pageLoading, withLoading } = useLoading(true);
-  const { isLoading: enquiryLoading, withLoading: withEnquiryLoading } =
-    useLoading();
 
   // Smooth scroll to top of tab content when tab changes
   const scrollToTabContent = () => {
@@ -115,30 +100,6 @@ Looking forward to your expert guidance!`;
       console.error("Error fetching destinations:", error);
       return {};
     }
-  };
-  const handleEnquirySubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-
-    await withEnquiryLoading(async () => {
-      // Simulate form submission
-      await new Promise((resolve) => setTimeout(resolve, 2000));
-
-      // Reset form
-      setEnquiryForm({
-        name: "",
-        email: "",
-        phone: "",
-        travelers: 2,
-        duration: "",
-        budget: "",
-        interests: [],
-        message: "",
-      });
-
-      alert(
-        "Enquiry submitted successfully! We'll get back to you within 24 hours."
-      );
-    });
   };
 
   if (pageLoading) {
@@ -259,7 +220,7 @@ Looking forward to your expert guidance!`;
               { id: "itineraries", label: "Itineraries" },
               { id: "gallery", label: "Gallery" },
               { id: "reviews", label: "Reviews" },
-              { id: "enquiry", label: "Plan Your Trip" },
+              { id: "enquiry", label: "Make Enquiry" },
             ].map((tab) => (
               <button
                 key={tab.id}
@@ -733,147 +694,23 @@ Looking forward to your expert guidance!`;
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-8">
               <h2 className="text-3xl font-bold text-gray-900 mb-4">
-                Plan Your Trip to {destination.name}
+                Make Enquiry for {destination.name}
               </h2>
               <p className="text-lg text-gray-600">
-                Tell us about your dream trip and we'll create a personalized
-                itinerary just for you
+                Tell us about your trip and we’ll tailor a plan for you
               </p>
             </div>
 
-            <div className="bg-white rounded-2xl shadow-lg p-8">
-              <form onSubmit={handleEnquirySubmit} className="space-y-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <Input
-                    id="name"
-                    label="Full Name *"
-                    type="text"
-                    value={enquiryForm.name}
-                    onChange={(e) =>
-                      setEnquiryForm((prev) => ({
-                        ...prev,
-                        name: (e.target as HTMLInputElement).value,
-                      }))
-                    }
-                    disabled={enquiryLoading}
-                    required
-                    placeholder="Enter your full name"
-                  />
-                  <Input
-                    id="email"
-                    label="Email Address *"
-                    type="email"
-                    value={enquiryForm.email}
-                    onChange={(e) =>
-                      setEnquiryForm((prev) => ({
-                        ...prev,
-                        email: (e.target as HTMLInputElement).value,
-                      }))
-                    }
-                    disabled={enquiryLoading}
-                    required
-                    placeholder="you@example.com"
-                  />
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                  <Input
-                    id="phone"
-                    label="Phone Number"
-                    type="tel"
-                    value={enquiryForm.phone}
-                    onChange={(e) =>
-                      setEnquiryForm((prev) => ({
-                        ...prev,
-                        phone: (e.target as HTMLInputElement).value,
-                      }))
-                    }
-                    disabled={enquiryLoading}
-                    placeholder="Optional"
-                  />
-                  <Select
-                    id="travelers"
-                    label="Number of Travelers *"
-                    value={enquiryForm.travelers}
-                    onChange={(e) =>
-                      setEnquiryForm((prev) => ({
-                        ...prev,
-                        travelers: parseInt(
-                          (e.target as HTMLSelectElement).value
-                        ),
-                      }))
-                    }
-                    disabled={enquiryLoading}
-                    required
-                  >
-                    {[1, 2, 3, 4, 5, 6, 7, 8].map((num) => (
-                      <option key={num} value={num}>
-                        {num} {num === 1 ? "Traveler" : "Travelers"}
-                      </option>
-                    ))}
-                  </Select>
-                  <div>
-                    <Select
-                      id="duration"
-                      label="Trip Duration *"
-                      value={enquiryForm.duration}
-                      onChange={(e) =>
-                        setEnquiryForm((prev) => ({
-                          ...prev,
-                          duration: (e.target as HTMLSelectElement).value,
-                        }))
-                      }
-                      disabled={enquiryLoading}
-                      required
-                    >
-                      <option value="">Select duration</option>
-                      <option value="3-5 days">3-5 days</option>
-                      <option value="6-7 days">6-7 days</option>
-                      <option value="8-10 days">8-10 days</option>
-                      <option value="11-14 days">11-14 days</option>
-                      <option value="15+ days">15+ days</option>
-                    </Select>
-                  </div>
-                </div>
-
-                <div>
-                  <label
-                    htmlFor="message"
-                    className="block text-sm font-medium text-gray-700 mb-2"
-                  >
-                    Additional Requirements or Questions
-                  </label>
-                  <textarea
-                    id="message"
-                    rows={4}
-                    value={enquiryForm.message}
-                    onChange={(e) =>
-                      setEnquiryForm((prev) => ({
-                        ...prev,
-                        message: e.target.value,
-                      }))
-                    }
-                    disabled={enquiryLoading}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 resize-none disabled:bg-gray-100 disabled:cursor-not-allowed"
-                    placeholder="Tell us about any special requirements, dietary restrictions, accessibility needs, or specific interests..."
-                  />
-                </div>
-
-                <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  <LoadingButton
-                    type="submit"
-                    isLoading={enquiryLoading}
-                    loadingText="Submitting Enquiry..."
-                    className="w-full sm:w-auto shadow-md hover:shadow-lg"
-                    variant="primary"
-                    size="lg"
-                    icon={MessageSquare}
-                  >
-                    Submit Enquiry
-                  </LoadingButton>
-                </div>
-              </form>
-            </div>
+            <Enquiry
+              embedded
+              initialDestination={
+                destination.name !== destination.country
+                  ? `${destination.name}, ${destination.country}`
+                  : destination.name
+              }
+              hideDestinationField
+              title={`Make Enquiry`}
+            />
           </div>
         )}
       </div>
