@@ -54,30 +54,29 @@ const HeroSection = () => {
             className="absolute inset-0 bg-cover bg-center bg-no-repeat"
             style={{ backgroundImage: `url(${slide.image})` }}
           />
-          <div className="absolute inset-0 bg-black/30" />
 
           <div className="relative h-full flex items-center justify-center text-center text-white">
             <div className="max-w-5xl mx-auto px-6 sm:px-8 lg:px-12">
-              {/* Primary heading with better hierarchy */}
-              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-8 leading-tight tracking-tight animate-slide-up">
-                {slide.title}
-              </h1>
-              {/* Secondary content with de-emphasized styling */}
-              <p
-                className="text-lg sm:text-xl md:text-2xl text-gray-100 mb-12 max-w-3xl mx-auto leading-relaxed font-light animate-slide-up"
-                style={{ animationDelay: "0.2s" }}
-              >
-                {slide.subtitle}
-              </p>
+              {/* Glassy Card Container */}
+              <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-8 sm:p-12 lg:p-16 shadow-2xl animate-slide-up">
+                {/* Primary heading with better hierarchy */}
+                <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-8 leading-tight tracking-tight text-white">
+                  {slide.title}
+                </h1>
+                {/* Secondary content with de-emphasized styling */}
+                <p
+                  className="text-lg sm:text-xl md:text-2xl text-white/90 mb-12 max-w-3xl mx-auto leading-relaxed font-light"
+                  style={{ animationDelay: "0.2s" }}
+                >
+                  {slide.subtitle}
+                </p>
 
-              {/* CTA Button with proper hierarchy */}
-              <div
-                className="animate-slide-up"
-                style={{ animationDelay: "0.4s" }}
-              >
-                <button className="bg-white/10 backdrop-blur-sm border border-white/20 text-white px-8 py-4 rounded-lg font-medium hover:bg-white/20 hover:border-white/30 transition-all duration-300 text-lg">
-                  Explore Destinations
-                </button>
+                {/* CTA Button with proper hierarchy */}
+                <div style={{ animationDelay: "0.4s" }}>
+                  <button className="bg-[#FFAA05] hover:bg-[#FFAA05]/90 text-black font-bold px-8 py-4 rounded-xl transition-all duration-300 hover:scale-105 hover:shadow-2xl shadow-xl text-lg">
+                    Explore Destinations
+                  </button>
+                </div>
               </div>
             </div>
           </div>
