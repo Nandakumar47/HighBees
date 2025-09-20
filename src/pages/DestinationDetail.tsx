@@ -166,43 +166,44 @@ Looking forward to your expert guidance!`;
         </div>
       </div>
 
-      {/* Hero Section */}
-      <section className="relative h-[70vh] overflow-hidden">
+      {/* Hero Section with improved hierarchy */}
+      <section className="relative h-[75vh] overflow-hidden">
         <img
           src={destination.heroImage}
           alt={destination.name}
           className="w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-black bg-opacity-40" />
+        <div className="absolute inset-0 bg-black/30" />
 
         <div className="absolute inset-0 flex items-center justify-center">
-          <div className="text-center text-white max-w-4xl mx-auto px-4">
-            <h1 className="text-4xl md:text-6xl font-bold mb-3 animate-slide-up">
+          <div className="text-center text-white max-w-6xl mx-auto px-6 sm:px-8 lg:px-12">
+            {/* Primary heading with better hierarchy */}
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight tracking-tight animate-slide-up">
               {destination.name}
             </h1>
             <p
-              className="text-lg md:text-xl mb-2 animate-slide-up"
+              className="text-xl sm:text-2xl md:text-3xl mb-4 animate-slide-up font-light"
               style={{ animationDelay: "0.2s" }}
             >
               {destination.country}
             </p>
             <p
-              className="text-base md:text-lg mb-8 max-w-2xl mx-auto animate-slide-up text-gray-200"
+              className="text-lg sm:text-xl md:text-2xl mb-12 max-w-4xl mx-auto animate-slide-up text-gray-100 leading-relaxed font-light"
               style={{ animationDelay: "0.4s" }}
             >
               {destination.description}
             </p>
             <div
-              className="flex flex-wrap justify-center gap-4 animate-slide-up"
+              className="flex flex-wrap justify-center gap-6 animate-slide-up"
               style={{ animationDelay: "0.6s" }}
             >
-              <div className="bg-white bg-opacity-15 backdrop-blur-sm rounded-lg px-3 py-1.5">
-                <span className="text-xs font-medium">
+              <div className="bg-white/10 backdrop-blur-sm rounded-xl px-6 py-3 border border-white/20">
+                <span className="text-sm font-medium">
                   Best Time: {destination.bestTimeToVisit.months}
                 </span>
               </div>
-              <div className="bg-white bg-opacity-15 backdrop-blur-sm rounded-lg px-3 py-1.5">
-                <span className="text-xs font-medium">
+              <div className="bg-white/10 backdrop-blur-sm rounded-xl px-6 py-3 border border-white/20">
+                <span className="text-sm font-medium">
                   From {destination.budgetRange.budget}
                 </span>
               </div>
@@ -211,10 +212,10 @@ Looking forward to your expert guidance!`;
         </div>
       </section>
 
-      {/* Navigation Tabs */}
+      {/* Navigation Tabs with improved hierarchy */}
       <section className="sticky top-36 bg-white border-b border-gray-200 z-30">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex space-x-8 overflow-x-auto">
+        <div className="max-w-8xl mx-auto px-6 sm:px-8 lg:px-12">
+          <div className="flex space-x-10 overflow-x-auto">
             {[
               { id: "overview", label: "Overview" },
               { id: "itineraries", label: "Itineraries" },
@@ -225,10 +226,10 @@ Looking forward to your expert guidance!`;
               <button
                 key={tab.id}
                 onClick={() => handleTabChange(tab.id)}
-                className={`py-3 px-2 border-b-2 font-medium text-sm whitespace-nowrap transition-colors ${
+                className={`py-4 px-3 border-b-2 font-medium text-base whitespace-nowrap transition-all duration-300 ${
                   activeTab === tab.id
                     ? "border-primary-500 text-primary-600"
-                    : "border-transparent text-gray-400 hover:text-gray-600 hover:border-gray-300"
+                    : "border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300"
                 }`}
               >
                 {tab.label}
@@ -240,48 +241,50 @@ Looking forward to your expert guidance!`;
 
       <div
         id="tab-content-area"
-        className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12"
+        className="max-w-8xl mx-auto px-6 sm:px-8 lg:px-12 py-16"
       >
-        {/* Overview Tab */}
+        {/* Overview Tab with improved hierarchy */}
         {activeTab === "overview" && (
-          <div className="space-y-12">
-            {/* Key Information */}
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          <div className="space-y-16">
+            {/* Key Information with better spacing */}
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
               <div className="lg:col-span-2">
-                <h2 className="text-2xl font-semibold text-gray-900 mb-4">
+                <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-8 leading-tight">
                   Destination Highlights
                 </h2>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mb-8">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-12">
                   {destination.highlights.map((highlight, index) => (
-                    <div key={index} className="flex items-center space-x-3">
-                      <Check className="w-4 h-4 text-green-500 flex-shrink-0" />
-                      <span className="text-gray-600 text-sm">{highlight}</span>
+                    <div key={index} className="flex items-center space-x-4">
+                      <Check className="w-5 h-5 text-green-500 flex-shrink-0" />
+                      <span className="text-gray-700 text-base leading-relaxed">
+                        {highlight}
+                      </span>
                     </div>
                   ))}
                 </div>
 
-                {/* Attractions Map Placeholder */}
-                <div className="bg-gray-100 rounded-lg p-6 text-center">
-                  <MapPin className="w-10 h-10 text-gray-400 mx-auto mb-3" />
-                  <h3 className="text-base font-medium text-gray-900 mb-2">
+                {/* Attractions Map Placeholder with improved hierarchy */}
+                <div className="bg-gray-50 rounded-2xl p-8 text-center">
+                  <MapPin className="w-12 h-12 text-gray-400 mx-auto mb-4" />
+                  <h3 className="text-xl font-semibold text-gray-900 mb-3">
                     Interactive Map
                   </h3>
-                  <p className="text-gray-500 text-sm">
+                  <p className="text-gray-600 text-base mb-6">
                     Explore key attractions and points of interest
                   </p>
-                  <div className="mt-4 grid grid-cols-1 md:grid-cols-2 gap-3">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     {destination.attractions.map((attraction, index) => (
                       <div
                         key={index}
-                        className="bg-white rounded-lg p-3 text-left"
+                        className="bg-white rounded-xl p-5 text-left shadow-sm"
                       >
-                        <h4 className="font-medium text-gray-900 text-sm">
+                        <h4 className="font-semibold text-gray-900 text-base mb-2">
                           {attraction.name}
                         </h4>
-                        <p className="text-xs text-gray-500">
+                        <p className="text-sm text-gray-600 mb-2">
                           {attraction.type}
                         </p>
-                        <p className="text-xs text-gray-400 mt-1">
+                        <p className="text-sm text-gray-500 leading-relaxed">
                           {attraction.description}
                         </p>
                       </div>
@@ -290,83 +293,83 @@ Looking forward to your expert guidance!`;
                 </div>
               </div>
 
-              <div className="space-y-6">
-                {/* Essential Information */}
-                <div className="bg-gray-50 rounded-lg p-5">
-                  <h3 className="text-lg font-semibold text-gray-900 mb-3">
+              <div className="space-y-8">
+                {/* Essential Information with improved hierarchy */}
+                <div className="bg-gray-50 rounded-2xl p-8">
+                  <h3 className="text-xl font-semibold text-gray-900 mb-6">
                     Essential Information
                   </h3>
-                  <div className="space-y-4">
-                    <div className="flex items-start space-x-3">
-                      <Calendar className="w-4 h-4 text-primary-500 mt-0.5" />
+                  <div className="space-y-6">
+                    <div className="flex items-start space-x-4">
+                      <Calendar className="w-5 h-5 text-primary-500 mt-1 flex-shrink-0" />
                       <div>
-                        <p className="font-medium text-gray-900 text-sm">
+                        <p className="font-semibold text-gray-900 text-base mb-1">
                           Best Time to Visit
                         </p>
-                        <p className="text-xs text-gray-600">
+                        <p className="text-sm text-gray-700 mb-1">
                           {destination.bestTimeToVisit.months}
                         </p>
-                        <p className="text-xs text-gray-500">
+                        <p className="text-sm text-gray-500">
                           {destination.bestTimeToVisit.weather}
                         </p>
                       </div>
                     </div>
 
-                    <div className="flex items-start space-x-3">
-                      <Plane className="w-4 h-4 text-primary-500 mt-0.5" />
+                    <div className="flex items-start space-x-4">
+                      <Plane className="w-5 h-5 text-primary-500 mt-1 flex-shrink-0" />
                       <div>
-                        <p className="font-medium text-gray-900 text-sm">
+                        <p className="font-semibold text-gray-900 text-base mb-1">
                           Visa Requirements
                         </p>
-                        <p className="text-xs text-gray-600">
+                        <p className="text-sm text-gray-700">
                           {destination.visaRequirements.details}
                         </p>
                       </div>
                     </div>
 
-                    <div className="flex items-start space-x-3">
-                      <CreditCard className="w-4 h-4 text-primary-500 mt-0.5" />
+                    <div className="flex items-start space-x-4">
+                      <CreditCard className="w-5 h-5 text-primary-500 mt-1 flex-shrink-0" />
                       <div>
-                        <p className="font-medium text-gray-900 text-sm">
+                        <p className="font-semibold text-gray-900 text-base mb-1">
                           Currency
                         </p>
-                        <p className="text-xs text-gray-600">
+                        <p className="text-sm text-gray-700 mb-1">
                           {destination.currency.name} (
                           {destination.currency.code})
                         </p>
-                        <p className="text-xs text-gray-500">
+                        <p className="text-sm text-gray-500">
                           {destination.currency.exchangeRate}
                         </p>
                       </div>
                     </div>
 
-                    <div className="flex items-start space-x-3">
-                      <Globe className="w-4 h-4 text-primary-500 mt-0.5" />
+                    <div className="flex items-start space-x-4">
+                      <Globe className="w-5 h-5 text-primary-500 mt-1 flex-shrink-0" />
                       <div>
-                        <p className="font-medium text-gray-900 text-sm">
+                        <p className="font-semibold text-gray-900 text-base mb-1">
                           Language
                         </p>
-                        <p className="text-xs text-gray-600">
+                        <p className="text-sm text-gray-700 mb-1">
                           {destination.language.primary}
                         </p>
                         {destination.language.others && (
-                          <p className="text-xs text-gray-500">
+                          <p className="text-sm text-gray-500">
                             Also: {destination.language.others.join(", ")}
                           </p>
                         )}
                       </div>
                     </div>
 
-                    <div className="flex items-start space-x-3">
-                      <Thermometer className="w-4 h-4 text-primary-500 mt-0.5" />
+                    <div className="flex items-start space-x-4">
+                      <Thermometer className="w-5 h-5 text-primary-500 mt-1 flex-shrink-0" />
                       <div>
-                        <p className="font-medium text-gray-900 text-sm">
+                        <p className="font-semibold text-gray-900 text-base mb-1">
                           Climate
                         </p>
-                        <p className="text-xs text-gray-600">
+                        <p className="text-sm text-gray-700 mb-1">
                           {destination.weather.climate}
                         </p>
-                        <p className="text-xs text-gray-500">
+                        <p className="text-sm text-gray-500">
                           Temp: {destination.bestTimeToVisit.temperature}
                         </p>
                       </div>
@@ -374,27 +377,33 @@ Looking forward to your expert guidance!`;
                   </div>
                 </div>
 
-                {/* Budget Guide */}
-                <div className="bg-primary-50 rounded-lg p-5">
-                  <h3 className="text-lg font-semibold text-gray-900 mb-3">
+                {/* Budget Guide with improved hierarchy */}
+                <div className="bg-primary-50 rounded-2xl p-8">
+                  <h3 className="text-xl font-semibold text-gray-900 mb-6">
                     Budget Guide
                   </h3>
-                  <div className="space-y-2">
+                  <div className="space-y-4">
                     <div className="flex justify-between items-center">
-                      <span className="text-gray-600 text-sm">Budget</span>
-                      <span className="font-medium text-green-600 text-sm">
+                      <span className="text-gray-700 text-base font-medium">
+                        Budget
+                      </span>
+                      <span className="font-semibold text-green-600 text-base">
                         {destination.budgetRange.budget}
                       </span>
                     </div>
                     <div className="flex justify-between items-center">
-                      <span className="text-gray-600 text-sm">Mid-range</span>
-                      <span className="font-medium text-blue-600 text-sm">
+                      <span className="text-gray-700 text-base font-medium">
+                        Mid-range
+                      </span>
+                      <span className="font-semibold text-blue-600 text-base">
                         {destination.budgetRange.midRange}
                       </span>
                     </div>
                     <div className="flex justify-between items-center">
-                      <span className="text-gray-600 text-sm">Luxury</span>
-                      <span className="font-medium text-purple-600 text-sm">
+                      <span className="text-gray-700 text-base font-medium">
+                        Luxury
+                      </span>
+                      <span className="font-semibold text-purple-600 text-base">
                         {destination.budgetRange.luxury}
                       </span>
                     </div>
@@ -405,29 +414,29 @@ Looking forward to your expert guidance!`;
           </div>
         )}
 
-        {/* Itineraries Tab */}
+        {/* Itineraries Tab with improved hierarchy */}
         {activeTab === "itineraries" && (
-          <div className="space-y-8">
+          <div className="space-y-12">
             <div className="text-center">
-              <h2 className="text-2xl font-semibold text-gray-900 mb-3">
+              <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-6 leading-tight">
                 Sample Itineraries
               </h2>
-              <p className="text-base text-gray-500 max-w-3xl mx-auto">
+              <p className="text-lg text-gray-600 max-w-4xl mx-auto leading-relaxed font-light">
                 Choose from our carefully crafted itineraries or let us
                 customize one just for you
               </p>
             </div>
 
-            {/* Itinerary Selection */}
-            <div className="flex flex-wrap justify-center gap-3">
+            {/* Itinerary Selection with better spacing */}
+            <div className="flex flex-wrap justify-center gap-4">
               {destination.itineraries.map((itinerary) => (
                 <button
                   key={itinerary.id}
                   onClick={() => setSelectedItinerary(itinerary.id)}
-                  className={`px-4 py-2 rounded-lg font-medium text-sm transition-all duration-200 ${
+                  className={`px-6 py-3 rounded-xl font-medium text-base transition-all duration-300 ${
                     selectedItinerary === itinerary.id
-                      ? "bg-primary-600 text-white"
-                      : "bg-white border border-gray-300 text-gray-600 hover:border-primary-300"
+                      ? "bg-primary-600 text-white shadow-lg"
+                      : "bg-white border border-gray-300 text-gray-700 hover:border-primary-300 hover:shadow-md"
                   }`}
                 >
                   {itinerary.title}
@@ -435,51 +444,51 @@ Looking forward to your expert guidance!`;
               ))}
             </div>
 
-            {/* Selected Itinerary Details */}
+            {/* Selected Itinerary Details with improved hierarchy */}
             {selectedItineraryData && (
-              <div className="bg-white rounded-2xl shadow-lg overflow-hidden">
-                <div className="bg-gradient-to-r from-primary-500 to-primary-700 text-white p-6">
+              <div className="bg-white rounded-3xl shadow-xl overflow-hidden">
+                <div className="bg-gradient-to-r from-primary-500 to-primary-700 text-white p-8">
                   <div className="flex flex-col md:flex-row justify-between items-start md:items-center">
                     <div>
-                      <h3 className="text-xl font-semibold mb-2">
+                      <h3 className="text-2xl font-bold mb-4">
                         {selectedItineraryData.title}
                       </h3>
-                      <div className="flex items-center space-x-4 text-primary-100">
-                        <div className="flex items-center space-x-1">
-                          <Clock className="w-4 h-4" />
-                          <span className="text-sm">
+                      <div className="flex items-center space-x-6 text-primary-100">
+                        <div className="flex items-center space-x-2">
+                          <Clock className="w-5 h-5" />
+                          <span className="text-base font-medium">
                             {selectedItineraryData.duration}
                           </span>
                         </div>
-                        <div className="flex items-center space-x-1">
-                          <DollarSign className="w-4 h-4" />
-                          <span className="text-sm">
+                        <div className="flex items-center space-x-2">
+                          <DollarSign className="w-5 h-5" />
+                          <span className="text-base font-medium">
                             From ${selectedItineraryData.price}
                           </span>
                         </div>
                       </div>
                     </div>
-                    <button className="mt-4 md:mt-0 bg-white text-primary-600 hover:bg-gray-100 font-medium px-5 py-2.5 rounded-lg transition-colors text-sm">
+                    <button className="mt-6 md:mt-0 bg-white text-primary-600 hover:bg-gray-100 font-semibold px-8 py-3 rounded-xl transition-colors text-base">
                       Customize This Trip
                     </button>
                   </div>
                 </div>
 
-                <div className="p-6">
-                  {/* Highlights */}
-                  <div className="mb-6">
-                    <h4 className="text-base font-medium text-gray-900 mb-3">
+                <div className="p-8">
+                  {/* Highlights with better hierarchy */}
+                  <div className="mb-10">
+                    <h4 className="text-xl font-semibold text-gray-900 mb-6">
                       Trip Highlights
                     </h4>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       {selectedItineraryData.highlights.map(
                         (highlight, index) => (
                           <div
                             key={index}
-                            className="flex items-center space-x-2"
+                            className="flex items-center space-x-3"
                           >
-                            <Star className="w-3 h-3 text-yellow-500" />
-                            <span className="text-gray-600 text-sm">
+                            <Star className="w-4 h-4 text-yellow-500 flex-shrink-0" />
+                            <span className="text-gray-700 text-base leading-relaxed">
                               {highlight}
                             </span>
                           </div>
@@ -488,31 +497,33 @@ Looking forward to your expert guidance!`;
                     </div>
                   </div>
 
-                  {/* Day by Day */}
+                  {/* Day by Day with improved hierarchy */}
                   <div>
-                    <h4 className="text-base font-medium text-gray-900 mb-4">
+                    <h4 className="text-xl font-semibold text-gray-900 mb-8">
                       Day-by-Day Itinerary
                     </h4>
-                    <div className="space-y-6">
+                    <div className="space-y-8">
                       {selectedItineraryData.dayByDay.map((day, index) => (
-                        <div key={index} className="flex space-x-3">
-                          <div className="flex-shrink-0 w-10 h-10 bg-primary-100 rounded-full flex items-center justify-center">
-                            <span className="text-primary-600 font-medium text-sm">
+                        <div key={index} className="flex space-x-6">
+                          <div className="flex-shrink-0 w-12 h-12 bg-primary-100 rounded-full flex items-center justify-center">
+                            <span className="text-primary-600 font-bold text-base">
                               {day.day}
                             </span>
                           </div>
                           <div className="flex-1">
-                            <h5 className="font-medium text-gray-900 mb-1 text-sm">
+                            <h5 className="font-semibold text-gray-900 mb-3 text-lg">
                               {day.title}
                             </h5>
-                            <ul className="space-y-1">
+                            <ul className="space-y-2">
                               {day.activities.map((activity, actIndex) => (
                                 <li
                                   key={actIndex}
-                                  className="text-gray-500 text-xs flex items-start space-x-2"
+                                  className="text-gray-600 text-base flex items-start space-x-3"
                                 >
-                                  <ArrowRight className="w-3 h-3 text-gray-400 mt-0.5 flex-shrink-0" />
-                                  <span>{activity}</span>
+                                  <ArrowRight className="w-4 h-4 text-gray-400 mt-1 flex-shrink-0" />
+                                  <span className="leading-relaxed">
+                                    {activity}
+                                  </span>
                                 </li>
                               ))}
                             </ul>
@@ -525,79 +536,79 @@ Looking forward to your expert guidance!`;
               </div>
             )}
 
-            {/* Customization Options */}
-            <div className="bg-gray-50 rounded-2xl p-6">
-              <h3 className="text-xl font-semibold text-gray-900 mb-4 text-center">
+            {/* Customization Options with improved hierarchy */}
+            <div className="bg-gray-50 rounded-3xl p-10">
+              <h3 className="text-2xl font-bold text-gray-900 mb-8 text-center">
                 Customization Options
               </h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                 <div>
-                  <h4 className="font-medium text-gray-900 mb-2 text-sm">
+                  <h4 className="font-semibold text-gray-900 mb-4 text-base">
                     Accommodations
                   </h4>
-                  <ul className="space-y-1.5">
+                  <ul className="space-y-3">
                     {destination.customizationOptions.accommodations.map(
                       (option, index) => (
                         <li
                           key={index}
-                          className="text-xs text-gray-500 flex items-center space-x-2"
+                          className="text-sm text-gray-600 flex items-center space-x-3"
                         >
-                          <Check className="w-3 h-3 text-green-500" />
-                          <span>{option}</span>
+                          <Check className="w-4 h-4 text-green-500 flex-shrink-0" />
+                          <span className="leading-relaxed">{option}</span>
                         </li>
                       )
                     )}
                   </ul>
                 </div>
                 <div>
-                  <h4 className="font-medium text-gray-900 mb-2 text-sm">
+                  <h4 className="font-semibold text-gray-900 mb-4 text-base">
                     Transportation
                   </h4>
-                  <ul className="space-y-1.5">
+                  <ul className="space-y-3">
                     {destination.customizationOptions.transportation.map(
                       (option, index) => (
                         <li
                           key={index}
-                          className="text-xs text-gray-500 flex items-center space-x-2"
+                          className="text-sm text-gray-600 flex items-center space-x-3"
                         >
-                          <Check className="w-3 h-3 text-green-500" />
-                          <span>{option}</span>
+                          <Check className="w-4 h-4 text-green-500 flex-shrink-0" />
+                          <span className="leading-relaxed">{option}</span>
                         </li>
                       )
                     )}
                   </ul>
                 </div>
                 <div>
-                  <h4 className="font-medium text-gray-900 mb-2 text-sm">
+                  <h4 className="font-semibold text-gray-900 mb-4 text-base">
                     Activities
                   </h4>
-                  <ul className="space-y-1.5">
+                  <ul className="space-y-3">
                     {destination.customizationOptions.activities.map(
                       (option, index) => (
                         <li
                           key={index}
-                          className="text-xs text-gray-500 flex items-center space-x-2"
+                          className="text-sm text-gray-600 flex items-center space-x-3"
                         >
-                          <Check className="w-3 h-3 text-green-500" />
-                          <span>{option}</span>
+                          <Check className="w-4 h-4 text-green-500 flex-shrink-0" />
+                          <span className="leading-relaxed">{option}</span>
                         </li>
                       )
                     )}
                   </ul>
                 </div>
                 <div>
-                  <h4 className="font-medium text-gray-900 mb-2 text-sm">
+                  <h4 className="font-semibold text-gray-900 mb-4 text-base">
                     Special Requirements
                   </h4>
-                  <ul className="space-y-1.5">
+                  <ul className="space-y-3">
                     {destination.customizationOptions.specialRequirements.map(
                       (option, index) => (
                         <li
                           key={index}
-                          className="text-xs text-gray-500 flex items-center space-x-2"
+                          className="text-sm text-gray-600 flex items-center space-x-3"
                         >
-                          <Check className="w-3 h-3 text-green-500" />
-                          <span>{option}</span>
+                          <Check className="w-4 h-4 text-green-500 flex-shrink-0" />
+                          <span className="leading-relaxed">{option}</span>
                         </li>
                       )
                     )}
@@ -608,23 +619,23 @@ Looking forward to your expert guidance!`;
           </div>
         )}
 
-        {/* Gallery Tab */}
+        {/* Gallery Tab with improved hierarchy */}
         {activeTab === "gallery" && (
-          <div className="space-y-8">
+          <div className="space-y-12">
             <div className="text-center">
-              <h2 className="text-2xl font-semibold text-gray-900 mb-3">
+              <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-6 leading-tight">
                 Photo Gallery
               </h2>
-              <p className="text-base text-gray-500">
+              <p className="text-lg text-gray-600 leading-relaxed font-light">
                 Explore the beauty of {destination.name}
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {destination.gallery.map((image, index) => (
                 <div
                   key={index}
-                  className="relative group cursor-pointer overflow-hidden rounded-lg aspect-square"
+                  className="relative group cursor-pointer overflow-hidden rounded-2xl aspect-square"
                   onClick={() => {
                     setSelectedGalleryImage(index);
                     setIsGalleryModalOpen(true);
@@ -636,7 +647,7 @@ Looking forward to your expert guidance!`;
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
                   />
                   <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-all duration-300 flex items-center justify-center">
-                    <Camera className="w-8 h-8 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                    <Camera className="w-10 h-10 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   </div>
                 </div>
               ))}
@@ -644,14 +655,14 @@ Looking forward to your expert guidance!`;
           </div>
         )}
 
-        {/* Reviews Tab */}
+        {/* Reviews Tab with improved hierarchy */}
         {activeTab === "reviews" && (
-          <div className="space-y-8">
+          <div className="space-y-12">
             <div className="text-center">
-              <h2 className="text-2xl font-semibold text-gray-900 mb-3">
+              <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-6 leading-tight">
                 Traveler Reviews
               </h2>
-              <p className="text-base text-gray-500">
+              <p className="text-lg text-gray-600 leading-relaxed font-light">
                 See what our customers say about {destination.name}
               </p>
             </div>
@@ -660,39 +671,39 @@ Looking forward to your expert guidance!`;
               {destination.reviews.map((review) => (
                 <div
                   key={review.id}
-                  className="bg-white rounded-lg shadow-lg p-5"
+                  className="bg-white rounded-2xl shadow-lg p-8"
                 >
-                  <div className="flex items-center space-x-3 mb-3">
+                  <div className="flex items-center space-x-4 mb-6">
                     <img
                       src={review.avatar}
                       alt={review.name}
-                      className="w-10 h-10 rounded-full object-cover"
+                      className="w-12 h-12 rounded-full object-cover"
                     />
                     <div>
-                      <h4 className="font-medium text-gray-900 text-sm">
+                      <h4 className="font-semibold text-gray-900 text-base">
                         {review.name}
                       </h4>
-                      <p className="text-xs text-gray-500">{review.tripType}</p>
+                      <p className="text-sm text-gray-600">{review.tripType}</p>
                     </div>
                   </div>
 
-                  <div className="flex items-center space-x-1 mb-3">
+                  <div className="flex items-center space-x-1 mb-4">
                     {[...Array(5)].map((_, i) => (
                       <Star
                         key={i}
-                        className={`w-3 h-3 ${
+                        className={`w-4 h-4 ${
                           i < review.rating
                             ? "fill-yellow-400 text-yellow-400"
                             : "text-gray-300"
                         }`}
                       />
                     ))}
-                    <span className="text-xs text-gray-500 ml-2">
+                    <span className="text-sm text-gray-500 ml-3">
                       {review.date}
                     </span>
                   </div>
 
-                  <p className="text-gray-600 leading-relaxed text-sm">
+                  <p className="text-gray-700 leading-relaxed text-base">
                     {review.comment}
                   </p>
                 </div>
@@ -701,14 +712,14 @@ Looking forward to your expert guidance!`;
           </div>
         )}
 
-        {/* Enquiry Tab */}
+        {/* Enquiry Tab with improved hierarchy */}
         {activeTab === "enquiry" && (
-          <div className="max-w-4xl mx-auto">
-            <div className="text-center mb-8">
-              <h2 className="text-2xl font-semibold text-gray-900 mb-3">
+          <div className="max-w-5xl mx-auto">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-6 leading-tight">
                 Make Enquiry for {destination.name}
               </h2>
-              <p className="text-base text-gray-500">
+              <p className="text-lg text-gray-600 leading-relaxed font-light">
                 Tell us about your trip and we'll tailor a plan for you
               </p>
             </div>

@@ -94,85 +94,85 @@ const Testimonials = () => {
   const currentReview = testimonials[currentTestimonial];
 
   return (
-    <section className="py-16 lg:py-24 bg-gradient-to-br from-primary-50 to-blue-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
-        <div className="text-center mb-16">
-          <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 mb-3">
+    <section className="py-12 lg:py-16 bg-gradient-to-br from-primary-50 to-blue-50">
+      <div className="max-w-8xl mx-auto px-6 sm:px-8 lg:px-12">
+        {/* Section Header with improved hierarchy */}
+        <div className="text-center mb-12">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-6 leading-tight">
             What Our Travelers Say
           </h2>
-          <p className="text-base md:text-lg text-gray-500 max-w-3xl mx-auto">
+          <p className="text-lg sm:text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed font-light">
             Read authentic reviews from our satisfied customers who have
             experienced unforgettable journeys with WanderLux.
           </p>
         </div>
 
-        {/* Main Testimonial */}
-        <div className="relative max-w-4xl mx-auto">
-          <div className="bg-white rounded-3xl shadow-2xl p-8 md:p-12 relative overflow-hidden">
-            {/* Quote Icon */}
-            <div className="absolute top-6 right-6 text-primary-100">
-              <Quote className="w-16 h-16" />
+        {/* Main Testimonial with better hierarchy */}
+        <div className="relative max-w-5xl mx-auto">
+          <div className="bg-white rounded-3xl shadow-2xl p-10 md:p-16 relative overflow-hidden">
+            {/* Quote Icon - De-emphasized */}
+            <div className="absolute top-8 right-8 text-primary-100">
+              <Quote className="w-20 h-20" />
             </div>
 
-            {/* Rating Stars */}
-            <div className="flex items-center justify-center mb-6">
+            {/* Rating Stars - Primary element */}
+            <div className="flex items-center justify-center mb-8">
               {[...Array(currentReview.rating)].map((_, i) => (
                 <Star
                   key={i}
-                  className="w-6 h-6 fill-yellow-400 text-yellow-400"
+                  className="w-7 h-7 fill-yellow-400 text-yellow-400"
                 />
               ))}
             </div>
 
-            {/* Testimonial Text */}
-            <blockquote className="text-base md:text-lg text-gray-700 text-center mb-6 leading-relaxed">
+            {/* Testimonial Text - Primary content */}
+            <blockquote className="text-lg sm:text-xl md:text-2xl text-gray-800 text-center mb-10 leading-relaxed font-light">
               "{currentReview.text}"
             </blockquote>
 
-            {/* Customer Info */}
-            <div className="flex items-center justify-center space-x-4">
+            {/* Customer Info with better hierarchy */}
+            <div className="flex items-center justify-center space-x-6">
               <img
                 src={currentReview.image}
                 alt={currentReview.name}
-                className="w-14 h-14 rounded-full object-cover border-2 border-primary-100"
+                className="w-16 h-16 rounded-full object-cover border-2 border-primary-100"
               />
               <div className="text-center">
-                <h4 className="font-semibold text-gray-900 text-base">
+                <h4 className="font-semibold text-gray-900 text-lg mb-1">
                   {currentReview.name}
                 </h4>
-                <p className="text-gray-500 text-sm">
+                <p className="text-gray-600 text-base mb-2">
                   {currentReview.location}
                 </p>
-                <p className="text-xs text-primary-500 font-medium">
+                <p className="text-sm text-primary-500 font-medium mb-1">
                   {currentReview.trip}
                 </p>
                 <p className="text-xs text-gray-400">{currentReview.date}</p>
               </div>
             </div>
 
-            {/* Navigation Arrows */}
+            {/* Navigation Arrows - De-emphasized */}
             <button
               onClick={prevTestimonial}
-              className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white shadow-lg hover:shadow-xl rounded-full p-3 transition-all duration-200 hover:scale-105"
+              className="absolute left-6 top-1/2 transform -translate-y-1/2 bg-white shadow-lg hover:shadow-xl rounded-full p-4 transition-all duration-300 hover:scale-105"
             >
               <ChevronLeft className="w-6 h-6 text-gray-600" />
             </button>
             <button
               onClick={nextTestimonial}
-              className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white shadow-lg hover:shadow-xl rounded-full p-3 transition-all duration-200 hover:scale-105"
+              className="absolute right-6 top-1/2 transform -translate-y-1/2 bg-white shadow-lg hover:shadow-xl rounded-full p-4 transition-all duration-300 hover:scale-105"
             >
               <ChevronRight className="w-6 h-6 text-gray-600" />
             </button>
           </div>
 
-          {/* Testimonial Indicators */}
-          <div className="flex justify-center space-x-2 mt-8">
+          {/* Testimonial Indicators - De-emphasized */}
+          <div className="flex justify-center space-x-3 mt-10">
             {testimonials.map((_, index) => (
               <button
                 key={index}
                 onClick={() => setCurrentTestimonial(index)}
-                className={`w-3 h-3 rounded-full transition-all duration-200 ${
+                className={`w-2 h-2 rounded-full transition-all duration-300 ${
                   index === currentTestimonial
                     ? "bg-primary-500 scale-125"
                     : "bg-gray-300 hover:bg-gray-400"
@@ -182,8 +182,8 @@ const Testimonials = () => {
           </div>
         </div>
 
-        {/* Stats Section */}
-        <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-8">
+        {/* Stats Section with better hierarchy */}
+        <div className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-10">
           {[
             { number: "50,000+", label: "Happy Travelers" },
             { number: "500+", label: "Destinations" },
@@ -191,10 +191,12 @@ const Testimonials = () => {
             { number: "15+", label: "Years Experience" },
           ].map((stat, index) => (
             <div key={index} className="text-center">
-              <div className="text-2xl md:text-3xl font-bold text-primary-500 mb-1">
+              <div className="text-3xl sm:text-4xl font-bold text-primary-500 mb-2">
                 {stat.number}
               </div>
-              <div className="text-gray-500 text-sm">{stat.label}</div>
+              <div className="text-gray-600 text-base font-medium">
+                {stat.label}
+              </div>
             </div>
           ))}
         </div>

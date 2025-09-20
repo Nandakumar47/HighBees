@@ -119,58 +119,58 @@ const ServicesSection = () => {
   ];
 
   return (
-    <section className="py-16 lg:py-24 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
-        <div className="text-center mb-16">
-          <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 mb-3">
+    <section className="py-12 lg:py-16 bg-white">
+      <div className="max-w-8xl mx-auto px-6 sm:px-8 lg:px-12">
+        {/* Section Header with improved hierarchy */}
+        <div className="text-center mb-12">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-6 leading-tight">
             What We Offer
           </h2>
-          <p className="text-base md:text-lg text-gray-500 max-w-3xl mx-auto">
+          <p className="text-lg sm:text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed font-light">
             Comprehensive travel services designed to make your journey
             seamless, memorable, and extraordinary from start to finish.
           </p>
         </div>
 
-        {/* Services Grid */}
+        {/* Services Grid with better spacing and hierarchy */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {services.map((service) => {
             const Icon = service.icon;
             return (
               <div
                 key={service.id}
-                className="group bg-white border border-gray-200 rounded-2xl p-6 hover:shadow-2xl hover:border-primary-200 transition-all duration-300 transform hover:-translate-y-2"
+                className="group bg-white border border-gray-200 rounded-3xl p-8 hover:shadow-xl hover:border-primary-200 transition-all duration-300 transform hover:-translate-y-1"
               >
-                {/* Icon */}
-                <div className="bg-primary-100 rounded-xl w-16 h-16 flex items-center justify-center mb-6 group-hover:bg-primary-500 group-hover:scale-110 transition-all duration-300">
+                {/* Icon - Primary element */}
+                <div className="bg-primary-100 rounded-2xl w-16 h-16 flex items-center justify-center mb-8 group-hover:bg-primary-500 group-hover:scale-105 transition-all duration-300">
                   <Icon className="w-8 h-8 text-primary-500 group-hover:text-white transition-colors duration-300" />
                 </div>
 
-                {/* Content */}
-                <h3 className="text-lg font-semibold text-gray-900 mb-2 group-hover:text-primary-500 transition-colors">
+                {/* Content with better hierarchy */}
+                <h3 className="text-xl font-semibold text-gray-900 mb-4 group-hover:text-primary-500 transition-colors leading-tight">
                   {service.title}
                 </h3>
 
-                <p className="text-gray-500 mb-4 leading-relaxed text-sm">
+                <p className="text-gray-600 mb-6 leading-relaxed text-base">
                   {service.description}
                 </p>
 
-                {/* Features List */}
-                <ul className="space-y-1.5">
+                {/* Features List - De-emphasized */}
+                <ul className="space-y-2">
                   {service.features.map((feature, index) => (
                     <li
                       key={index}
-                      className="flex items-center space-x-2 text-xs text-gray-400"
+                      className="flex items-center space-x-3 text-sm text-gray-500"
                     >
-                      <div className="w-1 h-1 bg-gray-300 rounded-full" />
+                      <div className="w-1.5 h-1.5 bg-gray-400 rounded-full flex-shrink-0" />
                       <span>{feature}</span>
                     </li>
                   ))}
                 </ul>
 
-                {/* Hover Effect Button */}
-                <div className="mt-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <button className="w-full bg-primary-500 hover:bg-primary-600 text-white font-semibold py-2 px-4 rounded-lg text-sm transition-colors">
+                {/* Hover Effect Button - Secondary action */}
+                <div className="mt-8 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <button className="w-full bg-primary-500 hover:bg-primary-600 text-white font-medium py-3 px-6 rounded-lg text-sm transition-colors">
                     Learn More
                   </button>
                 </div>
@@ -179,21 +179,21 @@ const ServicesSection = () => {
           })}
         </div>
 
-        {/* Bottom CTA */}
-        <div className="text-center mt-16">
-          <div className="bg-gradient-to-r from-primary-50 to-blue-50 rounded-2xl p-8 md:p-12">
-            <h3 className="text-xl md:text-2xl font-semibold text-gray-900 mb-3">
+        {/* Bottom CTA with improved hierarchy */}
+        <div className="text-center mt-20">
+          <div className="bg-gradient-to-r from-primary-50 to-blue-50 rounded-3xl p-12 md:p-16">
+            <h3 className="text-2xl sm:text-3xl font-semibold text-gray-900 mb-6 leading-tight">
               Ready to Experience Our Premium Services?
             </h3>
-            <p className="text-base text-gray-500 mb-6 max-w-2xl mx-auto">
+            <p className="text-lg text-gray-600 mb-10 max-w-3xl mx-auto leading-relaxed">
               Let our expert team handle every detail of your journey while you
               focus on creating unforgettable memories.
             </p>
-            <div className="flex flex-col sm:flex-row gap-3 justify-center">
-              <button className="bg-primary-600 hover:bg-primary-700 text-white font-medium px-6 py-2.5 rounded-lg transition-colors">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <button className="bg-primary-600 hover:bg-primary-700 text-white font-medium px-8 py-4 rounded-lg transition-colors text-lg">
                 Start Planning
               </button>
-              <button className="border border-primary-300 text-primary-600 hover:bg-primary-50 font-medium px-6 py-2.5 rounded-lg transition-colors">
+              <button className="border border-primary-300 text-primary-600 hover:bg-primary-50 font-medium px-8 py-4 rounded-lg transition-colors text-lg">
                 Contact Us
               </button>
             </div>

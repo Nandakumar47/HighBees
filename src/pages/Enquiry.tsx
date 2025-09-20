@@ -230,27 +230,33 @@ const Enquiry: React.FC<EnquiryProps> = ({
           embedded ? "" : "min-h-screen bg-gray-50 pt-20"
         } flex items-center justify-center`}
       >
-        <div className="max-w-md mx-auto px-4">
-          <div className="bg-white rounded-2xl shadow-lg p-6 text-center">
-            <div className="bg-green-100 rounded-full w-14 h-14 flex items-center justify-center mx-auto mb-4">
-              <CheckCircle className="w-7 h-7 text-green-500" />
+        <div className="max-w-2xl mx-auto px-6 sm:px-8 lg:px-12">
+          <div className="bg-white rounded-3xl shadow-xl p-10 md:p-12 text-center">
+            <div className="bg-green-100 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-8">
+              <CheckCircle className="w-10 h-10 text-green-500" />
             </div>
-            <h2 className="text-xl font-semibold text-gray-900 mb-3">
+            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-6 leading-tight">
               Enquiry Submitted Successfully!
             </h2>
-            <p className="text-gray-500 text-sm mb-6">
+            <p className="text-lg text-gray-600 mb-10 leading-relaxed font-light">
               Thank you for your enquiry. Our travel experts will review your
               requirements and get back to you within 24 hours with a customized
               travel proposal.
             </p>
-            <div className="space-y-3">
-              <LoadingButton onClick={resetForm} fullWidth variant="primary">
+            <div className="space-y-4">
+              <LoadingButton
+                onClick={resetForm}
+                fullWidth
+                variant="primary"
+                className="px-8 py-4 text-base"
+              >
                 Submit Another Enquiry
               </LoadingButton>
               <LoadingButton
                 onClick={() => (window.location.href = "/")}
                 fullWidth
                 variant="outline"
+                className="px-8 py-4 text-base"
               >
                 Back to Home
               </LoadingButton>
@@ -262,30 +268,30 @@ const Enquiry: React.FC<EnquiryProps> = ({
   }
 
   const coreContent = (
-    <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-      {/* Header */}
+    <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12 py-16">
+      {/* Header with improved hierarchy */}
       {!embedded && (
-        <div className="text-center mb-12">
-          <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">
+        <div className="text-center mb-16">
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight">
             {title}
           </h1>
-          <p className="text-base md:text-lg text-gray-500 max-w-2xl mx-auto">
+          <p className="text-lg sm:text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed font-light">
             Tell us about your dream trip and we'll create a personalized travel
             experience just for you
           </p>
         </div>
       )}
 
-      {/* Progress Bar */}
-      <div className="mb-8">
-        <div className="flex items-center justify-center space-x-4">
+      {/* Progress Bar with improved hierarchy */}
+      <div className="mb-12">
+        <div className="flex items-center justify-center space-x-8">
           <div
-            className={`flex items-center space-x-2 ${
+            className={`flex items-center space-x-3 ${
               currentStep >= 1 ? "text-primary-500" : "text-gray-400"
             }`}
           >
             <div
-              className={`w-8 h-8 rounded-full flex items-center justify-center ${
+              className={`w-10 h-10 rounded-full flex items-center justify-center font-semibold ${
                 currentStep >= 1
                   ? "bg-primary-500 text-white"
                   : "bg-gray-200 text-gray-400"
@@ -293,20 +299,20 @@ const Enquiry: React.FC<EnquiryProps> = ({
             >
               1
             </div>
-            <span className="font-medium text-sm">Your Details</span>
+            <span className="font-semibold text-base">Your Details</span>
           </div>
           <div
-            className={`w-16 h-1 ${
+            className={`w-20 h-1 rounded-full ${
               currentStep >= 2 ? "bg-primary-500" : "bg-gray-200"
             }`}
           />
           <div
-            className={`flex items-center space-x-2 ${
+            className={`flex items-center space-x-3 ${
               currentStep >= 2 ? "text-primary-500" : "text-gray-400"
             }`}
           >
             <div
-              className={`w-8 h-8 rounded-full flex items-center justify-center ${
+              className={`w-10 h-10 rounded-full flex items-center justify-center font-semibold ${
                 currentStep >= 2
                   ? "bg-primary-500 text-white"
                   : "bg-gray-200 text-gray-400"
@@ -314,16 +320,16 @@ const Enquiry: React.FC<EnquiryProps> = ({
             >
               2
             </div>
-            <span className="font-medium text-sm">Trip Details</span>
+            <span className="font-semibold text-base">Trip Details</span>
           </div>
         </div>
       </div>
 
-      {/* Form */}
-      <div className="bg-white rounded-2xl shadow-lg p-6">
+      {/* Form with improved spacing */}
+      <div className="bg-white rounded-3xl shadow-xl p-8 md:p-12">
         {currentStep === 1 ? (
           <div>
-            <h2 className="text-xl font-semibold text-gray-900 mb-4 flex items-center space-x-2">
+            <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-6 flex items-center space-x-2">
               <Users className="w-5 h-5 text-primary-500" />
               <span>Your Details</span>
             </h2>
@@ -374,7 +380,7 @@ const Enquiry: React.FC<EnquiryProps> = ({
                 <div>
                   <label
                     htmlFor="adults"
-                    className="block text-sm font-medium text-gray-600 mb-2"
+                    className="block text-sm font-semibold text-gray-700 mb-2"
                   >
                     Number of Adults *
                   </label>
@@ -392,7 +398,7 @@ const Enquiry: React.FC<EnquiryProps> = ({
                     ))}
                   </Select>
                   {errors.adults && (
-                    <div className="flex items-center space-x-1 mt-1">
+                    <div className="flex items-center space-x-2 mt-1">
                       <AlertCircle className="w-3 h-3 text-red-500" />
                       <span className="text-xs text-red-500">
                         {errors.adults}
@@ -404,7 +410,7 @@ const Enquiry: React.FC<EnquiryProps> = ({
                 <div>
                   <label
                     htmlFor="children"
-                    className="block text-sm font-medium text-gray-600 mb-2"
+                    className="block text-sm font-semibold text-gray-700 mb-2"
                   >
                     Number of Children
                   </label>
@@ -424,13 +430,14 @@ const Enquiry: React.FC<EnquiryProps> = ({
                 </div>
               </div>
 
-              <div className="flex justify-end">
+              <div className="flex justify-end pt-2">
                 <LoadingButton
                   type="button"
                   onClick={handleNext}
                   variant="primary"
                   icon={ChevronRight}
                   iconPosition="right"
+                  className="px-6 py-2.5 text-sm"
                 >
                   Next
                 </LoadingButton>
@@ -439,17 +446,17 @@ const Enquiry: React.FC<EnquiryProps> = ({
           </div>
         ) : (
           <div>
-            <h2 className="text-xl font-semibold text-gray-900 mb-4 flex items-center space-x-2">
-              <MapPin className="w-5 h-5 text-primary-500" />
+            <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-8 flex items-center space-x-3">
+              <MapPin className="w-6 h-6 text-primary-500" />
               <span>Trip Details</span>
             </h2>
 
-            <form onSubmit={handleSubmit} className="space-y-6">
+            <form onSubmit={handleSubmit} className="space-y-8">
               {!hideDestinationField ? (
                 <div>
                   <label
                     htmlFor="destination"
-                    className="block text-sm font-medium text-gray-600 mb-2"
+                    className="block text-base font-semibold text-gray-700 mb-3"
                   >
                     Destination *
                   </label>
@@ -469,9 +476,9 @@ const Enquiry: React.FC<EnquiryProps> = ({
                     ))}
                   </Select>
                   {errors.destination && (
-                    <div className="flex items-center space-x-1 mt-1">
-                      <AlertCircle className="w-3 h-3 text-red-500" />
-                      <span className="text-xs text-red-500">
+                    <div className="flex items-center space-x-2 mt-2">
+                      <AlertCircle className="w-4 h-4 text-red-500" />
+                      <span className="text-sm text-red-500">
                         {errors.destination}
                       </span>
                     </div>
@@ -479,10 +486,10 @@ const Enquiry: React.FC<EnquiryProps> = ({
                 </div>
               ) : (
                 <div>
-                  <label className="block text-sm font-medium text-gray-600 mb-2">
+                  <label className="block text-base font-semibold text-gray-700 mb-3">
                     Destination
                   </label>
-                  <div className="px-4 py-3 border border-gray-200 rounded-lg bg-gray-50 text-gray-700">
+                  <div className="px-6 py-4 border border-gray-200 rounded-xl bg-gray-50 text-gray-700 text-base">
                     {formData.destination || initialDestination}
                   </div>
                 </div>
@@ -502,11 +509,11 @@ const Enquiry: React.FC<EnquiryProps> = ({
                 />
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div>
                   <label
                     htmlFor="departureDate"
-                    className="block text-sm font-medium text-gray-600 mb-2"
+                    className="block text-base font-semibold text-gray-700 mb-3"
                   >
                     Expected Departure Date *
                   </label>
@@ -521,9 +528,9 @@ const Enquiry: React.FC<EnquiryProps> = ({
                     error={errors.departureDate as string}
                   />
                   {errors.departureDate && (
-                    <div className="flex items-center space-x-1 mt-1">
-                      <AlertCircle className="w-3 h-3 text-red-500" />
-                      <span className="text-xs text-red-500">
+                    <div className="flex items-center space-x-2 mt-2">
+                      <AlertCircle className="w-4 h-4 text-red-500" />
+                      <span className="text-sm text-red-500">
                         {errors.departureDate}
                       </span>
                     </div>
@@ -533,7 +540,7 @@ const Enquiry: React.FC<EnquiryProps> = ({
                 <div>
                   <label
                     htmlFor="duration"
-                    className="block text-sm font-medium text-gray-600 mb-2"
+                    className="block text-base font-semibold text-gray-700 mb-3"
                   >
                     Duration of Stay (days) *
                   </label>
@@ -554,9 +561,9 @@ const Enquiry: React.FC<EnquiryProps> = ({
                     <option value="22+">22+ days</option>
                   </Select>
                   {errors.duration && (
-                    <div className="flex items-center space-x-1 mt-1">
-                      <AlertCircle className="w-3 h-3 text-red-500" />
-                      <span className="text-xs text-red-500">
+                    <div className="flex items-center space-x-2 mt-2">
+                      <AlertCircle className="w-4 h-4 text-red-500" />
+                      <span className="text-sm text-red-500">
                         {errors.duration}
                       </span>
                     </div>
@@ -567,7 +574,7 @@ const Enquiry: React.FC<EnquiryProps> = ({
               <div>
                 <label
                   htmlFor="budget"
-                  className="block text-sm font-medium text-gray-600 mb-2"
+                  className="block text-base font-semibold text-gray-700 mb-3"
                 >
                   Maximum Budget (USD) *
                 </label>
@@ -588,22 +595,23 @@ const Enquiry: React.FC<EnquiryProps> = ({
                   <option value="10000+">$10,000+</option>
                 </Select>
                 {errors.budget && (
-                  <div className="flex items-center space-x-1 mt-1">
-                    <AlertCircle className="w-3 h-3 text-red-500" />
-                    <span className="text-xs text-red-500">
+                  <div className="flex items-center space-x-2 mt-2">
+                    <AlertCircle className="w-4 h-4 text-red-500" />
+                    <span className="text-sm text-red-500">
                       {errors.budget}
                     </span>
                   </div>
                 )}
               </div>
 
-              <div className="flex justify-between">
+              <div className="flex justify-between pt-4">
                 <LoadingButton
                   type="button"
                   onClick={handleBack}
                   disabled={isLoading}
                   variant="outline"
                   icon={ChevronLeft}
+                  className="px-8 py-3 text-base"
                 >
                   Back
                 </LoadingButton>
@@ -615,6 +623,7 @@ const Enquiry: React.FC<EnquiryProps> = ({
                   variant="primary"
                   icon={CheckCircle}
                   iconPosition="right"
+                  className="px-8 py-3 text-base"
                 >
                   Submit Enquiry
                 </LoadingButton>

@@ -131,21 +131,21 @@ const About = () => {
 
   return (
     <div className="min-h-screen bg-white pt-20">
-      {/* Hero Section */}
-      <section className="relative py-20 bg-gradient-to-br from-primary-50 to-blue-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Hero Section with improved hierarchy */}
+      <section className="relative py-16 lg:py-20 bg-gradient-to-br from-primary-50 to-blue-50">
+        <div className="max-w-8xl mx-auto px-6 sm:px-8 lg:px-12">
           <div className="text-center">
-            <h1 className="text-3xl md:text-5xl font-bold text-gray-900 mb-4">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 mb-8 leading-tight">
               About High Bees Holidays
             </h1>
-            <p className="text-lg md:text-xl text-gray-500 max-w-4xl mx-auto mb-6">
+            <p className="text-lg sm:text-xl text-gray-600 max-w-4xl mx-auto mb-10 leading-relaxed font-light">
               We're passionate about creating extraordinary travel experiences
               that inspire, delight, and transform lives. Your journey is our
               mission.
             </p>
-            <div className="flex items-center justify-center space-x-2 text-primary-500">
-              <MapPin className="w-5 h-5" />
-              <span className="text-base font-medium">
+            <div className="flex items-center justify-center space-x-3 text-primary-500">
+              <MapPin className="w-6 h-6" />
+              <span className="text-lg font-semibold">
                 Est. 2008 • Trusted by 50,000+ Travelers
               </span>
             </div>
@@ -153,21 +153,23 @@ const About = () => {
         </div>
       </section>
 
-      {/* Stats Section */}
-      <section className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+      {/* Stats Section with improved hierarchy */}
+      <section className="py-12 lg:py-16 bg-white">
+        <div className="max-w-8xl mx-auto px-6 sm:px-8 lg:px-12">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-10">
             {stats.map((stat, index) => {
               const Icon = stat.icon;
               return (
                 <div key={index} className="text-center">
-                  <div className="bg-primary-100 rounded-full w-14 h-14 flex items-center justify-center mx-auto mb-3">
-                    <Icon className="w-6 h-6 text-primary-500" />
+                  <div className="bg-primary-100 rounded-2xl w-16 h-16 flex items-center justify-center mx-auto mb-6">
+                    <Icon className="w-7 h-7 text-primary-500" />
                   </div>
-                  <div className="text-2xl md:text-3xl font-bold text-gray-900 mb-1">
+                  <div className="text-3xl sm:text-4xl font-bold text-gray-900 mb-2">
                     {stat.number}
                   </div>
-                  <div className="text-gray-500 text-sm">{stat.label}</div>
+                  <div className="text-gray-600 text-base font-medium">
+                    {stat.label}
+                  </div>
                 </div>
               );
             })}
@@ -175,14 +177,14 @@ const About = () => {
         </div>
       </section>
 
-      {/* Contact Information Section */}
-      <section className="py-20 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Contact Information Section with improved hierarchy */}
+      <section className="py-12 lg:py-16 bg-gray-50">
+        <div className="max-w-8xl mx-auto px-6 sm:px-8 lg:px-12">
           <div className="text-center mb-12">
-            <h2 className="text-2xl md:text-3xl font-semibold text-gray-900 mb-3">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-6 leading-tight">
               Contact Information
             </h2>
-            <p className="text-base text-gray-500 max-w-3xl mx-auto">
+            <p className="text-lg sm:text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed font-light">
               Get in touch with us through any of these channels. We're here to
               help you plan your perfect journey.
             </p>
@@ -194,22 +196,22 @@ const About = () => {
               return (
                 <div
                   key={index}
-                  className="bg-white rounded-2xl shadow-lg p-5 text-center hover:shadow-xl transition-shadow"
+                  className="bg-white rounded-3xl shadow-xl p-8 text-center hover:shadow-2xl transition-all duration-300 hover:-translate-y-1"
                 >
-                  <div className="bg-primary-100 rounded-full w-14 h-14 flex items-center justify-center mx-auto mb-3">
-                    <Icon className="w-6 h-6 text-primary-500" />
+                  <div className="bg-primary-100 rounded-2xl w-16 h-16 flex items-center justify-center mx-auto mb-6">
+                    <Icon className="w-7 h-7 text-primary-500" />
                   </div>
-                  <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                  <h3 className="text-xl font-bold text-gray-900 mb-4">
                     {info.title}
                   </h3>
-                  <div className="space-y-1 mb-3">
+                  <div className="space-y-2 mb-6">
                     {info.details.map((detail, idx) => (
-                      <p key={idx} className="text-gray-600 text-sm">
+                      <p key={idx} className="text-gray-700 text-base">
                         {detail}
                       </p>
                     ))}
                   </div>
-                  <p className="text-xs text-gray-500">{info.description}</p>
+                  <p className="text-sm text-gray-500">{info.description}</p>
                 </div>
               );
             })}
@@ -217,14 +219,14 @@ const About = () => {
         </div>
       </section>
 
-      {/* Our Values */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Our Values with improved hierarchy */}
+      <section className="py-12 lg:py-16 bg-white">
+        <div className="max-w-8xl mx-auto px-6 sm:px-8 lg:px-12">
           <div className="text-center mb-12">
-            <h2 className="text-2xl md:text-3xl font-semibold text-gray-900 mb-3">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-6 leading-tight">
               Our Values
             </h2>
-            <p className="text-base text-gray-500 max-w-3xl mx-auto">
+            <p className="text-lg sm:text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed font-light">
               These core values guide everything we do and shape every
               experience we create for our travelers.
             </p>
@@ -236,15 +238,17 @@ const About = () => {
               return (
                 <div
                   key={index}
-                  className="text-center p-5 bg-gray-50 rounded-2xl hover:shadow-lg transition-shadow"
+                  className="text-center p-8 bg-gray-50 rounded-3xl hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
                 >
-                  <div className="bg-primary-100 rounded-full w-14 h-14 flex items-center justify-center mx-auto mb-3">
-                    <Icon className="w-6 h-6 text-primary-500" />
+                  <div className="bg-primary-100 rounded-2xl w-16 h-16 flex items-center justify-center mx-auto mb-6">
+                    <Icon className="w-7 h-7 text-primary-500" />
                   </div>
-                  <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                  <h3 className="text-xl font-bold text-gray-900 mb-4">
                     {value.title}
                   </h3>
-                  <p className="text-gray-600 text-sm">{value.description}</p>
+                  <p className="text-gray-700 text-base leading-relaxed">
+                    {value.description}
+                  </p>
                 </div>
               );
             })}
@@ -252,14 +256,14 @@ const About = () => {
         </div>
       </section>
 
-      {/* Team Section */}
-      <section className="py-20 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Team Section with improved hierarchy */}
+      <section className="py-12 lg:py-16 bg-gray-50">
+        <div className="max-w-8xl mx-auto px-6 sm:px-8 lg:px-12">
           <div className="text-center mb-12">
-            <h2 className="text-2xl md:text-3xl font-semibold text-gray-900 mb-3">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-6 leading-tight">
               Meet Our Team
             </h2>
-            <p className="text-base text-gray-500 max-w-3xl mx-auto">
+            <p className="text-lg sm:text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed font-light">
               Our passionate team of travel experts brings decades of combined
               experience to help you explore the world.
             </p>
@@ -269,26 +273,28 @@ const About = () => {
             {team.map((member, index) => (
               <div
                 key={index}
-                className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow"
+                className="bg-white rounded-3xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300 hover:-translate-y-1"
               >
                 <img
                   src={member.image}
                   alt={member.name}
-                  className="w-full h-48 object-cover"
+                  className="w-full h-56 object-cover"
                 />
-                <div className="p-5">
-                  <h3 className="text-lg font-semibold text-gray-900 mb-1">
+                <div className="p-8">
+                  <h3 className="text-xl font-bold text-gray-900 mb-2">
                     {member.name}
                   </h3>
-                  <p className="text-primary-500 font-medium mb-2 text-sm">
+                  <p className="text-primary-500 font-semibold mb-4 text-base">
                     {member.role}
                   </p>
-                  <p className="text-gray-600 text-xs mb-3">{member.bio}</p>
-                  <div className="space-y-1">
+                  <p className="text-gray-700 text-sm mb-6 leading-relaxed">
+                    {member.bio}
+                  </p>
+                  <div className="space-y-2">
                     {member.specialties.map((specialty, idx) => (
                       <span
                         key={idx}
-                        className="inline-block bg-primary-50 text-primary-600 text-xs px-2 py-1 rounded-full mr-1"
+                        className="inline-block bg-primary-50 text-primary-600 text-sm px-3 py-1.5 rounded-full mr-2 mb-2"
                       >
                         {specialty}
                       </span>
@@ -301,21 +307,21 @@ const About = () => {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-primary-500 to-primary-700">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-2xl md:text-3xl font-semibold text-white mb-3">
+      {/* CTA Section with improved hierarchy */}
+      <section className="py-16 lg:py-20 bg-gradient-to-r from-primary-500 to-primary-700">
+        <div className="max-w-8xl mx-auto px-6 sm:px-8 lg:px-12 text-center">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-8 leading-tight">
             Ready to Start Your Journey?
           </h2>
-          <p className="text-lg text-primary-100 mb-6 max-w-2xl mx-auto">
+          <p className="text-lg sm:text-xl text-primary-100 mb-10 max-w-4xl mx-auto leading-relaxed font-light">
             Let our experienced team help you plan your next unforgettable
             adventure. Your dream destination is just a conversation away.
           </p>
-          <div className="flex flex-col sm:flex-row gap-3 justify-center">
-            <button className="bg-white text-primary-600 hover:bg-gray-100 font-medium px-6 py-2.5 rounded-lg transition-colors">
+          <div className="flex flex-col sm:flex-row gap-6 justify-center">
+            <button className="bg-white text-primary-600 hover:bg-gray-100 font-semibold px-8 py-4 rounded-xl transition-all duration-300 text-base hover:shadow-lg">
               Plan Your Trip
             </button>
-            <button className="border border-white text-white hover:bg-white hover:text-primary-600 font-medium px-6 py-2.5 rounded-lg transition-colors">
+            <button className="border-2 border-white text-white hover:bg-white hover:text-primary-600 font-semibold px-8 py-4 rounded-xl transition-all duration-300 text-base hover:shadow-lg">
               Contact Us
             </button>
           </div>

@@ -147,23 +147,23 @@ const Contact = () => {
   };
   return (
     <div className="min-h-screen bg-gray-50 pt-20">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        {/* Header */}
-        <div className="text-center mb-12 lg:mb-16">
-          <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-3">
+      <div className="max-w-8xl mx-auto px-6 sm:px-8 lg:px-12 py-16">
+        {/* Header with improved hierarchy */}
+        <div className="text-center mb-16 lg:mb-20">
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight">
             Get in Touch
           </h1>
-          <p className="text-base sm:text-lg text-gray-500 max-w-3xl mx-auto px-4">
+          <p className="text-lg sm:text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed font-light">
             Ready to start planning your next adventure? We're here to help make
             your travel dreams come true.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12">
-          {/* Contact Form */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-16">
+          {/* Contact Form with improved hierarchy */}
           <div className="lg:col-span-2">
-            <div className="bg-white rounded-2xl shadow-lg p-5 sm:p-6">
-              <h2 className="text-xl font-semibold text-gray-900 mb-4">
+            <div className="bg-white rounded-3xl shadow-xl p-6 md:p-8">
+              <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-6">
                 Send us a Message
               </h2>
 
@@ -211,7 +211,7 @@ const Contact = () => {
                   <div>
                     <label
                       htmlFor="message"
-                      className="block text-sm font-medium text-gray-600 mb-2"
+                      className="block text-base font-semibold text-gray-700 mb-2"
                     >
                       Message *
                     </label>
@@ -221,8 +221,8 @@ const Contact = () => {
                       value={formData.message}
                       onChange={handleInputChange}
                       disabled={isLoading}
-                      rows={6}
-                      className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 focus:border-primary-500 transition-all duration-200 resize-none disabled:bg-gray-100 disabled:cursor-not-allowed ${
+                      rows={5}
+                      className={`w-full px-4 py-3 border rounded-xl focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 focus:border-primary-500 transition-all duration-200 resize-none disabled:bg-gray-100 disabled:cursor-not-allowed text-base ${
                         errors.message
                           ? "border-red-500 focus:ring-red-500 focus:border-red-500"
                           : "border-gray-300"
@@ -230,9 +230,9 @@ const Contact = () => {
                       placeholder="Tell us about your travel plans, preferences, and any specific requirements..."
                     />
                     {errors.message && (
-                      <div className="flex items-center space-x-1 mt-1">
-                        <AlertCircle className="w-3 h-3 text-red-500 flex-shrink-0" />
-                        <span className="text-xs text-red-500">
+                      <div className="flex items-center space-x-2 mt-2">
+                        <AlertCircle className="w-4 h-4 text-red-500 flex-shrink-0" />
+                        <span className="text-sm text-red-500">
                           {errors.message}
                         </span>
                       </div>
@@ -243,7 +243,7 @@ const Contact = () => {
                     type="submit"
                     isLoading={isLoading}
                     loadingText="Sending Message..."
-                    className="w-full shadow-sm hover:shadow-md min-h-[56px]"
+                    className="w-full shadow-lg hover:shadow-xl min-h-[56px] px-6 py-3 text-base"
                     variant="primary"
                     size="lg"
                     icon={Send}
@@ -253,20 +253,20 @@ const Contact = () => {
                   </LoadingButton>
                 </form>
               ) : (
-                <div className="text-center py-6">
-                  <div className="bg-green-100 rounded-full w-14 h-14 flex items-center justify-center mx-auto mb-3 shadow-sm">
-                    <CheckCircle className="w-7 h-7 text-green-500" />
+                <div className="text-center py-8">
+                  <div className="bg-green-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-6 shadow-lg">
+                    <CheckCircle className="w-8 h-8 text-green-500" />
                   </div>
-                  <h3 className="text-xl font-semibold text-gray-900 mb-2">
+                  <h3 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-3 leading-tight">
                     Message Sent Successfully!
                   </h3>
-                  <p className="text-gray-500 text-sm mb-6">
+                  <p className="text-lg text-gray-600 mb-6 leading-relaxed font-light">
                     Thank you for contacting us. Our travel experts will get
                     back to you within 24 hours to help plan your perfect trip.
                   </p>
                   <button
                     onClick={() => setIsSubmitted(false)}
-                    className="text-primary-500 hover:text-primary-600 font-medium transition-colors hover:underline"
+                    className="text-primary-500 hover:text-primary-600 font-semibold transition-colors hover:underline text-base"
                   >
                     Send another message
                   </button>
@@ -275,11 +275,11 @@ const Contact = () => {
             </div>
           </div>
 
-          {/* Contact Information */}
-          <div className="space-y-6 lg:space-y-8">
+          {/* Contact Information with improved hierarchy */}
+          <div className="space-y-8 lg:space-y-10">
             {/* Contact Details */}
-            <div className="bg-white rounded-2xl shadow-lg p-4 sm:p-5">
-              <h3 className="text-lg font-semibold text-gray-900 mb-4">
+            <div className="bg-white rounded-3xl shadow-xl p-6">
+              <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-6">
                 Contact Information
               </h3>
               <div className="space-y-6">
@@ -287,19 +287,19 @@ const Contact = () => {
                   const Icon = info.icon;
                   return (
                     <div key={index} className="flex items-start space-x-3">
-                      <div className="bg-primary-100 rounded-lg p-1.5 mt-0.5 flex-shrink-0">
+                      <div className="bg-primary-100 rounded-xl p-2.5 mt-1 flex-shrink-0">
                         <Icon className="w-4 h-4 text-primary-500" />
                       </div>
                       <div className="min-w-0 flex-1">
-                        <h4 className="font-medium text-gray-900 mb-1 text-sm">
+                        <h4 className="font-semibold text-gray-900 mb-1 text-base">
                           {info.title}
                         </h4>
                         {info.details.map((detail, idx) => (
-                          <p key={idx} className="text-gray-600 text-sm">
+                          <p key={idx} className="text-gray-700 text-base mb-1">
                             {detail}
                           </p>
                         ))}
-                        <p className="text-xs text-gray-500 mt-1">
+                        <p className="text-sm text-gray-500 mt-1">
                           {info.description}
                         </p>
                       </div>
