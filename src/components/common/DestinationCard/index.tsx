@@ -38,9 +38,9 @@ export default function DestinationCard({ destination }: DestinationCardProps) {
       {/* Content */}
       <div className="p-6">
         <div className="flex items-center justify-between mb-2">
-          <div className="flex items-center space-x-1 text-gray-500">
-            <MapPin className="w-4 h-4" />
-            <span className="text-sm">{destination.country}</span>
+          <div className="flex items-center space-x-1 text-gray-400">
+            <MapPin className="w-3 h-3" />
+            <span className="text-xs">{destination.country}</span>
           </div>
           {/* <div className="flex items-center space-x-1">
             <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
@@ -55,30 +55,30 @@ export default function DestinationCard({ destination }: DestinationCardProps) {
           </div> */}
         </div>
 
-        <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-primary-500 transition-colors">
+        <h3 className="text-lg font-semibold text-gray-900 mb-2 group-hover:text-primary-500 transition-colors">
           {destination.name}
         </h3>
 
-        <p className="text-gray-600 mb-4 line-clamp-2">
+        <p className="text-gray-500 text-sm mb-4 line-clamp-2">
           {destination.description}
         </p>
 
-        <div className="flex items-center justify-between text-sm text-gray-500 mb-4">
+        <div className="flex items-center justify-between text-xs text-gray-400 mb-4">
           {destination.duration && (
             <div className="flex items-center space-x-1">
-              <Calendar className="w-4 h-4" />
+              <Calendar className="w-3 h-3" />
               <span>{destination.duration}</span>
             </div>
           )}
           {destination.travelers && (
             <div className="flex items-center space-x-1">
-              <Users className="w-4 h-4" />
+              <Users className="w-3 h-3" />
               <span>{destination.travelers}</span>
             </div>
           )}
         </div>
 
-        <div className="w-full bg-primary-500 hover:bg-primary-600 text-white font-semibold py-3 rounded-lg flex items-center justify-center space-x-2 transition-all duration-200 group-hover:shadow-lg">
+        <div className="w-full bg-primary-600 hover:bg-primary-700 text-white font-medium py-2.5 rounded-lg flex items-center justify-center space-x-2 transition-colors">
           <span>Explore Now</span>
           <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
         </div>

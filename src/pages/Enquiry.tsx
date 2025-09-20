@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import {
   ChevronRight,
   ChevronLeft,
@@ -55,10 +55,7 @@ const Enquiry: React.FC<EnquiryProps> = ({
   const { isLoading, withLoading } = useLoading();
   const [destinations, setDestinations] = useState<string[]>([]);
 
-  useEffect(() => {
-    setDestinationsToState();
-  }, []);
-  const setDestinationsToState = async () => {
+  const setDestinationsToState = useCallback(async () => {
     try {
       const allDestinations = await getDestinations();
       const destinationOption = [
@@ -73,7 +70,11 @@ const Enquiry: React.FC<EnquiryProps> = ({
       console.log(error);
       setDestinations([]);
     }
-  };
+  }, []);
+
+  useEffect(() => {
+    setDestinationsToState();
+  }, [setDestinationsToState]);
   const getDestinations = async (
     offset?: number,
     limit?: number
@@ -230,14 +231,14 @@ const Enquiry: React.FC<EnquiryProps> = ({
         } flex items-center justify-center`}
       >
         <div className="max-w-md mx-auto px-4">
-          <div className="bg-white rounded-2xl shadow-lg p-8 text-center">
-            <div className="bg-green-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-6">
-              <CheckCircle className="w-8 h-8 text-green-500" />
+          <div className="bg-white rounded-2xl shadow-lg p-6 text-center">
+            <div className="bg-green-100 rounded-full w-14 h-14 flex items-center justify-center mx-auto mb-4">
+              <CheckCircle className="w-7 h-7 text-green-500" />
             </div>
-            <h2 className="text-2xl font-bold text-gray-900 mb-4">
+            <h2 className="text-xl font-semibold text-gray-900 mb-3">
               Enquiry Submitted Successfully!
             </h2>
-            <p className="text-gray-600 mb-6">
+            <p className="text-gray-500 text-sm mb-6">
               Thank you for your enquiry. Our travel experts will review your
               requirements and get back to you within 24 hours with a customized
               travel proposal.
@@ -265,10 +266,10 @@ const Enquiry: React.FC<EnquiryProps> = ({
       {/* Header */}
       {!embedded && (
         <div className="text-center mb-12">
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+          <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">
             {title}
           </h1>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+          <p className="text-base md:text-lg text-gray-500 max-w-2xl mx-auto">
             Tell us about your dream trip and we'll create a personalized travel
             experience just for you
           </p>
@@ -292,7 +293,7 @@ const Enquiry: React.FC<EnquiryProps> = ({
             >
               1
             </div>
-            <span className="font-medium">Your Details</span>
+            <span className="font-medium text-sm">Your Details</span>
           </div>
           <div
             className={`w-16 h-1 ${
@@ -313,17 +314,17 @@ const Enquiry: React.FC<EnquiryProps> = ({
             >
               2
             </div>
-            <span className="font-medium">Trip Details</span>
+            <span className="font-medium text-sm">Trip Details</span>
           </div>
         </div>
       </div>
 
       {/* Form */}
-      <div className="bg-white rounded-2xl shadow-lg p-8">
+      <div className="bg-white rounded-2xl shadow-lg p-6">
         {currentStep === 1 ? (
           <div>
-            <h2 className="text-2xl font-bold text-gray-900 mb-6 flex items-center space-x-2">
-              <Users className="w-6 h-6 text-primary-500" />
+            <h2 className="text-xl font-semibold text-gray-900 mb-4 flex items-center space-x-2">
+              <Users className="w-5 h-5 text-primary-500" />
               <span>Your Details</span>
             </h2>
 
@@ -373,7 +374,7 @@ const Enquiry: React.FC<EnquiryProps> = ({
                 <div>
                   <label
                     htmlFor="adults"
-                    className="block text-sm font-medium text-gray-700 mb-2"
+                    className="block text-sm font-medium text-gray-600 mb-2"
                   >
                     Number of Adults *
                   </label>
@@ -392,8 +393,8 @@ const Enquiry: React.FC<EnquiryProps> = ({
                   </Select>
                   {errors.adults && (
                     <div className="flex items-center space-x-1 mt-1">
-                      <AlertCircle className="w-4 h-4 text-red-500" />
-                      <span className="text-sm text-red-500">
+                      <AlertCircle className="w-3 h-3 text-red-500" />
+                      <span className="text-xs text-red-500">
                         {errors.adults}
                       </span>
                     </div>
@@ -403,7 +404,7 @@ const Enquiry: React.FC<EnquiryProps> = ({
                 <div>
                   <label
                     htmlFor="children"
-                    className="block text-sm font-medium text-gray-700 mb-2"
+                    className="block text-sm font-medium text-gray-600 mb-2"
                   >
                     Number of Children
                   </label>
@@ -438,8 +439,8 @@ const Enquiry: React.FC<EnquiryProps> = ({
           </div>
         ) : (
           <div>
-            <h2 className="text-2xl font-bold text-gray-900 mb-6 flex items-center space-x-2">
-              <MapPin className="w-6 h-6 text-primary-500" />
+            <h2 className="text-xl font-semibold text-gray-900 mb-4 flex items-center space-x-2">
+              <MapPin className="w-5 h-5 text-primary-500" />
               <span>Trip Details</span>
             </h2>
 
@@ -448,7 +449,7 @@ const Enquiry: React.FC<EnquiryProps> = ({
                 <div>
                   <label
                     htmlFor="destination"
-                    className="block text-sm font-medium text-gray-700 mb-2"
+                    className="block text-sm font-medium text-gray-600 mb-2"
                   >
                     Destination *
                   </label>
@@ -469,8 +470,8 @@ const Enquiry: React.FC<EnquiryProps> = ({
                   </Select>
                   {errors.destination && (
                     <div className="flex items-center space-x-1 mt-1">
-                      <AlertCircle className="w-4 h-4 text-red-500" />
-                      <span className="text-sm text-red-500">
+                      <AlertCircle className="w-3 h-3 text-red-500" />
+                      <span className="text-xs text-red-500">
                         {errors.destination}
                       </span>
                     </div>
@@ -478,7 +479,7 @@ const Enquiry: React.FC<EnquiryProps> = ({
                 </div>
               ) : (
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className="block text-sm font-medium text-gray-600 mb-2">
                     Destination
                   </label>
                   <div className="px-4 py-3 border border-gray-200 rounded-lg bg-gray-50 text-gray-700">
@@ -505,7 +506,7 @@ const Enquiry: React.FC<EnquiryProps> = ({
                 <div>
                   <label
                     htmlFor="departureDate"
-                    className="block text-sm font-medium text-gray-700 mb-2"
+                    className="block text-sm font-medium text-gray-600 mb-2"
                   >
                     Expected Departure Date *
                   </label>
@@ -521,8 +522,8 @@ const Enquiry: React.FC<EnquiryProps> = ({
                   />
                   {errors.departureDate && (
                     <div className="flex items-center space-x-1 mt-1">
-                      <AlertCircle className="w-4 h-4 text-red-500" />
-                      <span className="text-sm text-red-500">
+                      <AlertCircle className="w-3 h-3 text-red-500" />
+                      <span className="text-xs text-red-500">
                         {errors.departureDate}
                       </span>
                     </div>
@@ -532,7 +533,7 @@ const Enquiry: React.FC<EnquiryProps> = ({
                 <div>
                   <label
                     htmlFor="duration"
-                    className="block text-sm font-medium text-gray-700 mb-2"
+                    className="block text-sm font-medium text-gray-600 mb-2"
                   >
                     Duration of Stay (days) *
                   </label>
@@ -554,8 +555,8 @@ const Enquiry: React.FC<EnquiryProps> = ({
                   </Select>
                   {errors.duration && (
                     <div className="flex items-center space-x-1 mt-1">
-                      <AlertCircle className="w-4 h-4 text-red-500" />
-                      <span className="text-sm text-red-500">
+                      <AlertCircle className="w-3 h-3 text-red-500" />
+                      <span className="text-xs text-red-500">
                         {errors.duration}
                       </span>
                     </div>
@@ -566,7 +567,7 @@ const Enquiry: React.FC<EnquiryProps> = ({
               <div>
                 <label
                   htmlFor="budget"
-                  className="block text-sm font-medium text-gray-700 mb-2"
+                  className="block text-sm font-medium text-gray-600 mb-2"
                 >
                   Maximum Budget (USD) *
                 </label>
@@ -588,8 +589,8 @@ const Enquiry: React.FC<EnquiryProps> = ({
                 </Select>
                 {errors.budget && (
                   <div className="flex items-center space-x-1 mt-1">
-                    <AlertCircle className="w-4 h-4 text-red-500" />
-                    <span className="text-sm text-red-500">
+                    <AlertCircle className="w-3 h-3 text-red-500" />
+                    <span className="text-xs text-red-500">
                       {errors.budget}
                     </span>
                   </div>

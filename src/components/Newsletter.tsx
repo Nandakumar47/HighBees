@@ -56,10 +56,10 @@ const Newsletter = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Left Content */}
           <div className="text-white">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6">
+            <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-4">
               Never Miss a Deal
             </h2>
-            <p className="text-xl md:text-2xl mb-8 text-primary-100">
+            <p className="text-lg md:text-xl mb-6 text-primary-100">
               Subscribe to our newsletter and be the first to know about
               exclusive offers, new destinations, and travel inspiration.
             </p>
@@ -74,10 +74,12 @@ const Newsletter = () => {
                       <Icon className="w-5 h-5 text-white" />
                     </div>
                     <div>
-                      <h3 className="font-semibold text-lg mb-1">
+                      <h3 className="font-medium text-base mb-1">
                         {benefit.title}
                       </h3>
-                      <p className="text-primary-100">{benefit.description}</p>
+                      <p className="text-primary-100 text-sm">
+                        {benefit.description}
+                      </p>
                     </div>
                   </div>
                 );
@@ -93,10 +95,10 @@ const Newsletter = () => {
                   <div className="bg-primary-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
                     <Mail className="w-8 h-8 text-primary-500" />
                   </div>
-                  <h3 className="text-2xl font-bold text-gray-900 mb-2">
+                  <h3 className="text-xl font-semibold text-gray-900 mb-2">
                     Join Our Travel Community
                   </h3>
-                  <p className="text-gray-600">
+                  <p className="text-gray-500 text-sm">
                     Get weekly travel inspiration and exclusive deals delivered
                     to your inbox.
                   </p>
@@ -140,10 +142,10 @@ const Newsletter = () => {
                 <div className="bg-green-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
                   <CheckCircle className="w-8 h-8 text-green-500" />
                 </div>
-                <h3 className="text-2xl font-bold text-gray-900 mb-2">
+                <h3 className="text-xl font-semibold text-gray-900 mb-2">
                   Welcome Aboard!
                 </h3>
-                <p className="text-gray-600 mb-6">
+                <p className="text-gray-500 text-sm mb-6">
                   Thank you for subscribing to our newsletter. You'll start
                   receiving exclusive travel deals and inspiration soon.
                 </p>
@@ -160,15 +162,15 @@ const Newsletter = () => {
 
         {/* Social Proof */}
         <div className="mt-16 text-center text-white">
-          <p className="text-primary-100 mb-4">
+          <p className="text-primary-100 text-sm mb-4">
             Join over 100,000 travelers who trust High Bees Holidays
           </p>
-          <div className="flex items-center justify-center space-x-8">
-            <div className="text-2xl font-bold">50,000+</div>
-            <div className="w-px h-8 bg-primary-300" />
-            <div className="text-2xl font-bold">Newsletter Subscribers</div>
-            <div className="w-px h-8 bg-primary-300" />
-            <div className="text-2xl font-bold">4.9★</div>
+          <div className="flex items-center justify-center space-x-6">
+            <div className="text-lg font-semibold">50,000+</div>
+            <div className="w-px h-6 bg-primary-300" />
+            <div className="text-lg font-semibold">Newsletter Subscribers</div>
+            <div className="w-px h-6 bg-primary-300" />
+            <div className="text-lg font-semibold">4.9★</div>
           </div>
         </div>
       </div>

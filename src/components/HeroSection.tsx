@@ -1,25 +1,28 @@
-import React, { useState, useEffect } from 'react';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import React, { useState, useEffect } from "react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const HeroSection = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
 
   const slides = [
     {
-      image: 'https://images.pexels.com/photos/1285625/pexels-photo-1285625.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1280',
-      title: 'Discover Paradise Islands',
-      subtitle: 'Escape to crystal-clear waters and pristine beaches'
+      image:
+        "https://images.pexels.com/photos/1285625/pexels-photo-1285625.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1280",
+      title: "Discover Paradise Islands",
+      subtitle: "Escape to crystal-clear waters and pristine beaches",
     },
     {
-      image: 'https://images.pexels.com/photos/2132180/pexels-photo-2132180.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1280',
-      title: 'Mountain Adventures Await',
-      subtitle: 'Experience breathtaking peaks and scenic hiking trails'
+      image:
+        "https://images.pexels.com/photos/2132180/pexels-photo-2132180.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1280",
+      title: "Mountain Adventures Await",
+      subtitle: "Experience breathtaking peaks and scenic hiking trails",
     },
     {
-      image: 'https://images.pexels.com/photos/1461974/pexels-photo-1461974.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1280',
-      title: 'Cultural City Experiences',
-      subtitle: 'Immerse yourself in rich history and vibrant cultures'
-    }
+      image:
+        "https://images.pexels.com/photos/1461974/pexels-photo-1461974.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1280",
+      title: "Cultural City Experiences",
+      subtitle: "Immerse yourself in rich history and vibrant cultures",
+    },
   ];
 
   useEffect(() => {
@@ -44,7 +47,7 @@ const HeroSection = () => {
         <div
           key={index}
           className={`absolute inset-0 transition-opacity duration-1000 ${
-            index === currentSlide ? 'opacity-100' : 'opacity-0'
+            index === currentSlide ? "opacity-100" : "opacity-0"
           }`}
         >
           <div
@@ -52,13 +55,16 @@ const HeroSection = () => {
             style={{ backgroundImage: `url(${slide.image})` }}
           />
           <div className="absolute inset-0 bg-black bg-opacity-40" />
-          
+
           <div className="relative h-full flex items-center justify-center text-center text-white">
             <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-              <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 animate-slide-up">
+              <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold mb-6 animate-slide-up">
                 {slide.title}
               </h1>
-              <p className="text-xl md:text-2xl mb-8 max-w-2xl mx-auto animate-slide-up" style={{ animationDelay: '0.2s' }}>
+              <p
+                className="text-lg md:text-xl text-gray-200 mb-8 max-w-2xl mx-auto animate-slide-up"
+                style={{ animationDelay: "0.2s" }}
+              >
                 {slide.subtitle}
               </p>
             </div>
@@ -88,8 +94,8 @@ const HeroSection = () => {
             onClick={() => setCurrentSlide(index)}
             className={`w-3 h-3 rounded-full transition-all duration-200 ${
               index === currentSlide
-                ? 'bg-white'
-                : 'bg-white bg-opacity-50 hover:bg-opacity-75'
+                ? "bg-white"
+                : "bg-white bg-opacity-50 hover:bg-opacity-75"
             }`}
           />
         ))}

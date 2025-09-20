@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import {
   MapPin,
@@ -177,17 +177,17 @@ Looking forward to your expert guidance!`;
 
         <div className="absolute inset-0 flex items-center justify-center">
           <div className="text-center text-white max-w-4xl mx-auto px-4">
-            <h1 className="text-5xl md:text-7xl font-bold mb-4 animate-slide-up">
+            <h1 className="text-4xl md:text-6xl font-bold mb-3 animate-slide-up">
               {destination.name}
             </h1>
             <p
-              className="text-xl md:text-2xl mb-2 animate-slide-up"
+              className="text-lg md:text-xl mb-2 animate-slide-up"
               style={{ animationDelay: "0.2s" }}
             >
               {destination.country}
             </p>
             <p
-              className="text-lg md:text-xl mb-8 max-w-2xl mx-auto animate-slide-up"
+              className="text-base md:text-lg mb-8 max-w-2xl mx-auto animate-slide-up text-gray-200"
               style={{ animationDelay: "0.4s" }}
             >
               {destination.description}
@@ -196,13 +196,13 @@ Looking forward to your expert guidance!`;
               className="flex flex-wrap justify-center gap-4 animate-slide-up"
               style={{ animationDelay: "0.6s" }}
             >
-              <div className="bg-white bg-opacity-20 backdrop-blur-sm rounded-lg px-4 py-2">
-                <span className="text-sm font-medium">
+              <div className="bg-white bg-opacity-15 backdrop-blur-sm rounded-lg px-3 py-1.5">
+                <span className="text-xs font-medium">
                   Best Time: {destination.bestTimeToVisit.months}
                 </span>
               </div>
-              <div className="bg-white bg-opacity-20 backdrop-blur-sm rounded-lg px-4 py-2">
-                <span className="text-sm font-medium">
+              <div className="bg-white bg-opacity-15 backdrop-blur-sm rounded-lg px-3 py-1.5">
+                <span className="text-xs font-medium">
                   From {destination.budgetRange.budget}
                 </span>
               </div>
@@ -225,10 +225,10 @@ Looking forward to your expert guidance!`;
               <button
                 key={tab.id}
                 onClick={() => handleTabChange(tab.id)}
-                className={`py-4 px-2 border-b-2 font-medium text-sm whitespace-nowrap transition-colors ${
+                className={`py-3 px-2 border-b-2 font-medium text-sm whitespace-nowrap transition-colors ${
                   activeTab === tab.id
                     ? "border-primary-500 text-primary-600"
-                    : "border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300"
+                    : "border-transparent text-gray-400 hover:text-gray-600 hover:border-gray-300"
                 }`}
               >
                 {tab.label}
@@ -248,40 +248,40 @@ Looking forward to your expert guidance!`;
             {/* Key Information */}
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
               <div className="lg:col-span-2">
-                <h2 className="text-3xl font-bold text-gray-900 mb-6">
+                <h2 className="text-2xl font-semibold text-gray-900 mb-4">
                   Destination Highlights
                 </h2>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mb-8">
                   {destination.highlights.map((highlight, index) => (
                     <div key={index} className="flex items-center space-x-3">
-                      <Check className="w-5 h-5 text-green-500 flex-shrink-0" />
-                      <span className="text-gray-700">{highlight}</span>
+                      <Check className="w-4 h-4 text-green-500 flex-shrink-0" />
+                      <span className="text-gray-600 text-sm">{highlight}</span>
                     </div>
                   ))}
                 </div>
 
                 {/* Attractions Map Placeholder */}
-                <div className="bg-gray-100 rounded-lg p-8 text-center">
-                  <MapPin className="w-12 h-12 text-gray-400 mx-auto mb-4" />
-                  <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                <div className="bg-gray-100 rounded-lg p-6 text-center">
+                  <MapPin className="w-10 h-10 text-gray-400 mx-auto mb-3" />
+                  <h3 className="text-base font-medium text-gray-900 mb-2">
                     Interactive Map
                   </h3>
-                  <p className="text-gray-600">
+                  <p className="text-gray-500 text-sm">
                     Explore key attractions and points of interest
                   </p>
-                  <div className="mt-4 grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="mt-4 grid grid-cols-1 md:grid-cols-2 gap-3">
                     {destination.attractions.map((attraction, index) => (
                       <div
                         key={index}
-                        className="bg-white rounded-lg p-4 text-left"
+                        className="bg-white rounded-lg p-3 text-left"
                       >
-                        <h4 className="font-semibold text-gray-900">
+                        <h4 className="font-medium text-gray-900 text-sm">
                           {attraction.name}
                         </h4>
-                        <p className="text-sm text-gray-600">
+                        <p className="text-xs text-gray-500">
                           {attraction.type}
                         </p>
-                        <p className="text-sm text-gray-500 mt-1">
+                        <p className="text-xs text-gray-400 mt-1">
                           {attraction.description}
                         </p>
                       </div>
@@ -292,61 +292,65 @@ Looking forward to your expert guidance!`;
 
               <div className="space-y-6">
                 {/* Essential Information */}
-                <div className="bg-gray-50 rounded-lg p-6">
-                  <h3 className="text-xl font-bold text-gray-900 mb-4">
+                <div className="bg-gray-50 rounded-lg p-5">
+                  <h3 className="text-lg font-semibold text-gray-900 mb-3">
                     Essential Information
                   </h3>
                   <div className="space-y-4">
                     <div className="flex items-start space-x-3">
-                      <Calendar className="w-5 h-5 text-primary-500 mt-0.5" />
+                      <Calendar className="w-4 h-4 text-primary-500 mt-0.5" />
                       <div>
-                        <p className="font-medium text-gray-900">
+                        <p className="font-medium text-gray-900 text-sm">
                           Best Time to Visit
                         </p>
-                        <p className="text-sm text-gray-600">
+                        <p className="text-xs text-gray-600">
                           {destination.bestTimeToVisit.months}
                         </p>
-                        <p className="text-sm text-gray-500">
+                        <p className="text-xs text-gray-500">
                           {destination.bestTimeToVisit.weather}
                         </p>
                       </div>
                     </div>
 
                     <div className="flex items-start space-x-3">
-                      <Plane className="w-5 h-5 text-primary-500 mt-0.5" />
+                      <Plane className="w-4 h-4 text-primary-500 mt-0.5" />
                       <div>
-                        <p className="font-medium text-gray-900">
+                        <p className="font-medium text-gray-900 text-sm">
                           Visa Requirements
                         </p>
-                        <p className="text-sm text-gray-600">
+                        <p className="text-xs text-gray-600">
                           {destination.visaRequirements.details}
                         </p>
                       </div>
                     </div>
 
                     <div className="flex items-start space-x-3">
-                      <CreditCard className="w-5 h-5 text-primary-500 mt-0.5" />
+                      <CreditCard className="w-4 h-4 text-primary-500 mt-0.5" />
                       <div>
-                        <p className="font-medium text-gray-900">Currency</p>
-                        <p className="text-sm text-gray-600">
+                        <p className="font-medium text-gray-900 text-sm">
+                          Currency
+                        </p>
+                        <p className="text-xs text-gray-600">
                           {destination.currency.name} (
                           {destination.currency.code})
                         </p>
-                        <p className="text-sm text-gray-500">
+                        <p className="text-xs text-gray-500">
                           {destination.currency.exchangeRate}
                         </p>
                       </div>
                     </div>
 
                     <div className="flex items-start space-x-3">
-                      <Globe className="w-5 h-5 text-primary-500 mt-0.5" />
+                      <Globe className="w-4 h-4 text-primary-500 mt-0.5" />
                       <div>
-                        <p className="font-medium text-gray-900">Language</p>
-                        <p className="text-sm text-gray-600">
+                        <p className="font-medium text-gray-900 text-sm">
+                          Language
+                        </p>
+                        <p className="text-xs text-gray-600">
                           {destination.language.primary}
                         </p>
                         {destination.language.others && (
-                          <p className="text-sm text-gray-500">
+                          <p className="text-xs text-gray-500">
                             Also: {destination.language.others.join(", ")}
                           </p>
                         )}
@@ -354,13 +358,15 @@ Looking forward to your expert guidance!`;
                     </div>
 
                     <div className="flex items-start space-x-3">
-                      <Thermometer className="w-5 h-5 text-primary-500 mt-0.5" />
+                      <Thermometer className="w-4 h-4 text-primary-500 mt-0.5" />
                       <div>
-                        <p className="font-medium text-gray-900">Climate</p>
-                        <p className="text-sm text-gray-600">
+                        <p className="font-medium text-gray-900 text-sm">
+                          Climate
+                        </p>
+                        <p className="text-xs text-gray-600">
                           {destination.weather.climate}
                         </p>
-                        <p className="text-sm text-gray-500">
+                        <p className="text-xs text-gray-500">
                           Temp: {destination.bestTimeToVisit.temperature}
                         </p>
                       </div>
@@ -369,26 +375,26 @@ Looking forward to your expert guidance!`;
                 </div>
 
                 {/* Budget Guide */}
-                <div className="bg-primary-50 rounded-lg p-6">
-                  <h3 className="text-xl font-bold text-gray-900 mb-4">
+                <div className="bg-primary-50 rounded-lg p-5">
+                  <h3 className="text-lg font-semibold text-gray-900 mb-3">
                     Budget Guide
                   </h3>
-                  <div className="space-y-3">
+                  <div className="space-y-2">
                     <div className="flex justify-between items-center">
-                      <span className="text-gray-700">Budget</span>
-                      <span className="font-semibold text-green-600">
+                      <span className="text-gray-600 text-sm">Budget</span>
+                      <span className="font-medium text-green-600 text-sm">
                         {destination.budgetRange.budget}
                       </span>
                     </div>
                     <div className="flex justify-between items-center">
-                      <span className="text-gray-700">Mid-range</span>
-                      <span className="font-semibold text-blue-600">
+                      <span className="text-gray-600 text-sm">Mid-range</span>
+                      <span className="font-medium text-blue-600 text-sm">
                         {destination.budgetRange.midRange}
                       </span>
                     </div>
                     <div className="flex justify-between items-center">
-                      <span className="text-gray-700">Luxury</span>
-                      <span className="font-semibold text-purple-600">
+                      <span className="text-gray-600 text-sm">Luxury</span>
+                      <span className="font-medium text-purple-600 text-sm">
                         {destination.budgetRange.luxury}
                       </span>
                     </div>
@@ -403,25 +409,25 @@ Looking forward to your expert guidance!`;
         {activeTab === "itineraries" && (
           <div className="space-y-8">
             <div className="text-center">
-              <h2 className="text-3xl font-bold text-gray-900 mb-4">
+              <h2 className="text-2xl font-semibold text-gray-900 mb-3">
                 Sample Itineraries
               </h2>
-              <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+              <p className="text-base text-gray-500 max-w-3xl mx-auto">
                 Choose from our carefully crafted itineraries or let us
                 customize one just for you
               </p>
             </div>
 
             {/* Itinerary Selection */}
-            <div className="flex flex-wrap justify-center gap-4">
+            <div className="flex flex-wrap justify-center gap-3">
               {destination.itineraries.map((itinerary) => (
                 <button
                   key={itinerary.id}
                   onClick={() => setSelectedItinerary(itinerary.id)}
-                  className={`px-6 py-3 rounded-lg font-medium transition-all duration-200 ${
+                  className={`px-4 py-2 rounded-lg font-medium text-sm transition-all duration-200 ${
                     selectedItinerary === itinerary.id
-                      ? "bg-primary-500 text-white shadow-lg"
-                      : "bg-white border border-gray-300 text-gray-700 hover:border-primary-300"
+                      ? "bg-primary-600 text-white"
+                      : "bg-white border border-gray-300 text-gray-600 hover:border-primary-300"
                   }`}
                 >
                   {itinerary.title}
@@ -432,44 +438,50 @@ Looking forward to your expert guidance!`;
             {/* Selected Itinerary Details */}
             {selectedItineraryData && (
               <div className="bg-white rounded-2xl shadow-lg overflow-hidden">
-                <div className="bg-gradient-to-r from-primary-500 to-primary-700 text-white p-8">
+                <div className="bg-gradient-to-r from-primary-500 to-primary-700 text-white p-6">
                   <div className="flex flex-col md:flex-row justify-between items-start md:items-center">
                     <div>
-                      <h3 className="text-2xl font-bold mb-2">
+                      <h3 className="text-xl font-semibold mb-2">
                         {selectedItineraryData.title}
                       </h3>
                       <div className="flex items-center space-x-4 text-primary-100">
                         <div className="flex items-center space-x-1">
                           <Clock className="w-4 h-4" />
-                          <span>{selectedItineraryData.duration}</span>
+                          <span className="text-sm">
+                            {selectedItineraryData.duration}
+                          </span>
                         </div>
                         <div className="flex items-center space-x-1">
                           <DollarSign className="w-4 h-4" />
-                          <span>From ${selectedItineraryData.price}</span>
+                          <span className="text-sm">
+                            From ${selectedItineraryData.price}
+                          </span>
                         </div>
                       </div>
                     </div>
-                    <button className="mt-4 md:mt-0 bg-white text-primary-500 hover:bg-gray-100 font-semibold px-6 py-3 rounded-lg transition-colors">
+                    <button className="mt-4 md:mt-0 bg-white text-primary-600 hover:bg-gray-100 font-medium px-5 py-2.5 rounded-lg transition-colors text-sm">
                       Customize This Trip
                     </button>
                   </div>
                 </div>
 
-                <div className="p-8">
+                <div className="p-6">
                   {/* Highlights */}
-                  <div className="mb-8">
-                    <h4 className="text-lg font-semibold text-gray-900 mb-4">
+                  <div className="mb-6">
+                    <h4 className="text-base font-medium text-gray-900 mb-3">
                       Trip Highlights
                     </h4>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
                       {selectedItineraryData.highlights.map(
                         (highlight, index) => (
                           <div
                             key={index}
                             className="flex items-center space-x-2"
                           >
-                            <Star className="w-4 h-4 text-yellow-500" />
-                            <span className="text-gray-700">{highlight}</span>
+                            <Star className="w-3 h-3 text-yellow-500" />
+                            <span className="text-gray-600 text-sm">
+                              {highlight}
+                            </span>
                           </div>
                         )
                       )}
@@ -478,28 +490,28 @@ Looking forward to your expert guidance!`;
 
                   {/* Day by Day */}
                   <div>
-                    <h4 className="text-lg font-semibold text-gray-900 mb-6">
+                    <h4 className="text-base font-medium text-gray-900 mb-4">
                       Day-by-Day Itinerary
                     </h4>
                     <div className="space-y-6">
                       {selectedItineraryData.dayByDay.map((day, index) => (
-                        <div key={index} className="flex space-x-4">
-                          <div className="flex-shrink-0 w-12 h-12 bg-primary-100 rounded-full flex items-center justify-center">
-                            <span className="text-primary-600 font-bold">
+                        <div key={index} className="flex space-x-3">
+                          <div className="flex-shrink-0 w-10 h-10 bg-primary-100 rounded-full flex items-center justify-center">
+                            <span className="text-primary-600 font-medium text-sm">
                               {day.day}
                             </span>
                           </div>
                           <div className="flex-1">
-                            <h5 className="font-semibold text-gray-900 mb-2">
+                            <h5 className="font-medium text-gray-900 mb-1 text-sm">
                               {day.title}
                             </h5>
                             <ul className="space-y-1">
                               {day.activities.map((activity, actIndex) => (
                                 <li
                                   key={actIndex}
-                                  className="text-gray-600 text-sm flex items-start space-x-2"
+                                  className="text-gray-500 text-xs flex items-start space-x-2"
                                 >
-                                  <ArrowRight className="w-3 h-3 text-gray-400 mt-1 flex-shrink-0" />
+                                  <ArrowRight className="w-3 h-3 text-gray-400 mt-0.5 flex-shrink-0" />
                                   <span>{activity}</span>
                                 </li>
                               ))}
@@ -514,21 +526,21 @@ Looking forward to your expert guidance!`;
             )}
 
             {/* Customization Options */}
-            <div className="bg-gray-50 rounded-2xl p-8">
-              <h3 className="text-2xl font-bold text-gray-900 mb-6 text-center">
+            <div className="bg-gray-50 rounded-2xl p-6">
+              <h3 className="text-xl font-semibold text-gray-900 mb-4 text-center">
                 Customization Options
               </h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
                 <div>
-                  <h4 className="font-semibold text-gray-900 mb-3">
+                  <h4 className="font-medium text-gray-900 mb-2 text-sm">
                     Accommodations
                   </h4>
-                  <ul className="space-y-2">
+                  <ul className="space-y-1.5">
                     {destination.customizationOptions.accommodations.map(
                       (option, index) => (
                         <li
                           key={index}
-                          className="text-sm text-gray-600 flex items-center space-x-2"
+                          className="text-xs text-gray-500 flex items-center space-x-2"
                         >
                           <Check className="w-3 h-3 text-green-500" />
                           <span>{option}</span>
@@ -538,15 +550,15 @@ Looking forward to your expert guidance!`;
                   </ul>
                 </div>
                 <div>
-                  <h4 className="font-semibold text-gray-900 mb-3">
+                  <h4 className="font-medium text-gray-900 mb-2 text-sm">
                     Transportation
                   </h4>
-                  <ul className="space-y-2">
+                  <ul className="space-y-1.5">
                     {destination.customizationOptions.transportation.map(
                       (option, index) => (
                         <li
                           key={index}
-                          className="text-sm text-gray-600 flex items-center space-x-2"
+                          className="text-xs text-gray-500 flex items-center space-x-2"
                         >
                           <Check className="w-3 h-3 text-green-500" />
                           <span>{option}</span>
@@ -556,15 +568,15 @@ Looking forward to your expert guidance!`;
                   </ul>
                 </div>
                 <div>
-                  <h4 className="font-semibold text-gray-900 mb-3">
+                  <h4 className="font-medium text-gray-900 mb-2 text-sm">
                     Activities
                   </h4>
-                  <ul className="space-y-2">
+                  <ul className="space-y-1.5">
                     {destination.customizationOptions.activities.map(
                       (option, index) => (
                         <li
                           key={index}
-                          className="text-sm text-gray-600 flex items-center space-x-2"
+                          className="text-xs text-gray-500 flex items-center space-x-2"
                         >
                           <Check className="w-3 h-3 text-green-500" />
                           <span>{option}</span>
@@ -574,15 +586,15 @@ Looking forward to your expert guidance!`;
                   </ul>
                 </div>
                 <div>
-                  <h4 className="font-semibold text-gray-900 mb-3">
+                  <h4 className="font-medium text-gray-900 mb-2 text-sm">
                     Special Requirements
                   </h4>
-                  <ul className="space-y-2">
+                  <ul className="space-y-1.5">
                     {destination.customizationOptions.specialRequirements.map(
                       (option, index) => (
                         <li
                           key={index}
-                          className="text-sm text-gray-600 flex items-center space-x-2"
+                          className="text-xs text-gray-500 flex items-center space-x-2"
                         >
                           <Check className="w-3 h-3 text-green-500" />
                           <span>{option}</span>
@@ -600,10 +612,10 @@ Looking forward to your expert guidance!`;
         {activeTab === "gallery" && (
           <div className="space-y-8">
             <div className="text-center">
-              <h2 className="text-3xl font-bold text-gray-900 mb-4">
+              <h2 className="text-2xl font-semibold text-gray-900 mb-3">
                 Photo Gallery
               </h2>
-              <p className="text-lg text-gray-600">
+              <p className="text-base text-gray-500">
                 Explore the beauty of {destination.name}
               </p>
             </div>
@@ -636,10 +648,10 @@ Looking forward to your expert guidance!`;
         {activeTab === "reviews" && (
           <div className="space-y-8">
             <div className="text-center">
-              <h2 className="text-3xl font-bold text-gray-900 mb-4">
+              <h2 className="text-2xl font-semibold text-gray-900 mb-3">
                 Traveler Reviews
               </h2>
-              <p className="text-lg text-gray-600">
+              <p className="text-base text-gray-500">
                 See what our customers say about {destination.name}
               </p>
             </div>
@@ -648,19 +660,19 @@ Looking forward to your expert guidance!`;
               {destination.reviews.map((review) => (
                 <div
                   key={review.id}
-                  className="bg-white rounded-lg shadow-lg p-6"
+                  className="bg-white rounded-lg shadow-lg p-5"
                 >
-                  <div className="flex items-center space-x-4 mb-4">
+                  <div className="flex items-center space-x-3 mb-3">
                     <img
                       src={review.avatar}
                       alt={review.name}
-                      className="w-12 h-12 rounded-full object-cover"
+                      className="w-10 h-10 rounded-full object-cover"
                     />
                     <div>
-                      <h4 className="font-semibold text-gray-900">
+                      <h4 className="font-medium text-gray-900 text-sm">
                         {review.name}
                       </h4>
-                      <p className="text-sm text-gray-600">{review.tripType}</p>
+                      <p className="text-xs text-gray-500">{review.tripType}</p>
                     </div>
                   </div>
 
@@ -668,19 +680,19 @@ Looking forward to your expert guidance!`;
                     {[...Array(5)].map((_, i) => (
                       <Star
                         key={i}
-                        className={`w-4 h-4 ${
+                        className={`w-3 h-3 ${
                           i < review.rating
                             ? "fill-yellow-400 text-yellow-400"
                             : "text-gray-300"
                         }`}
                       />
                     ))}
-                    <span className="text-sm text-gray-600 ml-2">
+                    <span className="text-xs text-gray-500 ml-2">
                       {review.date}
                     </span>
                   </div>
 
-                  <p className="text-gray-700 leading-relaxed">
+                  <p className="text-gray-600 leading-relaxed text-sm">
                     {review.comment}
                   </p>
                 </div>
@@ -693,11 +705,11 @@ Looking forward to your expert guidance!`;
         {activeTab === "enquiry" && (
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-8">
-              <h2 className="text-3xl font-bold text-gray-900 mb-4">
+              <h2 className="text-2xl font-semibold text-gray-900 mb-3">
                 Make Enquiry for {destination.name}
               </h2>
-              <p className="text-lg text-gray-600">
-                Tell us about your trip and we’ll tailor a plan for you
+              <p className="text-base text-gray-500">
+                Tell us about your trip and we'll tailor a plan for you
               </p>
             </div>
 

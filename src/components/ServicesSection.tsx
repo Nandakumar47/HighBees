@@ -1,64 +1,121 @@
-import React from 'react';
-import { Plane, Car, Calendar, Settings, Shield, Headphones, MapPin, Camera } from 'lucide-react';
+import React from "react";
+import {
+  Plane,
+  Car,
+  Calendar,
+  Settings,
+  Shield,
+  Headphones,
+  MapPin,
+  Camera,
+} from "lucide-react";
 
 const ServicesSection = () => {
   const services = [
     {
       id: 1,
-      title: 'Best Flight Deals',
-      description: 'Access to exclusive flight deals and partnerships with major airlines worldwide for the best prices.',
+      title: "Best Flight Deals",
+      description:
+        "Access to exclusive flight deals and partnerships with major airlines worldwide for the best prices.",
       icon: Plane,
-      features: ['Competitive pricing', 'Flexible booking', 'Multiple airlines', '24/7 support']
+      features: [
+        "Competitive pricing",
+        "Flexible booking",
+        "Multiple airlines",
+        "24/7 support",
+      ],
     },
     {
       id: 2,
-      title: 'Premium Transportation',
-      description: 'Luxury ground transportation including private transfers, car rentals, and chauffeur services.',
+      title: "Premium Transportation",
+      description:
+        "Luxury ground transportation including private transfers, car rentals, and chauffeur services.",
       icon: Car,
-      features: ['Private transfers', 'Luxury vehicles', 'Professional drivers', 'Airport pickup']
+      features: [
+        "Private transfers",
+        "Luxury vehicles",
+        "Professional drivers",
+        "Airport pickup",
+      ],
     },
     {
       id: 3,
-      title: 'Local Events & Tours',
-      description: 'Curated local experiences, cultural events, and guided tours with expert local guides.',
+      title: "Local Events & Tours",
+      description:
+        "Curated local experiences, cultural events, and guided tours with expert local guides.",
       icon: Calendar,
-      features: ['Cultural experiences', 'Local guides', 'Exclusive access', 'Group discounts']
+      features: [
+        "Cultural experiences",
+        "Local guides",
+        "Exclusive access",
+        "Group discounts",
+      ],
     },
     {
       id: 4,
-      title: 'Custom Itineraries',
-      description: 'Personalized travel planning tailored to your preferences, budget, and travel style.',
+      title: "Custom Itineraries",
+      description:
+        "Personalized travel planning tailored to your preferences, budget, and travel style.",
       icon: Settings,
-      features: ['Personalized planning', 'Flexible itineraries', 'Budget optimization', 'Expert advice']
+      features: [
+        "Personalized planning",
+        "Flexible itineraries",
+        "Budget optimization",
+        "Expert advice",
+      ],
     },
     {
       id: 5,
-      title: 'Travel Insurance',
-      description: 'Comprehensive travel protection covering medical emergencies, trip cancellations, and more.',
+      title: "Travel Insurance",
+      description:
+        "Comprehensive travel protection covering medical emergencies, trip cancellations, and more.",
       icon: Shield,
-      features: ['Medical coverage', 'Trip protection', 'Baggage insurance', 'Emergency assistance']
+      features: [
+        "Medical coverage",
+        "Trip protection",
+        "Baggage insurance",
+        "Emergency assistance",
+      ],
     },
     {
       id: 6,
-      title: '24/7 Support',
-      description: 'Round-the-clock customer support for any travel emergencies or assistance needed.',
+      title: "24/7 Support",
+      description:
+        "Round-the-clock customer support for any travel emergencies or assistance needed.",
       icon: Headphones,
-      features: ['24/7 availability', 'Emergency hotline', 'Multilingual support', 'Instant assistance']
+      features: [
+        "24/7 availability",
+        "Emergency hotline",
+        "Multilingual support",
+        "Instant assistance",
+      ],
     },
     {
       id: 7,
-      title: 'Destination Expertise',
-      description: 'In-depth knowledge of destinations worldwide with insider tips and hidden gems.',
+      title: "Destination Expertise",
+      description:
+        "In-depth knowledge of destinations worldwide with insider tips and hidden gems.",
       icon: MapPin,
-      features: ['Local insights', 'Hidden gems', 'Cultural tips', 'Safety guidance']
+      features: [
+        "Local insights",
+        "Hidden gems",
+        "Cultural tips",
+        "Safety guidance",
+      ],
     },
     {
       id: 8,
-      title: 'Photography Services',
-      description: 'Professional travel photography services to capture your memorable moments.',
+      title: "Photography Services",
+      description:
+        "Professional travel photography services to capture your memorable moments.",
       icon: Camera,
-      features: ['Professional photos', 'Memorable moments', 'Digital delivery', 'Multiple locations']
-    }
+      features: [
+        "Professional photos",
+        "Memorable moments",
+        "Digital delivery",
+        "Multiple locations",
+      ],
+    },
   ];
 
   return (
@@ -66,11 +123,12 @@ const ServicesSection = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
+          <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 mb-3">
             What We Offer
           </h2>
-          <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">
-            Comprehensive travel services designed to make your journey seamless, memorable, and extraordinary from start to finish.
+          <p className="text-base md:text-lg text-gray-500 max-w-3xl mx-auto">
+            Comprehensive travel services designed to make your journey
+            seamless, memorable, and extraordinary from start to finish.
           </p>
         </div>
 
@@ -89,19 +147,22 @@ const ServicesSection = () => {
                 </div>
 
                 {/* Content */}
-                <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-primary-500 transition-colors">
+                <h3 className="text-lg font-semibold text-gray-900 mb-2 group-hover:text-primary-500 transition-colors">
                   {service.title}
                 </h3>
-                
-                <p className="text-gray-600 mb-4 leading-relaxed">
+
+                <p className="text-gray-500 mb-4 leading-relaxed text-sm">
                   {service.description}
                 </p>
 
                 {/* Features List */}
-                <ul className="space-y-2">
+                <ul className="space-y-1.5">
                   {service.features.map((feature, index) => (
-                    <li key={index} className="flex items-center space-x-2 text-sm text-gray-500">
-                      <div className="w-1.5 h-1.5 bg-primary-500 rounded-full" />
+                    <li
+                      key={index}
+                      className="flex items-center space-x-2 text-xs text-gray-400"
+                    >
+                      <div className="w-1 h-1 bg-gray-300 rounded-full" />
                       <span>{feature}</span>
                     </li>
                   ))}
@@ -121,17 +182,18 @@ const ServicesSection = () => {
         {/* Bottom CTA */}
         <div className="text-center mt-16">
           <div className="bg-gradient-to-r from-primary-50 to-blue-50 rounded-2xl p-8 md:p-12">
-            <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
+            <h3 className="text-xl md:text-2xl font-semibold text-gray-900 mb-3">
               Ready to Experience Our Premium Services?
             </h3>
-            <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
-              Let our expert team handle every detail of your journey while you focus on creating unforgettable memories.
+            <p className="text-base text-gray-500 mb-6 max-w-2xl mx-auto">
+              Let our expert team handle every detail of your journey while you
+              focus on creating unforgettable memories.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="bg-primary-500 hover:bg-primary-600 text-white font-semibold px-8 py-3 rounded-lg transition-all duration-200 transform hover:scale-105">
+            <div className="flex flex-col sm:flex-row gap-3 justify-center">
+              <button className="bg-primary-600 hover:bg-primary-700 text-white font-medium px-6 py-2.5 rounded-lg transition-colors">
                 Start Planning
               </button>
-              <button className="border-2 border-primary-500 text-primary-500 hover:bg-primary-500 hover:text-white font-semibold px-8 py-3 rounded-lg transition-all duration-200">
+              <button className="border border-primary-300 text-primary-600 hover:bg-primary-50 font-medium px-6 py-2.5 rounded-lg transition-colors">
                 Contact Us
               </button>
             </div>
