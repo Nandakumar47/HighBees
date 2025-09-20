@@ -48,7 +48,7 @@ const HeroSection = () => {
               <div className="max-w-2xl">
                 {/* Bold Headline */}
                 <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-gray-900 mb-8 leading-tight">
-                  Your <span className="text-blue-600">Dream</span> Journey
+                  Your <span className="text-[#FFAA05]">Dream</span> Journey
                   Awaits
                 </h1>
 
@@ -64,7 +64,7 @@ const HeroSection = () => {
                 {/* Buttons */}
                 <div className="flex flex-col sm:flex-row gap-4 sm:gap-6">
                   {/* Primary Button */}
-                  <button className="group bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300 hover:scale-105 hover:shadow-xl shadow-lg flex items-center justify-center">
+                  <button className="group bg-[#FFAA05] hover:bg-[#FFAA05]/90 text-black px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300 hover:scale-105 hover:shadow-xl shadow-lg flex items-center justify-center">
                     <span>Start Your Adventure</span>
                     <ArrowRight className="w-5 h-5 ml-2 transition-transform duration-300 group-hover:translate-x-1" />
                   </button>

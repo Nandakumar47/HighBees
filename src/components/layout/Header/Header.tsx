@@ -25,7 +25,6 @@ const Header = () => {
   const navigation = [
     { name: "Home", href: ROUTES.HOME },
     { name: "Destinations", href: ROUTES.DESTINATIONS },
-    { name: "Make Enquiry", href: ROUTES.ENQUIRY, special: true },
     { name: "Contact", href: ROUTES.CONTACT },
     { name: "About", href: ROUTES.ABOUT },
   ];
@@ -74,14 +73,17 @@ const Header = () => {
                   }`}
                 >
                   {item.name}
-
-                  {/* Static blue underline ONLY for Make Enquiry */}
-                  {item.special && (
-                    <span className="absolute bottom-0 left-0 w-full h-0.5 bg-[#0066CC]"></span>
-                  )}
                 </Link>
               );
             })}
+
+            {/* Make Enquiry Button - Rightmost */}
+            <Link
+              to={ROUTES.ENQUIRY}
+              className="bg-[#FFAA05] hover:bg-[#FFAA05]/90 text-black px-6 py-2 rounded-full text-sm font-medium transition-all duration-300 hover:scale-105 hover:shadow-lg"
+            >
+              Make Enquiry
+            </Link>
           </div>
 
           {/* Mobile Menu Button */}
@@ -111,24 +113,26 @@ const Header = () => {
                   <Link
                     key={item.name}
                     to={item.href}
-                    className={`block px-3 py-3 rounded-lg text-base font-medium transition-all duration-200 relative ${
+                    className={`block px-3 py-3 rounded-lg text-base font-medium transition-all duration-200 ${
                       isActive
                         ? "text-primary-500 bg-primary-50"
-                        : item.special
-                        ? "text-primary-500 mx-3 border border-primary-200 bg-primary-50 hover:bg-primary-100"
                         : "text-gray-700 hover:text-primary-500 hover:bg-gray-50"
                     }`}
                     onClick={() => setIsMenuOpen(false)}
                   >
                     {item.name}
-
-                    {/* Mobile static underline ONLY for Make Enquiry */}
-                    {item.special && (
-                      <span className="absolute bottom-1 left-3 right-3 h-0.5 bg-[#0066CC] rounded-full"></span>
-                    )}
                   </Link>
                 );
               })}
+
+              {/* Make Enquiry Button - Mobile */}
+              <Link
+                to={ROUTES.ENQUIRY}
+                className="block bg-[#FFAA05] hover:bg-[#FFAA05]/90 text-black px-6 py-3 rounded-lg text-base font-medium transition-all duration-200 text-center hover:scale-105 hover:shadow-lg"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Make Enquiry
+              </Link>
             </div>
           </div>
         )}
