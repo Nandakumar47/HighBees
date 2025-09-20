@@ -57,20 +57,20 @@ const HeroSection = () => {
       </div>
 
       {/* Main Content */}
-      <div className="relative min-h-screen flex items-center justify-center p-8 lg:p-16">
+      <div className="relative min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-16 py-12 sm:py-16 lg:py-20">
         <div className="max-w-7xl mx-auto w-full">
-          <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
+          <div className="flex flex-col lg:flex-row items-center gap-8 sm:gap-12 lg:gap-16">
             {/* Left Side - Content */}
-            <div className="lg:w-2/3">
-              <div className="max-w-2xl">
+            <div className="w-full lg:w-2/3">
+              <div className="max-w-2xl mx-auto lg:mx-0">
                 {/* Bold Headline */}
-                <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-gray-900 mb-8 leading-tight">
+                <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-gray-900 mb-6 sm:mb-8 leading-tight">
                   Your <span className="text-[#FFAA05]">Dream</span> Journey
                   Awaits
                 </h1>
 
                 {/* Descriptive Paragraph */}
-                <p className="text-lg sm:text-xl text-gray-600 mb-12 leading-relaxed font-light">
+                <p className="text-base sm:text-lg md:text-xl text-gray-600 mb-8 sm:mb-10 lg:mb-12 leading-relaxed font-light">
                   Join HighBees Holidays and discover extraordinary destinations
                   around the world. From pristine beaches to majestic mountains,
                   we craft unforgettable travel experiences tailored just for
@@ -81,13 +81,13 @@ const HeroSection = () => {
                 {/* Buttons */}
                 <div className="flex flex-col sm:flex-row gap-4 sm:gap-6">
                   {/* Primary Button */}
-                  <button className="group bg-[#FFAA05] hover:bg-[#FFAA05]/90 text-black px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300 hover:scale-105 hover:shadow-xl shadow-lg flex items-center justify-center">
+                  <button className="group bg-[#FFAA05] hover:bg-[#FFAA05]/90 text-black px-6 sm:px-8 py-3 sm:py-4 rounded-full font-semibold text-base sm:text-lg transition-all duration-300 hover:scale-105 hover:shadow-xl shadow-lg flex items-center justify-center">
                     <span>Start Your Adventure</span>
-                    <ArrowRight className="w-5 h-5 ml-2 transition-transform duration-300 group-hover:translate-x-1" />
+                    <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 ml-2 transition-transform duration-300 group-hover:translate-x-1" />
                   </button>
 
                   {/* Secondary Link */}
-                  <button className="text-gray-600 hover:text-blue-600 font-medium text-lg transition-colors duration-300 underline underline-offset-4 hover:underline-offset-8">
+                  <button className="text-gray-600 hover:text-blue-600 font-medium text-base sm:text-lg transition-colors duration-300 underline underline-offset-4 hover:underline-offset-8 text-center sm:text-left">
                     Explore Our Packages
                   </button>
                 </div>
@@ -95,12 +95,12 @@ const HeroSection = () => {
             </div>
 
             {/* Right Side - Instax Style Photo */}
-            <div className="lg:w-1/3">
-              <div className="relative w-full max-w-sm mx-auto">
+            <div className="w-full lg:w-1/3 flex justify-center lg:justify-end">
+              <div className="relative w-full max-w-xs sm:max-w-sm mx-auto lg:mx-0">
                 {/* Instax Photo Container */}
-                <div className="relative bg-white p-4 rounded-2xl shadow-2xl">
+                <div className="relative bg-white p-3 sm:p-4 rounded-2xl shadow-2xl">
                   {/* Photo Area */}
-                  <div className="relative h-80 w-full overflow-hidden rounded-xl">
+                  <div className="relative h-64 sm:h-72 md:h-80 w-full overflow-hidden rounded-xl">
                     {destinationImages.map((image, index) => (
                       <div
                         key={index}
@@ -117,8 +117,8 @@ const HeroSection = () => {
                   </div>
 
                   {/* Instax Photo Info Area */}
-                  <div className="mt-4 text-center">
-                    <div className="text-sm text-gray-500 font-medium">
+                  <div className="mt-3 sm:mt-4 text-center">
+                    <div className="text-xs sm:text-sm text-gray-500 font-medium">
                       HighBees Holidays
                     </div>
                     <div className="text-xs text-gray-400 mt-1">
