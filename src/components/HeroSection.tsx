@@ -1,8 +1,14 @@
 import { useState, useEffect } from "react";
-import { ChevronLeft, ChevronRight, ArrowRight } from "lucide-react";
+import {
+  ChevronLeft,
+  ChevronRight,
+  ArrowRight,
+  ChevronDown,
+} from "lucide-react";
 
 const HeroSection = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [showScrollIndicator, setShowScrollIndicator] = useState(true);
 
   const destinationImages = [
     "https://images.pexels.com/photos/2132180/pexels-photo-2132180.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1280",
@@ -18,6 +24,17 @@ const HeroSection = () => {
 
     return () => clearInterval(timer);
   }, [destinationImages.length]);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollY = window.scrollY;
+      // Hide scroll indicator after scrolling 200px
+      setShowScrollIndicator(scrollY < 200);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const nextSlide = () => {
     setCurrentSlide((prev) => (prev + 1) % destinationImages.length);
@@ -116,16 +133,16 @@ const HeroSection = () => {
       </div>
 
       {/* Scroll Indicator */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-gray-400 animate-bounce">
-        <div className="flex flex-col items-center space-y-2">
-          <div className="w-6 h-10 border-2 border-gray-300 rounded-full flex justify-center">
-            <div className="w-1 h-3 bg-gray-400 rounded-full mt-2 animate-pulse"></div>
+      {showScrollIndicator && (
+        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-gray-400 animate-bounce">
+          <div className="flex flex-col items-center space-y-2">
+            <ChevronDown className="w-6 h-6" />
+            <span className="text-xs font-medium tracking-wide uppercase">
+              Scroll
+            </span>
           </div>
-          <span className="text-xs font-medium tracking-wide uppercase">
-            Scroll
-          </span>
         </div>
-      </div>
+      )}
     </section>
   );
 };
