@@ -94,7 +94,7 @@ Looking forward to your expert guidance!`;
   }, [destinationId, withLoading]);
   const getDestinationById = async (destinationId: number) => {
     try {
-      const response = await axios.get(`/destination/${destinationId}`);
+      const response = await axios.get(`/api/destination/${destinationId}`);
       return response.data.data.destination;
     } catch (error) {
       console.error("Error fetching destinations:", error);

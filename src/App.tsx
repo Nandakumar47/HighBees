@@ -20,8 +20,6 @@ import AdminContactMessages from "./pages/admin/AdminContactMessages";
 import { ROUTES } from "./utils/constants";
 import ScrollToTop from "./components/layout/ScrollToTop/ScrollToTop";
 import AdminLayout from "./components/layout/AdminLayout";
-import axios from "axios";
-axios.defaults.baseURL = "https://highbees-b.onrender.com";
 
 const App: React.FC = () => {
   return (

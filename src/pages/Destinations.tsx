@@ -54,7 +54,7 @@ const Destinations = () => {
     limit?: number
   ): Promise<ApiDestination[]> => {
     try {
-      const response = await axios.get("/destinations", {
+      const response = await axios.get("/api/destinations", {
         params: { offset, limit },
       });
       return response.data.data.destinations;

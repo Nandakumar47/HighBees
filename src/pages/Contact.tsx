@@ -125,7 +125,7 @@ const Contact = () => {
   ];
   const sendEnquiry = async () => {
     try {
-      const response = await axios.post("/contact", {
+      const response = await axios.post("/api/contact", {
         name: formData.name,
         contactNo: formData.phone,
         emailId: formData.email,

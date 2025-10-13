@@ -80,7 +80,7 @@ const Enquiry: React.FC<EnquiryProps> = ({
     limit?: number
   ): Promise<ApiDestination[]> => {
     try {
-      const response = await axios.get("/destinations", {
+      const response = await axios.get("/api/destinations", {
         params: { offset, limit },
       });
       return response.data.data.destinations;
@@ -145,7 +145,7 @@ const Enquiry: React.FC<EnquiryProps> = ({
 
   const createEnquiry = async () => {
     try {
-      const response = await axios.post("/enquiry/create", {
+      const response = await axios.post("/api/enquiry/create", {
         name: formData.name,
         email: formData.email,
         phoneNumber: formData.phone,
