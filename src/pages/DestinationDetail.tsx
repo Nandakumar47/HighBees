@@ -16,14 +16,13 @@ import {
   X,
   Check,
   ArrowRight,
-  MessageCircle,
 } from "lucide-react";
 import { Destination } from "../data/destinationsData";
 import PageLoader from "../components/PageLoader";
 import Enquiry from "./Enquiry";
 import BackButton from "../components/common/BackButton/BackButton";
 import { useLoading } from "../hooks/useLoading";
-import { ROUTES, CONTACT_INFO } from "../utils/constants";
+import { ROUTES } from "../utils/constants";
 import axios from "axios";
 
 const DestinationDetail = () => {
@@ -56,26 +55,6 @@ const DestinationDetail = () => {
     }, 100);
   };
 
-  // WhatsApp business inquiry function
-  const handleWhatsAppInquiry = () => {
-    if (!destination) return;
-
-    const regionName = destination.name;
-    const message = `Hi! I'm interested in learning more about travel destinations in ${regionName}. Please provide detailed information about:
-
-• Popular attractions
-• Recommended duration of stay
-• Best time to visit
-• Accommodation options
-• Estimated costs
-• Available tour packages
-
-Looking forward to your expert guidance!`;
-
-    const encodedMessage = encodeURIComponent(message);
-    const whatsappUrl = `https://wa.me/${CONTACT_INFO.whatsapp}?text=${encodedMessage}`;
-    window.open(whatsappUrl, "_blank");
-  };
 
   useEffect(() => {
     const loadDestination = async () => {
@@ -154,13 +133,7 @@ Looking forward to your expert guidance!`;
 
             {/* Right side - Quick actions */}
             <div className="flex items-center space-x-3">
-              <button
-                onClick={handleWhatsAppInquiry}
-                className="inline-flex items-center space-x-2 px-4 py-2 text-sm font-medium text-green-600 hover:text-green-700 hover:bg-green-50 rounded-lg transition-colors"
-              >
-                <MessageCircle className="w-4 h-4" />
-                <span className="hidden sm:inline">WhatsApp</span>
-              </button>
+              {/* WhatsApp button removed - using global floating button instead */}
             </div>
           </div>
         </div>
@@ -738,17 +711,6 @@ Looking forward to your expert guidance!`;
         )}
       </div>
 
-      {/* Floating WhatsApp Button for Mobile */}
-      <div className="fixed bottom-20 right-5 z-40 sm:hidden">
-        <button
-          onClick={handleWhatsAppInquiry}
-          className="bg-green-500 hover:bg-green-600 text-white rounded-full p-3 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-110"
-          aria-label="Contact us on WhatsApp"
-        >
-          <MessageCircle className="w-6 h-6" />
-          <div className="absolute inset-0 rounded-full bg-green-500 animate-ping opacity-20"></div>
-        </button>
-      </div>
 
       {/* Gallery Modal */}
       {isGalleryModalOpen && (
