@@ -219,7 +219,7 @@ const AdminContactMessages = () => {
                 <ArrowLeft className="w-5 h-5" />
               </Link>
               <img
-                src="/ChatGPT Image Jun 21, 2025, 12_51_51 AM.png"
+                src="/logo.png"
                 alt="High Bees Holidays"
                 className="h-8 w-auto"
               />

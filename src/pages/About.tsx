@@ -11,12 +11,15 @@ import {
   Shield,
   Star,
 } from "lucide-react";
+import { CONTACT_INFO } from "../utils/constants";
+import { useRouteNavigation } from "../hooks/useRouteNavigation";
 
 const About = () => {
+  const { navigateToContact, navigateToEnquiry } = useRouteNavigation();
   const stats = [
-    { number: "50,000+", label: "Happy Travelers", icon: Users },
-    { number: "500+", label: "Destinations", icon: Globe },
-    { number: "15+", label: "Years Experience", icon: Clock },
+    { number: "100+", label: "Happy Travelers", icon: Users },
+    { number: "30+", label: "Destinations", icon: Globe },
+    // { number: "15+", label: "Years Experience", icon: Clock },
     { number: "4.9/5", label: "Customer Rating", icon: Star },
   ];
 
@@ -51,27 +54,19 @@ const About = () => {
     {
       icon: Phone,
       title: "Phone Numbers",
-      details: ["+1 (555) 123-4567", "+1 (555) 987-6543", "+1 (800) HIGHBEE"],
+      details: [CONTACT_INFO.phone],
       description: "Available 24/7 for emergencies",
     },
     {
       icon: Mail,
       title: "Email Addresses",
-      details: [
-        "info@highbeesholidays.com",
-        "support@highbeesholidays.com",
-        "bookings@highbeesholidays.com",
-      ],
+      details: [CONTACT_INFO.email],
       description: "We respond within 24 hours",
     },
     {
       icon: MapPin,
       title: "Physical Address",
-      details: [
-        "123 Travel Street",
-        "Adventure City, AC 12345",
-        "United States",
-      ],
+      details: [CONTACT_INFO.address],
       description: "Visit us by appointment",
     },
     {
@@ -145,9 +140,7 @@ const About = () => {
             </p>
             <div className="flex items-center justify-center space-x-3 text-primary-500">
               <MapPin className="w-6 h-6" />
-              <span className="text-lg font-semibold">
-                Est. 2008 • Trusted by 50,000+ Travelers
-              </span>
+              <span className="text-lg font-semibold">Est. 2024</span>
             </div>
           </div>
         </div>
@@ -257,7 +250,7 @@ const About = () => {
       </section>
 
       {/* Team Section with improved hierarchy */}
-      <section className="py-12 lg:py-16 bg-gray-50">
+      {/* <section className="py-12 lg:py-16 bg-gray-50">
         <div className="max-w-8xl mx-auto px-6 sm:px-8 lg:px-12">
           <div className="text-center mb-12">
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-6 leading-tight">
@@ -305,7 +298,7 @@ const About = () => {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* CTA Section with improved hierarchy */}
       <section className="py-16 lg:py-20 bg-gradient-to-r from-primary-500 to-primary-700">
@@ -318,10 +311,16 @@ const About = () => {
             adventure. Your dream destination is just a conversation away.
           </p>
           <div className="flex flex-col sm:flex-row gap-6 justify-center">
-            <button className="bg-white text-primary-600 hover:bg-gray-100 font-semibold px-8 py-4 rounded-xl transition-all duration-300 text-base hover:shadow-lg">
+            <button
+              onSelect={() => navigateToEnquiry()}
+              className="bg-white text-primary-600 hover:bg-gray-100 font-semibold px-8 py-4 rounded-xl transition-all duration-300 text-base hover:shadow-lg"
+            >
               Plan Your Trip
             </button>
-            <button className="border-2 border-white text-white hover:bg-white hover:text-primary-600 font-semibold px-8 py-4 rounded-xl transition-all duration-300 text-base hover:shadow-lg">
+            <button
+              onClick={navigateToContact}
+              className="border-2 border-white text-white hover:bg-white hover:text-primary-600 font-semibold px-8 py-4 rounded-xl transition-all duration-300 text-base hover:shadow-lg"
+            >
               Contact Us
             </button>
           </div>

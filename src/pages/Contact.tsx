@@ -12,6 +12,7 @@ import LoadingButton from "../components/LoadingButton";
 import { useLoading } from "../hooks/useLoading";
 import Input from "../components/common/Input/Input";
 import axios from "axios";
+import { CONTACT_INFO } from "../utils/constants";
 
 interface FormData {
   name: string;
@@ -101,19 +102,19 @@ const Contact = () => {
     {
       icon: Phone,
       title: "Phone",
-      details: ["+1 (555) 123-4567", "+1 (555) 987-6543"],
+      details: [CONTACT_INFO.phone],
       description: "Mon-Fri 9AM-8PM, Sat-Sun 10AM-6PM EST",
     },
     {
       icon: Mail,
       title: "Email",
-      details: ["info@highbeesholidays.com", "support@highbeesholidays.com"],
+      details: [CONTACT_INFO.email, "support@highbeesholidays.com"],
       description: "We respond within 24 hours",
     },
     {
       icon: MapPin,
       title: "Office",
-      details: ["123 Travel Street", "Adventure City, AC 12345"],
+      details: [CONTACT_INFO.address],
       description: "Visit us by appointment",
     },
     {

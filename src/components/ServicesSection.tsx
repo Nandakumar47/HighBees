@@ -9,8 +9,10 @@ import {
   MapPin,
   Camera,
 } from "lucide-react";
+import { useRouteNavigation } from "../hooks/useRouteNavigation";
 
 const ServicesSection = () => {
+  const { navigateToContact, navigateToEnquiry } = useRouteNavigation();
   const services = [
     {
       id: 1,
@@ -167,13 +169,6 @@ const ServicesSection = () => {
                     </li>
                   ))}
                 </ul>
-
-                {/* Hover Effect Button - Secondary action */}
-                <div className="mt-8 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <button className="w-full bg-primary-500 hover:bg-primary-600 text-white font-medium py-3 px-6 rounded-lg text-sm transition-colors">
-                    Learn More
-                  </button>
-                </div>
               </div>
             );
           })}
@@ -190,10 +185,16 @@ const ServicesSection = () => {
               focus on creating unforgettable memories.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="bg-primary-600 hover:bg-primary-700 text-white font-medium px-8 py-4 rounded-lg transition-colors text-lg">
+              <button
+                onClick={() => navigateToEnquiry()}
+                className="bg-primary-600 hover:bg-primary-700 text-white font-medium px-8 py-4 rounded-lg transition-colors text-lg"
+              >
                 Start Planning
               </button>
-              <button className="border border-primary-300 text-primary-600 hover:bg-primary-50 font-medium px-8 py-4 rounded-lg transition-colors text-lg">
+              <button
+                onClick={navigateToContact}
+                className="border border-primary-300 text-primary-600 hover:bg-primary-50 font-medium px-8 py-4 rounded-lg transition-colors text-lg"
+              >
                 Contact Us
               </button>
             </div>

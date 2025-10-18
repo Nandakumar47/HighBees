@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Navigate, useLocation } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import { useAuth } from "../../contexts/AuthContext";
 import { Lock, User, Eye, EyeOff, AlertCircle } from "lucide-react";
 import Input from "../../components/common/Input/Input";
@@ -14,9 +14,6 @@ const AdminLogin = () => {
   const [isLoading, setIsLoading] = useState(false);
 
   const { isAuthenticated, login } = useAuth();
-  const location = useLocation();
-
-  const from = location.state?.from?.pathname || "/admin/dashboard";
 
   useEffect(() => {
     if (isAuthenticated) {
@@ -50,7 +47,7 @@ const AdminLogin = () => {
 
   // Redirect if already authenticated
   if (isAuthenticated) {
-    return <Navigate to={from} replace />;
+    return <Navigate to={"/admin/dashboard"} replace />;
   }
 
   return (
@@ -65,20 +62,6 @@ const AdminLogin = () => {
             <h2 className="text-3xl font-bold text-gray-900">Admin Login</h2>
             <p className="text-gray-600 mt-2">
               Access the High Bees Holidays admin panel
-            </p>
-          </div>
-
-          {/* Demo Credentials Info */}
-          <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-6">
-            <h3 className="text-sm font-semibold text-blue-800 mb-2">
-              Demo Credentials:
-            </h3>
-            <p className="text-sm text-blue-700">
-              Username: <code className="bg-blue-100 px-1 rounded">admin</code>
-            </p>
-            <p className="text-sm text-blue-700">
-              Password:{" "}
-              <code className="bg-blue-100 px-1 rounded">highbees2024</code>
             </p>
           </div>
 

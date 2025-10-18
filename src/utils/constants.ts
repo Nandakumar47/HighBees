@@ -47,7 +47,8 @@ export const DEMO_CREDENTIALS = {
 export const CONTACT_INFO = {
   phone: "+9 170198 67571",
   email: "info@highbeesholidays.com",
-  address: "123 Travel Street, Adventure City, AC 12345",
+  address:
+    "High Bees Holidays, Om Chambers, 648/A, 4th Floor, Binnamangala 1st Stage, Indiranagar, Banglore - 560 038",
   whatsapp: "+9170198 67571",
 } as const;
 

@@ -22,7 +22,7 @@ const Footer = () => {
               <img
                 src="/logo.png"
                 alt="High Bees Holidays"
-                className="h-8 w-auto"
+                className="h-16 w-auto"
               />
               <div className="flex flex-col leading-tight">
                 <span className="text-lg font-bold">
@@ -40,28 +40,16 @@ const Footer = () => {
             </p>
             <div className="flex space-x-4">
               <a
-                href="#"
+                href="https://www.facebook.com/share/1A1KyGTwoj/"
                 className="text-gray-400 hover:text-primary-400 transition-colors"
               >
                 <Facebook className="w-5 h-5" />
               </a>
               <a
-                href="#"
-                className="text-gray-400 hover:text-primary-400 transition-colors"
-              >
-                <Twitter className="w-5 h-5" />
-              </a>
-              <a
-                href="#"
+                href="https://www.instagram.com/highbeesholidays/"
                 className="text-gray-400 hover:text-primary-400 transition-colors"
               >
                 <Instagram className="w-5 h-5" />
-              </a>
-              <a
-                href="#"
-                className="text-gray-400 hover:text-primary-400 transition-colors"
-              >
-                <Youtube className="w-5 h-5" />
               </a>
             </div>
           </div>
@@ -78,30 +66,15 @@ const Footer = () => {
                   Destinations
                 </Link>
               </li>
-              <li>
+              {/* <li>
                 <a
                   href="#"
                   className="text-gray-300 hover:text-white transition-colors"
                 >
                   Special Offers
                 </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  className="text-gray-300 hover:text-white transition-colors"
-                >
-                  Trip Types
-                </a>
-              </li>
-              <li>
-                <Link
-                  to={ROUTES.ABOUT}
-                  className="text-gray-300 hover:text-white transition-colors"
-                >
-                  About Us
-                </Link>
-              </li>
+              </li> */}
+
               <li>
                 <Link
                   to={ROUTES.CONTACT}
@@ -110,20 +83,36 @@ const Footer = () => {
                   Contact
                 </Link>
               </li>
+              <li>
+                <Link
+                  to={ROUTES.ENQUIRY}
+                  className="text-gray-300 hover:text-white transition-colors"
+                >
+                  Make an enquiry
+                </Link>
+              </li>
             </ul>
           </div>
 
           {/* Support */}
           <div>
-            <h3 className="text-lg font-semibold mb-4">Support</h3>
+            <h3 className="text-lg font-semibold mb-4">About the site</h3>
             <ul className="space-y-2">
-              <li>
+              {/* <li>
                 <a
                   href="#"
                   className="text-gray-300 hover:text-white transition-colors"
                 >
                   Help Center
                 </a>
+              </li> */}
+              <li>
+                <Link
+                  to={ROUTES.ABOUT}
+                  className="text-gray-300 hover:text-white transition-colors"
+                >
+                  About Us
+                </Link>
               </li>
               <li>
                 <a
@@ -182,7 +171,7 @@ const Footer = () => {
 
         <div className="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
           <p className="text-gray-400 text-sm">
-            © 2024 High Bees Holidays. All rights reserved.
+            © 2025 High Bees Holidays. All rights reserved.
           </p>
           <div className="flex space-x-6 mt-4 md:mt-0">
             <a
