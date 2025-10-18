@@ -5,6 +5,7 @@ export const ROUTES = {
   ABOUT: "/about",
   CONTACT: "/contact",
   ENQUIRY: "/enquiry",
+  ERROR: "/error",
   ADMIN: {
     LOGIN: "/admin/login",
     DASHBOARD: "/admin/dashboard",
