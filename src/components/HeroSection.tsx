@@ -46,7 +46,7 @@ const HeroSection = () => {
         <div className="max-w-7xl mx-auto w-full">
           <div className="flex flex-col lg:flex-row items-center gap-8 sm:gap-12 lg:gap-16">
             {/* Left Side - Content */}
-            <div className="w-full lg:w-2/3">
+            <div className="w-full lg:w-2/3 order-2 lg:order-1">
               <div className="max-w-2xl mx-auto lg:mx-0">
                 {/* Bold Headline */}
                 <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-gray-900 mb-6 sm:mb-8 leading-tight">
@@ -83,7 +83,7 @@ const HeroSection = () => {
             </div>
 
             {/* Right Side - Instax Style Photo */}
-            <div className="w-full lg:w-1/3 flex justify-center lg:justify-end">
+            <div className="w-full lg:w-1/3 flex justify-center lg:justify-end order-1 lg:order-2">
               <div className="relative w-full max-w-xs sm:max-w-sm mx-auto lg:mx-0">
                 {/* Instax Photo Container */}
                 <div className="relative bg-white p-3 sm:p-4 rounded-2xl shadow-2xl">
