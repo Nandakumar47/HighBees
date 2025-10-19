@@ -1,74 +1,94 @@
-import React, { useState } from 'react';
-import { Clock, Percent, Gift, Calendar, MapPin, Star, Users, Tag } from 'lucide-react';
-import { getAllDestinations } from '../data/destinationsData';
+import { useState } from "react";
+import { Clock, Gift, Calendar, MapPin, Star, Users, Tag } from "lucide-react";
+import { getAllDestinations } from "../data/destinationsData";
 
 const SpecialOffers = () => {
-  const [selectedCategory, setSelectedCategory] = useState('all');
+  const [selectedCategory, setSelectedCategory] = useState("all");
 
   const categories = [
-    { id: 'all', name: 'All Offers' },
-    { id: 'early-bird', name: 'Early Bird' },
-    { id: 'last-minute', name: 'Last Minute' },
-    { id: 'group', name: 'Group Deals' },
-    { id: 'seasonal', name: 'Seasonal' }
+    { id: "all", name: "All Offers" },
+    { id: "early-bird", name: "Early Bird" },
+    { id: "last-minute", name: "Last Minute" },
+    { id: "group", name: "Group Deals" },
+    { id: "seasonal", name: "Seasonal" },
   ];
 
   const featuredOffers = [
     {
       id: 1,
-      title: 'Early Bird Special',
-      subtitle: 'Book 3 months in advance',
+      title: "Early Bird Special",
+      subtitle: "Book 3 months in advance",
       discount: 30,
-      category: 'early-bird',
-      description: 'Save up to 30% on select destinations when you book your dream vacation 3 months ahead.',
-      image: 'https://images.pexels.com/photos/1591373/pexels-photo-1591373.jpeg?auto=compress&cs=tinysrgb&w=800',
-      validUntil: '2024-03-31',
-      code: 'EARLY30',
-      destinations: ['Santorini', 'Maldives', 'Bali', 'Dubai'],
-      terms: 'Valid for bookings made 90 days in advance. Cannot be combined with other offers.'
+      category: "early-bird",
+      description:
+        "Save up to 30% on select destinations when you book your dream vacation 3 months ahead.",
+      image:
+        "https://images.pexels.com/photos/1591373/pexels-photo-1591373.jpeg?auto=compress&cs=tinysrgb&w=800",
+      validUntil: "2024-03-31",
+      code: "EARLY30",
+      destinations: ["Santorini", "Maldives", "Bali", "Dubai"],
+      terms:
+        "Valid for bookings made 90 days in advance. Cannot be combined with other offers.",
     },
     {
       id: 2,
-      title: 'Flash Sale Weekend',
-      subtitle: 'Limited time offer',
+      title: "Flash Sale Weekend",
+      subtitle: "Limited time offer",
       discount: 40,
-      category: 'last-minute',
-      description: 'Incredible savings on last-minute bookings. Perfect for spontaneous adventures.',
-      image: 'https://images.pexels.com/photos/1024993/pexels-photo-1024993.jpeg?auto=compress&cs=tinysrgb&w=800',
-      validUntil: '2024-02-29',
-      code: 'FLASH40',
-      destinations: ['Iceland', 'Costa Rica', 'Kenya', 'Japan'],
-      terms: 'Valid for departures within 30 days. Subject to availability.'
+      category: "last-minute",
+      description:
+        "Incredible savings on last-minute bookings. Perfect for spontaneous adventures.",
+      image:
+        "https://images.pexels.com/photos/1024993/pexels-photo-1024993.jpeg?auto=compress&cs=tinysrgb&w=800",
+      validUntil: "2024-02-29",
+      code: "FLASH40",
+      destinations: ["Iceland", "Costa Rica", "Kenya", "Japan"],
+      terms: "Valid for departures within 30 days. Subject to availability.",
     },
     {
       id: 3,
-      title: 'Group Adventure',
-      subtitle: 'Travel with friends & family',
+      title: "Group Adventure",
+      subtitle: "Travel with friends & family",
       discount: 25,
-      category: 'group',
-      description: 'Special rates for groups of 6 or more. Perfect for family reunions and friend getaways.',
-      image: 'https://images.pexels.com/photos/1647962/pexels-photo-1647962.jpeg?auto=compress&cs=tinysrgb&w=800',
-      validUntil: '2024-05-15',
-      code: 'GROUP25',
-      destinations: ['Peru', 'Greece', 'Morocco', 'Thailand'],
-      terms: 'Minimum 6 travelers required. Group leader travels free with 10+ bookings.'
-    }
+      category: "group",
+      description:
+        "Special rates for groups of 6 or more. Perfect for family reunions and friend getaways.",
+      image:
+        "https://images.pexels.com/photos/1647962/pexels-photo-1647962.jpeg?auto=compress&cs=tinysrgb&w=800",
+      validUntil: "2024-05-15",
+      code: "GROUP25",
+      destinations: ["Peru", "Greece", "Morocco", "Thailand"],
+      terms:
+        "Minimum 6 travelers required. Group leader travels free with 10+ bookings.",
+    },
   ];
 
   // Get destinations from centralized data for realistic deals
   const allDestinations = getAllDestinations();
-  
+
   const deals = [
     ...allDestinations.slice(0, 6).map((dest, index) => {
-      const originalPrice = (dest.itineraries[0]?.price || 999) + Math.floor(Math.random() * 500) + 200;
+      const originalPrice =
+        (dest.itineraries[0]?.price || 999) +
+        Math.floor(Math.random() * 500) +
+        200;
       const salePrice = Math.floor(originalPrice * (0.7 + Math.random() * 0.2)); // 20-30% discount
-      const discount = Math.floor(((originalPrice - salePrice) / originalPrice) * 100);
-      
-      const categories = ['last-minute', 'early-bird', 'group', 'seasonal'];
+      const discount = Math.floor(
+        ((originalPrice - salePrice) / originalPrice) * 100
+      );
+
+      const categories = ["last-minute", "early-bird", "group", "seasonal"];
       const category = categories[index % categories.length];
-      
-      const endDates = ['2024-02-29', '2024-03-15', '2024-03-31', '2024-04-15', '2024-05-30', '2024-04-30'];
-      
+
+      const endDates = [
+        "2024-02-29",
+        "2024-03-15",
+        "2024-03-31",
+        "2024-04-15",
+        "2024-05-30",
+        "2024-04-30",
+      ];
+
       return {
         id: index + 1,
         destination: dest.name,
@@ -77,17 +97,20 @@ const SpecialOffers = () => {
         salePrice,
         discount,
         image: dest.heroImage,
-        duration: dest.itineraries[0]?.duration || '7 days',
+        duration: dest.itineraries[0]?.duration || "7 days",
         rating: dest.reviews[0]?.rating || 4.5 + Math.random() * 0.4,
         reviews: Math.floor(Math.random() * 1000) + 500,
         endDate: endDates[index % endDates.length],
         category,
-        highlights: dest.highlights.slice(0, 3)
+        highlights: dest.highlights.slice(0, 3),
       };
-    })
+    }),
   ];
 
-  const filteredDeals = selectedCategory === 'all' ? deals : deals.filter(deal => deal.category === selectedCategory);
+  const filteredDeals =
+    selectedCategory === "all"
+      ? deals
+      : deals.filter((deal) => deal.category === selectedCategory);
 
   return (
     <div className="min-h-screen bg-gray-50 pt-20">
@@ -98,14 +121,17 @@ const SpecialOffers = () => {
             Special Offers & Deals
           </h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Don't miss out on these exclusive deals and limited-time offers to make your dream vacation more affordable
+            Don't miss out on these exclusive deals and limited-time offers to
+            make your dream vacation more affordable
           </p>
         </div>
 
-        {/* Featured Offers */}
-        <div className="mb-16">
-          <h2 className="text-3xl font-bold text-gray-900 mb-8">Featured Offers</h2>
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        {/* Featured Offers with improved mobile layout */}
+        <div className="mb-12 sm:mb-16">
+          <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-6 sm:mb-8">
+            Featured Offers
+          </h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             {featuredOffers.map((offer) => (
               <div
                 key={offer.id}
@@ -121,33 +147,46 @@ const SpecialOffers = () => {
                   <div className="absolute inset-0 bg-gradient-to-br from-primary-600 to-primary-800 opacity-85" />
                 </div>
 
-                {/* Content */}
-                <div className="relative p-8 text-white h-full flex flex-col justify-between min-h-[400px]">
+                {/* Content with improved mobile layout */}
+                <div className="relative p-4 sm:p-6 lg:p-8 text-white h-full flex flex-col justify-between min-h-[350px] sm:min-h-[400px]">
                   <div>
-                    <div className="flex items-center justify-between mb-4">
-                      <Gift className="w-8 h-8" />
-                      <div className="bg-white bg-opacity-20 backdrop-blur-sm px-3 py-1 rounded-full">
-                        <span className="text-sm font-bold">{offer.discount}% OFF</span>
+                    <div className="flex items-center justify-between mb-3 sm:mb-4">
+                      <Gift className="w-6 h-6 sm:w-8 sm:h-8" />
+                      <div className="bg-white bg-opacity-20 backdrop-blur-sm px-2 sm:px-3 py-1 rounded-full">
+                        <span className="text-xs sm:text-sm font-bold">
+                          {offer.discount}% OFF
+                        </span>
                       </div>
                     </div>
 
-                    <h3 className="text-2xl font-bold mb-2">{offer.title}</h3>
-                    <p className="text-lg mb-4 opacity-90">{offer.subtitle}</p>
-                    <p className="text-sm mb-6 opacity-80">{offer.description}</p>
+                    <h3 className="text-xl sm:text-2xl font-bold mb-2">
+                      {offer.title}
+                    </h3>
+                    <p className="text-base sm:text-lg mb-3 sm:mb-4 opacity-90">
+                      {offer.subtitle}
+                    </p>
+                    <p className="text-xs sm:text-sm mb-4 sm:mb-6 opacity-80">
+                      {offer.description}
+                    </p>
 
-                    <div className="space-y-2 mb-6">
+                    <div className="space-y-1 sm:space-y-2 mb-4 sm:mb-6">
                       <div className="flex items-center space-x-2">
-                        <Tag className="w-4 h-4" />
-                        <span className="text-sm">Code: <strong>{offer.code}</strong></span>
+                        <Tag className="w-3 h-3 sm:w-4 sm:h-4" />
+                        <span className="text-xs sm:text-sm">
+                          Code: <strong>{offer.code}</strong>
+                        </span>
                       </div>
                       <div className="flex items-center space-x-2">
-                        <Calendar className="w-4 h-4" />
-                        <span className="text-sm">Valid until {new Date(offer.validUntil).toLocaleDateString()}</span>
+                        <Calendar className="w-3 h-3 sm:w-4 sm:h-4" />
+                        <span className="text-xs sm:text-sm">
+                          Valid until{" "}
+                          {new Date(offer.validUntil).toLocaleDateString()}
+                        </span>
                       </div>
                     </div>
                   </div>
 
-                  <button className="w-full bg-white bg-opacity-20 backdrop-blur-sm hover:bg-opacity-30 border border-white border-opacity-30 text-white font-semibold py-3 rounded-lg transition-all duration-200">
+                  <button className="w-full bg-white bg-opacity-20 backdrop-blur-sm hover:bg-opacity-30 border border-white border-opacity-30 text-white font-semibold py-2 sm:py-3 rounded-lg transition-all duration-200 text-sm sm:text-base">
                     Claim Offer
                   </button>
                 </div>
@@ -156,17 +195,17 @@ const SpecialOffers = () => {
           </div>
         </div>
 
-        {/* Category Filter */}
-        <div className="mb-8">
-          <div className="flex flex-wrap gap-2">
+        {/* Category Filter with improved mobile layout */}
+        <div className="mb-6 sm:mb-8">
+          <div className="flex flex-wrap gap-2 sm:gap-3">
             {categories.map((category) => (
               <button
                 key={category.id}
                 onClick={() => setSelectedCategory(category.id)}
-                className={`px-4 py-2 rounded-lg font-medium transition-all duration-200 ${
+                className={`px-3 sm:px-4 py-2 rounded-lg font-medium transition-all duration-200 text-sm sm:text-base ${
                   selectedCategory === category.id
-                    ? 'bg-primary-500 text-white shadow-lg'
-                    : 'bg-white text-gray-700 hover:bg-gray-100 shadow-md'
+                    ? "bg-primary-500 text-white shadow-lg"
+                    : "bg-white text-gray-700 hover:bg-gray-100 shadow-md"
                 }`}
               >
                 {category.name}
@@ -175,8 +214,8 @@ const SpecialOffers = () => {
           </div>
         </div>
 
-        {/* Deals Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {/* Deals Grid with improved mobile spacing */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
           {filteredDeals.map((deal) => (
             <div
               key={deal.id}
@@ -189,7 +228,9 @@ const SpecialOffers = () => {
                   className="w-full h-48 object-cover"
                 />
                 <div className="absolute top-4 left-4 bg-red-500 text-white px-3 py-1 rounded-full">
-                  <span className="text-sm font-bold">{deal.discount}% OFF</span>
+                  <span className="text-sm font-bold">
+                    {deal.discount}% OFF
+                  </span>
                 </div>
                 <div className="absolute top-4 right-4 bg-white bg-opacity-90 backdrop-blur-sm px-3 py-1 rounded-full">
                   <div className="flex items-center space-x-1">
@@ -201,39 +242,51 @@ const SpecialOffers = () => {
                 </div>
               </div>
 
-              <div className="p-6">
+              <div className="p-4 sm:p-6">
                 <div className="flex items-center justify-between mb-2">
                   <div className="flex items-center space-x-1 text-gray-500">
-                    <MapPin className="w-4 h-4" />
-                    <span className="text-sm">{deal.country}</span>
+                    <MapPin className="w-3 h-3 sm:w-4 sm:h-4" />
+                    <span className="text-xs sm:text-sm">{deal.country}</span>
                   </div>
                   <div className="flex items-center space-x-1">
-                    <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
-                    <span className="text-sm font-medium">{deal.rating}</span>
-                    <span className="text-sm text-gray-500">({deal.reviews})</span>
+                    <Star className="w-3 h-3 sm:w-4 sm:h-4 fill-yellow-400 text-yellow-400" />
+                    <span className="text-xs sm:text-sm font-medium">
+                      {deal.rating}
+                    </span>
+                    <span className="text-xs sm:text-sm text-gray-500">
+                      ({deal.reviews})
+                    </span>
                   </div>
                 </div>
 
-                <h3 className="text-xl font-bold text-gray-900 mb-2">{deal.destination}</h3>
+                <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-2">
+                  {deal.destination}
+                </h3>
 
-                <div className="flex items-center space-x-2 mb-4">
-                  <span className="text-2xl font-bold text-green-600">${deal.salePrice}</span>
-                  <span className="text-lg text-gray-500 line-through">${deal.originalPrice}</span>
-                  <span className="text-sm text-green-600 font-medium">Save ${deal.originalPrice - deal.salePrice}</span>
+                <div className="flex items-center space-x-2 mb-3 sm:mb-4">
+                  <span className="text-xl sm:text-2xl font-bold text-green-600">
+                    ${deal.salePrice}
+                  </span>
+                  <span className="text-base sm:text-lg text-gray-500 line-through">
+                    ${deal.originalPrice}
+                  </span>
+                  <span className="text-xs sm:text-sm text-green-600 font-medium">
+                    Save ${deal.originalPrice - deal.salePrice}
+                  </span>
                 </div>
 
-                <div className="flex items-center space-x-4 text-sm text-gray-500 mb-4">
+                <div className="flex items-center space-x-3 sm:space-x-4 text-xs sm:text-sm text-gray-500 mb-3 sm:mb-4">
                   <div className="flex items-center space-x-1">
-                    <Calendar className="w-4 h-4" />
+                    <Calendar className="w-3 h-3 sm:w-4 sm:h-4" />
                     <span>{deal.duration}</span>
                   </div>
                   <div className="flex items-center space-x-1">
-                    <Users className="w-4 h-4" />
+                    <Users className="w-3 h-3 sm:w-4 sm:h-4" />
                     <span>2-8 people</span>
                   </div>
                 </div>
 
-                <div className="flex flex-wrap gap-2 mb-4">
+                <div className="flex flex-wrap gap-1 sm:gap-2 mb-3 sm:mb-4">
                   {deal.highlights.map((highlight, index) => (
                     <span
                       key={index}
@@ -244,7 +297,7 @@ const SpecialOffers = () => {
                   ))}
                 </div>
 
-                <button className="w-full bg-primary-500 hover:bg-primary-600 text-white font-semibold py-3 rounded-lg transition-colors">
+                <button className="w-full bg-primary-500 hover:bg-primary-600 text-white font-semibold py-2 sm:py-3 rounded-lg transition-colors text-sm sm:text-base">
                   Book Now
                 </button>
               </div>
@@ -252,13 +305,16 @@ const SpecialOffers = () => {
           ))}
         </div>
 
-        {/* Newsletter CTA */}
-        <div className="mt-16 bg-gradient-to-r from-primary-500 to-primary-700 rounded-2xl p-8 text-center text-white">
-          <h3 className="text-2xl font-bold mb-4">Never Miss a Deal</h3>
-          <p className="text-lg mb-6 opacity-90">
-            Subscribe to our newsletter and be the first to know about exclusive offers and flash sales
+        {/* Newsletter CTA with improved mobile layout */}
+        <div className="mt-12 sm:mt-16 bg-gradient-to-r from-primary-500 to-primary-700 rounded-2xl p-6 sm:p-8 text-center text-white">
+          <h3 className="text-xl sm:text-2xl font-bold mb-3 sm:mb-4">
+            Never Miss a Deal
+          </h3>
+          <p className="text-sm sm:text-base lg:text-lg mb-4 sm:mb-6 opacity-90">
+            Subscribe to our newsletter and be the first to know about exclusive
+            offers and flash sales
           </p>
-          <button className="bg-white text-primary-500 hover:bg-gray-100 font-semibold px-8 py-3 rounded-lg transition-colors">
+          <button className="bg-white text-primary-500 hover:bg-gray-100 font-semibold px-6 sm:px-8 py-2 sm:py-3 rounded-lg transition-colors text-sm sm:text-base">
             Subscribe Now
           </button>
         </div>

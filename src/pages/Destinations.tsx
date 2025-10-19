@@ -84,33 +84,37 @@ const Destinations = () => {
           </p>
         </div>
 
-        {/* Search and Filters */}
-        <div className="bg-white rounded-2xl shadow-lg p-6 mb-8">
-          <div className="grid grid-cols-4 gap-4 mb-6">
+        {/* Search and Filters with improved mobile layout */}
+        <div className="bg-white rounded-2xl shadow-lg p-4 sm:p-6 mb-6 sm:mb-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-4 sm:mb-6">
             {/* Search */}
-            <Input
-              type="text"
-              placeholder="Search destinations..."
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-              icon={Search}
-            />
+            <div className="sm:col-span-2 lg:col-span-1">
+              <Input
+                type="text"
+                placeholder="Search destinations..."
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                icon={Search}
+              />
+            </div>
 
             {/* country Filter */}
-            <Select
-              value={selectedCountry}
-              onChange={(e) => setSelectedCountry(e.target.value)}
-              placeholder="All countries"
-            >
-              {countries.map((country) => (
-                <option key={country.id} value={country.id}>
-                  {country.name}
-                </option>
-              ))}
-            </Select>
+            <div className="sm:col-span-2 lg:col-span-1">
+              <Select
+                value={selectedCountry}
+                onChange={(e) => setSelectedCountry(e.target.value)}
+                placeholder="All countries"
+              >
+                {countries.map((country) => (
+                  <option key={country.id} value={country.id}>
+                    {country.name}
+                  </option>
+                ))}
+              </Select>
+            </div>
           </div>
 
-          <div className="text-xs text-gray-400">
+          <div className="text-xs sm:text-sm text-gray-400">
             Showing {filteredDestinations.length} of {destinations.length}{" "}
             destinations
           </div>
@@ -118,7 +122,7 @@ const Destinations = () => {
 
         {/* Loading State */}
         {isLoading ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             {Array.from({ length: 6 }).map((_, index) => (
               <CardSkeleton key={index} />
             ))}
@@ -126,7 +130,9 @@ const Destinations = () => {
         ) : (
           /* Destinations Grid/List */
           <div
-            className={"grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"}
+            className={
+              "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8"
+            }
           >
             {filteredDestinations.map((destination) => (
               <DestinationCard key={destination.id} destination={destination} />
@@ -136,14 +142,14 @@ const Destinations = () => {
 
         {/* No Results */}
         {!isLoading && filteredDestinations.length === 0 && (
-          <div className="text-center py-12">
+          <div className="text-center py-8 sm:py-12">
             <div className="text-gray-300 mb-4">
-              <Search className="w-12 h-12 mx-auto" />
+              <Search className="w-10 h-10 sm:w-12 sm:h-12 mx-auto" />
             </div>
-            <h3 className="text-lg font-medium text-gray-700 mb-2">
+            <h3 className="text-base sm:text-lg font-medium text-gray-700 mb-2">
               No destinations found
             </h3>
-            <p className="text-gray-500 text-sm">
+            <p className="text-gray-500 text-xs sm:text-sm">
               Try adjusting your search criteria or filters
             </p>
           </div>

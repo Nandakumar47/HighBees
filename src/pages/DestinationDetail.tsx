@@ -55,7 +55,6 @@ const DestinationDetail = () => {
     }, 100);
   };
 
-
   useEffect(() => {
     const loadDestination = async () => {
       await withLoading(async () => {
@@ -139,8 +138,8 @@ const DestinationDetail = () => {
         </div>
       </div>
 
-      {/* Hero Section with improved hierarchy */}
-      <section className="relative h-[75vh] overflow-hidden">
+      {/* Hero Section with improved hierarchy and mobile optimization */}
+      <section className="relative h-[60vh] sm:h-[70vh] lg:h-[75vh] overflow-hidden">
         <img
           src={destination.heroImage}
           alt={destination.name}
@@ -149,34 +148,34 @@ const DestinationDetail = () => {
         <div className="absolute inset-0 bg-black/30" />
 
         <div className="absolute inset-0 flex items-center justify-center">
-          <div className="text-center text-white max-w-6xl mx-auto px-6 sm:px-8 lg:px-12">
-            {/* Primary heading with better hierarchy */}
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight tracking-tight animate-slide-up">
+          <div className="text-center text-white max-w-6xl mx-auto px-4 sm:px-6 lg:px-12">
+            {/* Primary heading with better mobile hierarchy */}
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-4 sm:mb-6 leading-tight tracking-tight animate-slide-up">
               {destination.name}
             </h1>
             <p
-              className="text-xl sm:text-2xl md:text-3xl mb-4 animate-slide-up font-light"
+              className="text-lg sm:text-xl md:text-2xl lg:text-3xl mb-3 sm:mb-4 animate-slide-up font-light"
               style={{ animationDelay: "0.2s" }}
             >
               {destination.country}
             </p>
             <p
-              className="text-lg sm:text-xl md:text-2xl mb-12 max-w-4xl mx-auto animate-slide-up text-gray-100 leading-relaxed font-light"
+              className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl mb-8 sm:mb-12 max-w-4xl mx-auto animate-slide-up text-gray-100 leading-relaxed font-light px-2"
               style={{ animationDelay: "0.4s" }}
             >
               {destination.description}
             </p>
             <div
-              className="flex flex-wrap justify-center gap-6 animate-slide-up"
+              className="flex flex-col sm:flex-row justify-center gap-3 sm:gap-6 animate-slide-up px-4"
               style={{ animationDelay: "0.6s" }}
             >
-              <div className="bg-white/10 backdrop-blur-sm rounded-xl px-6 py-3 border border-white/20">
-                <span className="text-sm font-medium">
+              <div className="bg-white/10 backdrop-blur-sm rounded-xl px-4 sm:px-6 py-2 sm:py-3 border border-white/20">
+                <span className="text-xs sm:text-sm font-medium">
                   Best Time: {destination.bestTimeToVisit.months}
                 </span>
               </div>
-              <div className="bg-white/10 backdrop-blur-sm rounded-xl px-6 py-3 border border-white/20">
-                <span className="text-sm font-medium">
+              <div className="bg-white/10 backdrop-blur-sm rounded-xl px-4 sm:px-6 py-2 sm:py-3 border border-white/20">
+                <span className="text-xs sm:text-sm font-medium">
                   From {destination.budgetRange.budget}
                 </span>
               </div>
@@ -185,10 +184,10 @@ const DestinationDetail = () => {
         </div>
       </section>
 
-      {/* Navigation Tabs with improved hierarchy */}
+      {/* Navigation Tabs with improved mobile hierarchy */}
       <section className="sticky top-36 bg-white border-b border-gray-200 z-30">
-        <div className="max-w-8xl mx-auto px-6 sm:px-8 lg:px-12">
-          <div className="flex space-x-10 overflow-x-auto">
+        <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-12">
+          <div className="flex space-x-4 sm:space-x-6 lg:space-x-10 overflow-x-auto scrollbar-hide">
             {[
               { id: "overview", label: "Overview" },
               { id: "itineraries", label: "Itineraries" },
@@ -199,7 +198,7 @@ const DestinationDetail = () => {
               <button
                 key={tab.id}
                 onClick={() => handleTabChange(tab.id)}
-                className={`py-4 px-3 border-b-2 font-medium text-base whitespace-nowrap transition-all duration-300 ${
+                className={`py-3 sm:py-4 px-2 sm:px-3 border-b-2 font-medium text-sm sm:text-base whitespace-nowrap transition-all duration-300 flex-shrink-0 ${
                   activeTab === tab.id
                     ? "border-primary-500 text-primary-600"
                     : "border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300"
@@ -214,50 +213,53 @@ const DestinationDetail = () => {
 
       <div
         id="tab-content-area"
-        className="max-w-8xl mx-auto px-6 sm:px-8 lg:px-12 py-16"
+        className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-12 py-8 sm:py-12 lg:py-16"
       >
-        {/* Overview Tab with improved hierarchy */}
+        {/* Overview Tab with improved hierarchy and mobile optimization */}
         {activeTab === "overview" && (
-          <div className="space-y-16">
-            {/* Key Information with better spacing */}
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
+          <div className="space-y-8 sm:space-y-12 lg:space-y-16">
+            {/* Key Information with better mobile spacing */}
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 sm:gap-10 lg:gap-12">
               <div className="lg:col-span-2">
-                <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-8 leading-tight">
+                <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-6 sm:mb-8 leading-tight">
                   Destination Highlights
                 </h2>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-12">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 mb-8 sm:mb-12">
                   {destination.highlights.map((highlight, index) => (
-                    <div key={index} className="flex items-center space-x-4">
-                      <Check className="w-5 h-5 text-green-500 flex-shrink-0" />
-                      <span className="text-gray-700 text-base leading-relaxed">
+                    <div
+                      key={index}
+                      className="flex items-start space-x-3 sm:space-x-4"
+                    >
+                      <Check className="w-4 h-4 sm:w-5 sm:h-5 text-green-500 flex-shrink-0 mt-0.5" />
+                      <span className="text-gray-700 text-sm sm:text-base leading-relaxed">
                         {highlight}
                       </span>
                     </div>
                   ))}
                 </div>
 
-                {/* Attractions Map Placeholder with improved hierarchy */}
-                <div className="bg-gray-50 rounded-2xl p-8 text-center">
-                  <MapPin className="w-12 h-12 text-gray-400 mx-auto mb-4" />
-                  <h3 className="text-xl font-semibold text-gray-900 mb-3">
+                {/* Attractions Map Placeholder with improved mobile hierarchy */}
+                <div className="bg-gray-50 rounded-2xl p-4 sm:p-6 lg:p-8 text-center">
+                  <MapPin className="w-10 h-10 sm:w-12 sm:h-12 text-gray-400 mx-auto mb-3 sm:mb-4" />
+                  <h3 className="text-lg sm:text-xl font-semibold text-gray-900 mb-2 sm:mb-3">
                     Interactive Map
                   </h3>
-                  <p className="text-gray-600 text-base mb-6">
+                  <p className="text-gray-600 text-sm sm:text-base mb-4 sm:mb-6">
                     Explore key attractions and points of interest
                   </p>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                     {destination.attractions.map((attraction, index) => (
                       <div
                         key={index}
-                        className="bg-white rounded-xl p-5 text-left shadow-sm"
+                        className="bg-white rounded-xl p-4 sm:p-5 text-left shadow-sm"
                       >
-                        <h4 className="font-semibold text-gray-900 text-base mb-2">
+                        <h4 className="font-semibold text-gray-900 text-sm sm:text-base mb-2">
                           {attraction.name}
                         </h4>
-                        <p className="text-sm text-gray-600 mb-2">
+                        <p className="text-xs sm:text-sm text-gray-600 mb-2">
                           {attraction.type}
                         </p>
-                        <p className="text-sm text-gray-500 leading-relaxed">
+                        <p className="text-xs sm:text-sm text-gray-500 leading-relaxed">
                           {attraction.description}
                         </p>
                       </div>
@@ -266,83 +268,83 @@ const DestinationDetail = () => {
                 </div>
               </div>
 
-              <div className="space-y-8">
-                {/* Essential Information with improved hierarchy */}
-                <div className="bg-gray-50 rounded-2xl p-8">
-                  <h3 className="text-xl font-semibold text-gray-900 mb-6">
+              <div className="space-y-6 sm:space-y-8">
+                {/* Essential Information with improved mobile hierarchy */}
+                <div className="bg-gray-50 rounded-2xl p-4 sm:p-6 lg:p-8">
+                  <h3 className="text-lg sm:text-xl font-semibold text-gray-900 mb-4 sm:mb-6">
                     Essential Information
                   </h3>
-                  <div className="space-y-6">
-                    <div className="flex items-start space-x-4">
-                      <Calendar className="w-5 h-5 text-primary-500 mt-1 flex-shrink-0" />
+                  <div className="space-y-4 sm:space-y-6">
+                    <div className="flex items-start space-x-3 sm:space-x-4">
+                      <Calendar className="w-4 h-4 sm:w-5 sm:h-5 text-primary-500 mt-1 flex-shrink-0" />
                       <div>
-                        <p className="font-semibold text-gray-900 text-base mb-1">
+                        <p className="font-semibold text-gray-900 text-sm sm:text-base mb-1">
                           Best Time to Visit
                         </p>
-                        <p className="text-sm text-gray-700 mb-1">
+                        <p className="text-xs sm:text-sm text-gray-700 mb-1">
                           {destination.bestTimeToVisit.months}
                         </p>
-                        <p className="text-sm text-gray-500">
+                        <p className="text-xs sm:text-sm text-gray-500">
                           {destination.bestTimeToVisit.weather}
                         </p>
                       </div>
                     </div>
 
-                    <div className="flex items-start space-x-4">
-                      <Plane className="w-5 h-5 text-primary-500 mt-1 flex-shrink-0" />
+                    <div className="flex items-start space-x-3 sm:space-x-4">
+                      <Plane className="w-4 h-4 sm:w-5 sm:h-5 text-primary-500 mt-1 flex-shrink-0" />
                       <div>
-                        <p className="font-semibold text-gray-900 text-base mb-1">
+                        <p className="font-semibold text-gray-900 text-sm sm:text-base mb-1">
                           Visa Requirements
                         </p>
-                        <p className="text-sm text-gray-700">
+                        <p className="text-xs sm:text-sm text-gray-700">
                           {destination.visaRequirements.details}
                         </p>
                       </div>
                     </div>
 
-                    <div className="flex items-start space-x-4">
-                      <CreditCard className="w-5 h-5 text-primary-500 mt-1 flex-shrink-0" />
+                    <div className="flex items-start space-x-3 sm:space-x-4">
+                      <CreditCard className="w-4 h-4 sm:w-5 sm:h-5 text-primary-500 mt-1 flex-shrink-0" />
                       <div>
-                        <p className="font-semibold text-gray-900 text-base mb-1">
+                        <p className="font-semibold text-gray-900 text-sm sm:text-base mb-1">
                           Currency
                         </p>
-                        <p className="text-sm text-gray-700 mb-1">
+                        <p className="text-xs sm:text-sm text-gray-700 mb-1">
                           {destination.currency.name} (
                           {destination.currency.code})
                         </p>
-                        <p className="text-sm text-gray-500">
+                        <p className="text-xs sm:text-sm text-gray-500">
                           {destination.currency.exchangeRate}
                         </p>
                       </div>
                     </div>
 
-                    <div className="flex items-start space-x-4">
-                      <Globe className="w-5 h-5 text-primary-500 mt-1 flex-shrink-0" />
+                    <div className="flex items-start space-x-3 sm:space-x-4">
+                      <Globe className="w-4 h-4 sm:w-5 sm:h-5 text-primary-500 mt-1 flex-shrink-0" />
                       <div>
-                        <p className="font-semibold text-gray-900 text-base mb-1">
+                        <p className="font-semibold text-gray-900 text-sm sm:text-base mb-1">
                           Language
                         </p>
-                        <p className="text-sm text-gray-700 mb-1">
+                        <p className="text-xs sm:text-sm text-gray-700 mb-1">
                           {destination.language.primary}
                         </p>
                         {destination.language.others && (
-                          <p className="text-sm text-gray-500">
+                          <p className="text-xs sm:text-sm text-gray-500">
                             Also: {destination.language.others.join(", ")}
                           </p>
                         )}
                       </div>
                     </div>
 
-                    <div className="flex items-start space-x-4">
-                      <Thermometer className="w-5 h-5 text-primary-500 mt-1 flex-shrink-0" />
+                    <div className="flex items-start space-x-3 sm:space-x-4">
+                      <Thermometer className="w-4 h-4 sm:w-5 sm:h-5 text-primary-500 mt-1 flex-shrink-0" />
                       <div>
-                        <p className="font-semibold text-gray-900 text-base mb-1">
+                        <p className="font-semibold text-gray-900 text-sm sm:text-base mb-1">
                           Climate
                         </p>
-                        <p className="text-sm text-gray-700 mb-1">
+                        <p className="text-xs sm:text-sm text-gray-700 mb-1">
                           {destination.weather.climate}
                         </p>
-                        <p className="text-sm text-gray-500">
+                        <p className="text-xs sm:text-sm text-gray-500">
                           Temp: {destination.bestTimeToVisit.temperature}
                         </p>
                       </div>
@@ -350,33 +352,33 @@ const DestinationDetail = () => {
                   </div>
                 </div>
 
-                {/* Budget Guide with improved hierarchy */}
-                <div className="bg-primary-50 rounded-2xl p-8">
-                  <h3 className="text-xl font-semibold text-gray-900 mb-6">
+                {/* Budget Guide with improved mobile hierarchy */}
+                <div className="bg-primary-50 rounded-2xl p-4 sm:p-6 lg:p-8">
+                  <h3 className="text-lg sm:text-xl font-semibold text-gray-900 mb-4 sm:mb-6">
                     Budget Guide
                   </h3>
-                  <div className="space-y-4">
+                  <div className="space-y-3 sm:space-y-4">
                     <div className="flex justify-between items-center">
-                      <span className="text-gray-700 text-base font-medium">
+                      <span className="text-gray-700 text-sm sm:text-base font-medium">
                         Budget
                       </span>
-                      <span className="font-semibold text-green-600 text-base">
+                      <span className="font-semibold text-green-600 text-sm sm:text-base">
                         {destination.budgetRange.budget}
                       </span>
                     </div>
                     <div className="flex justify-between items-center">
-                      <span className="text-gray-700 text-base font-medium">
+                      <span className="text-gray-700 text-sm sm:text-base font-medium">
                         Mid-range
                       </span>
-                      <span className="font-semibold text-blue-600 text-base">
+                      <span className="font-semibold text-blue-600 text-sm sm:text-base">
                         {destination.budgetRange.midRange}
                       </span>
                     </div>
                     <div className="flex justify-between items-center">
-                      <span className="text-gray-700 text-base font-medium">
+                      <span className="text-gray-700 text-sm sm:text-base font-medium">
                         Luxury
                       </span>
-                      <span className="font-semibold text-purple-600 text-base">
+                      <span className="font-semibold text-purple-600 text-sm sm:text-base">
                         {destination.budgetRange.luxury}
                       </span>
                     </div>
@@ -711,22 +713,21 @@ const DestinationDetail = () => {
         )}
       </div>
 
-
-      {/* Gallery Modal */}
+      {/* Gallery Modal with improved mobile experience */}
       {isGalleryModalOpen && (
-        <div className="fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center z-50 p-4">
-          <div className="relative max-w-6xl w-full">
+        <div className="fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center z-50 p-2 sm:p-4">
+          <div className="relative max-w-6xl w-full h-full flex items-center justify-center">
             <button
               onClick={() => setIsGalleryModalOpen(false)}
-              className="absolute top-4 right-4 text-white hover:text-gray-300 z-10"
+              className="absolute top-2 right-2 sm:top-4 sm:right-4 text-white hover:text-gray-300 z-10 p-2"
             >
-              <X className="w-8 h-8" />
+              <X className="w-6 h-6 sm:w-8 sm:h-8" />
             </button>
 
             <img
               src={destination.gallery[selectedGalleryImage]}
               alt={`${destination.name} ${selectedGalleryImage + 1}`}
-              className="w-full h-auto max-h-[80vh] object-contain"
+              className="w-full h-auto max-h-[90vh] sm:max-h-[80vh] object-contain"
             />
 
             <button
@@ -735,9 +736,9 @@ const DestinationDetail = () => {
                   prev === 0 ? destination.gallery.length - 1 : prev - 1
                 )
               }
-              className="absolute left-4 top-1/2 transform -translate-y-1/2 text-white hover:text-gray-300"
+              className="absolute left-2 sm:left-4 top-1/2 transform -translate-y-1/2 text-white hover:text-gray-300 p-2"
             >
-              <ChevronLeft className="w-8 h-8" />
+              <ChevronLeft className="w-6 h-6 sm:w-8 sm:h-8" />
             </button>
 
             <button
@@ -746,17 +747,17 @@ const DestinationDetail = () => {
                   prev === destination.gallery.length - 1 ? 0 : prev + 1
                 )
               }
-              className="absolute right-4 top-1/2 transform -translate-y-1/2 text-white hover:text-gray-300"
+              className="absolute right-2 sm:right-4 top-1/2 transform -translate-y-1/2 text-white hover:text-gray-300 p-2"
             >
-              <ChevronRight className="w-8 h-8" />
+              <ChevronRight className="w-6 h-6 sm:w-8 sm:h-8" />
             </button>
 
-            <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
+            <div className="absolute bottom-2 sm:bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
               {destination.gallery.map((_, index) => (
                 <button
                   key={index}
                   onClick={() => setSelectedGalleryImage(index)}
-                  className={`w-3 h-3 rounded-full transition-colors ${
+                  className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full transition-colors ${
                     index === selectedGalleryImage
                       ? "bg-white"
                       : "bg-white bg-opacity-50"

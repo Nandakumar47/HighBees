@@ -126,41 +126,43 @@ const About = () => {
 
   return (
     <div className="min-h-screen bg-white pt-20">
-      {/* Hero Section with improved hierarchy */}
-      <section className="relative py-16 lg:py-20 bg-gradient-to-br from-primary-50 to-blue-50">
-        <div className="max-w-8xl mx-auto px-6 sm:px-8 lg:px-12">
+      {/* Hero Section with improved mobile hierarchy */}
+      <section className="relative py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-primary-50 to-blue-50">
+        <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-12">
           <div className="text-center">
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 mb-8 leading-tight">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 sm:mb-8 leading-tight">
               About High Bees Holidays
             </h1>
-            <p className="text-lg sm:text-xl text-gray-600 max-w-4xl mx-auto mb-10 leading-relaxed font-light">
+            <p className="text-base sm:text-lg md:text-xl text-gray-600 max-w-4xl mx-auto mb-8 sm:mb-10 leading-relaxed font-light">
               We're passionate about creating extraordinary travel experiences
               that inspire, delight, and transform lives. Your journey is our
               mission.
             </p>
-            <div className="flex items-center justify-center space-x-3 text-primary-500">
-              <MapPin className="w-6 h-6" />
-              <span className="text-lg font-semibold">Est. 2024</span>
+            <div className="flex items-center justify-center space-x-2 sm:space-x-3 text-primary-500">
+              <MapPin className="w-5 h-5 sm:w-6 sm:h-6" />
+              <span className="text-base sm:text-lg font-semibold">
+                Est. 2024
+              </span>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Stats Section with improved hierarchy */}
-      <section className="py-12 lg:py-16 bg-white">
-        <div className="max-w-8xl mx-auto px-6 sm:px-8 lg:px-12">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-10">
+      {/* Stats Section with improved mobile hierarchy */}
+      <section className="py-8 sm:py-12 lg:py-16 bg-white">
+        <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-12">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 lg:gap-10">
             {stats.map((stat, index) => {
               const Icon = stat.icon;
               return (
                 <div key={index} className="text-center">
-                  <div className="bg-primary-100 rounded-2xl w-16 h-16 flex items-center justify-center mx-auto mb-6">
-                    <Icon className="w-7 h-7 text-primary-500" />
+                  <div className="bg-primary-100 rounded-2xl w-12 h-12 sm:w-16 sm:h-16 flex items-center justify-center mx-auto mb-4 sm:mb-6">
+                    <Icon className="w-5 h-5 sm:w-7 sm:h-7 text-primary-500" />
                   </div>
-                  <div className="text-3xl sm:text-4xl font-bold text-gray-900 mb-2">
+                  <div className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-1 sm:mb-2">
                     {stat.number}
                   </div>
-                  <div className="text-gray-600 text-base font-medium">
+                  <div className="text-gray-600 text-sm sm:text-base font-medium">
                     {stat.label}
                   </div>
                 </div>
@@ -170,41 +172,46 @@ const About = () => {
         </div>
       </section>
 
-      {/* Contact Information Section with improved hierarchy */}
-      <section className="py-12 lg:py-16 bg-gray-50">
-        <div className="max-w-8xl mx-auto px-6 sm:px-8 lg:px-12">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-6 leading-tight">
+      {/* Contact Information Section with improved mobile hierarchy */}
+      <section className="py-8 sm:py-12 lg:py-16 bg-gray-50">
+        <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-12">
+          <div className="text-center mb-8 sm:mb-12">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4 sm:mb-6 leading-tight">
               Contact Information
             </h2>
-            <p className="text-lg sm:text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed font-light">
+            <p className="text-base sm:text-lg md:text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed font-light">
               Get in touch with us through any of these channels. We're here to
               help you plan your perfect journey.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
             {contactInfo.map((info, index) => {
               const Icon = info.icon;
               return (
                 <div
                   key={index}
-                  className="bg-white rounded-3xl shadow-xl p-8 text-center hover:shadow-2xl transition-all duration-300 hover:-translate-y-1"
+                  className="bg-white rounded-2xl sm:rounded-3xl shadow-xl p-4 sm:p-6 lg:p-8 text-center hover:shadow-2xl transition-all duration-300 hover:-translate-y-1"
                 >
-                  <div className="bg-primary-100 rounded-2xl w-16 h-16 flex items-center justify-center mx-auto mb-6">
-                    <Icon className="w-7 h-7 text-primary-500" />
+                  <div className="bg-primary-100 rounded-2xl w-12 h-12 sm:w-16 sm:h-16 flex items-center justify-center mx-auto mb-4 sm:mb-6">
+                    <Icon className="w-5 h-5 sm:w-7 sm:h-7 text-primary-500" />
                   </div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-4">
+                  <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-3 sm:mb-4">
                     {info.title}
                   </h3>
-                  <div className="space-y-2 mb-6">
+                  <div className="space-y-1 sm:space-y-2 mb-4 sm:mb-6">
                     {info.details.map((detail, idx) => (
-                      <p key={idx} className="text-gray-700 text-base">
+                      <p
+                        key={idx}
+                        className="text-gray-700 text-sm sm:text-base"
+                      >
                         {detail}
                       </p>
                     ))}
                   </div>
-                  <p className="text-sm text-gray-500">{info.description}</p>
+                  <p className="text-xs sm:text-sm text-gray-500">
+                    {info.description}
+                  </p>
                 </div>
               );
             })}

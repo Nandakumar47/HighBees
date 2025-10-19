@@ -282,16 +282,16 @@ const Enquiry: React.FC<EnquiryProps> = ({
         </div>
       )}
 
-      {/* Progress Bar with improved hierarchy */}
-      <div className="mb-12">
-        <div className="flex items-center justify-center space-x-8">
+      {/* Progress Bar with improved mobile hierarchy */}
+      <div className="mb-8 sm:mb-12">
+        <div className="flex items-center justify-center space-x-4 sm:space-x-6 lg:space-x-8">
           <div
-            className={`flex items-center space-x-3 ${
+            className={`flex items-center space-x-2 sm:space-x-3 ${
               currentStep >= 1 ? "text-primary-500" : "text-gray-400"
             }`}
           >
             <div
-              className={`w-10 h-10 rounded-full flex items-center justify-center font-semibold ${
+              className={`w-8 h-8 sm:w-10 sm:h-10 rounded-full flex items-center justify-center font-semibold text-sm sm:text-base ${
                 currentStep >= 1
                   ? "bg-primary-500 text-white"
                   : "bg-gray-200 text-gray-400"
@@ -299,20 +299,22 @@ const Enquiry: React.FC<EnquiryProps> = ({
             >
               1
             </div>
-            <span className="font-semibold text-base">Your Details</span>
+            <span className="font-semibold text-sm sm:text-base hidden sm:inline">
+              Your Details
+            </span>
           </div>
           <div
-            className={`w-20 h-1 rounded-full ${
+            className={`w-12 sm:w-16 lg:w-20 h-1 rounded-full ${
               currentStep >= 2 ? "bg-primary-500" : "bg-gray-200"
             }`}
           />
           <div
-            className={`flex items-center space-x-3 ${
+            className={`flex items-center space-x-2 sm:space-x-3 ${
               currentStep >= 2 ? "text-primary-500" : "text-gray-400"
             }`}
           >
             <div
-              className={`w-10 h-10 rounded-full flex items-center justify-center font-semibold ${
+              className={`w-8 h-8 sm:w-10 sm:h-10 rounded-full flex items-center justify-center font-semibold text-sm sm:text-base ${
                 currentStep >= 2
                   ? "bg-primary-500 text-white"
                   : "bg-gray-200 text-gray-400"
@@ -320,22 +322,30 @@ const Enquiry: React.FC<EnquiryProps> = ({
             >
               2
             </div>
-            <span className="font-semibold text-base">Trip Details</span>
+            <span className="font-semibold text-sm sm:text-base hidden sm:inline">
+              Trip Details
+            </span>
           </div>
+        </div>
+        {/* Mobile step labels */}
+        <div className="flex justify-center mt-2 sm:hidden">
+          <span className="text-xs text-gray-500">
+            {currentStep === 1 ? "Your Details" : "Trip Details"}
+          </span>
         </div>
       </div>
 
-      {/* Form with improved spacing */}
-      <div className="bg-white rounded-3xl shadow-xl p-8 md:p-12">
+      {/* Form with improved mobile spacing */}
+      <div className="bg-white rounded-2xl sm:rounded-3xl shadow-xl p-4 sm:p-6 md:p-8 lg:p-12">
         {currentStep === 1 ? (
           <div>
-            <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-6 flex items-center space-x-2">
-              <Users className="w-5 h-5 text-primary-500" />
+            <h2 className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-900 mb-4 sm:mb-6 flex items-center space-x-2">
+              <Users className="w-4 h-4 sm:w-5 sm:h-5 text-primary-500" />
               <span>Your Details</span>
             </h2>
 
-            <div className="space-y-6">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="space-y-4 sm:space-y-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
                 <div>
                   <Input
                     id="name"
@@ -376,7 +386,7 @@ const Enquiry: React.FC<EnquiryProps> = ({
                 />
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
                 <div>
                   <label
                     htmlFor="adults"
@@ -437,7 +447,7 @@ const Enquiry: React.FC<EnquiryProps> = ({
                   variant="primary"
                   icon={ChevronRight}
                   iconPosition="right"
-                  className="px-6 py-2.5 text-sm"
+                  className="px-4 sm:px-6 py-2 sm:py-2.5 text-sm sm:text-base w-full sm:w-auto"
                 >
                   Next
                 </LoadingButton>
@@ -446,17 +456,17 @@ const Enquiry: React.FC<EnquiryProps> = ({
           </div>
         ) : (
           <div>
-            <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-8 flex items-center space-x-3">
-              <MapPin className="w-6 h-6 text-primary-500" />
+            <h2 className="text-lg sm:text-xl lg:text-2xl xl:text-3xl font-bold text-gray-900 mb-6 sm:mb-8 flex items-center space-x-2 sm:space-x-3">
+              <MapPin className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6 text-primary-500" />
               <span>Trip Details</span>
             </h2>
 
-            <form onSubmit={handleSubmit} className="space-y-8">
+            <form onSubmit={handleSubmit} className="space-y-6 sm:space-y-8">
               {!hideDestinationField ? (
                 <div>
                   <label
                     htmlFor="destination"
-                    className="block text-base font-semibold text-gray-700 mb-3"
+                    className="block text-sm sm:text-base font-semibold text-gray-700 mb-2 sm:mb-3"
                   >
                     Destination *
                   </label>
@@ -486,10 +496,10 @@ const Enquiry: React.FC<EnquiryProps> = ({
                 </div>
               ) : (
                 <div>
-                  <label className="block text-base font-semibold text-gray-700 mb-3">
+                  <label className="block text-sm sm:text-base font-semibold text-gray-700 mb-2 sm:mb-3">
                     Destination
                   </label>
-                  <div className="px-6 py-4 border border-gray-200 rounded-xl bg-gray-50 text-gray-700 text-base">
+                  <div className="px-4 sm:px-6 py-3 sm:py-4 border border-gray-200 rounded-xl bg-gray-50 text-gray-700 text-sm sm:text-base">
                     {formData.destination || initialDestination}
                   </div>
                 </div>
@@ -509,11 +519,11 @@ const Enquiry: React.FC<EnquiryProps> = ({
                 />
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 lg:gap-8">
                 <div>
                   <label
                     htmlFor="departureDate"
-                    className="block text-base font-semibold text-gray-700 mb-3"
+                    className="block text-sm sm:text-base font-semibold text-gray-700 mb-2 sm:mb-3"
                   >
                     Expected Departure Date *
                   </label>
@@ -540,7 +550,7 @@ const Enquiry: React.FC<EnquiryProps> = ({
                 <div>
                   <label
                     htmlFor="duration"
-                    className="block text-base font-semibold text-gray-700 mb-3"
+                    className="block text-sm sm:text-base font-semibold text-gray-700 mb-2 sm:mb-3"
                   >
                     Duration of Stay (days) *
                   </label>
@@ -574,7 +584,7 @@ const Enquiry: React.FC<EnquiryProps> = ({
               <div>
                 <label
                   htmlFor="budget"
-                  className="block text-base font-semibold text-gray-700 mb-3"
+                  className="block text-sm sm:text-base font-semibold text-gray-700 mb-2 sm:mb-3"
                 >
                   Maximum Budget (USD) *
                 </label>
@@ -604,14 +614,14 @@ const Enquiry: React.FC<EnquiryProps> = ({
                 )}
               </div>
 
-              <div className="flex justify-between pt-4">
+              <div className="flex flex-col sm:flex-row justify-between gap-3 sm:gap-4 pt-4">
                 <LoadingButton
                   type="button"
                   onClick={handleBack}
                   disabled={isLoading}
                   variant="outline"
                   icon={ChevronLeft}
-                  className="px-8 py-3 text-base"
+                  className="px-6 sm:px-8 py-3 text-sm sm:text-base w-full sm:w-auto order-2 sm:order-1"
                 >
                   Back
                 </LoadingButton>
@@ -623,7 +633,7 @@ const Enquiry: React.FC<EnquiryProps> = ({
                   variant="primary"
                   icon={CheckCircle}
                   iconPosition="right"
-                  className="px-8 py-3 text-base"
+                  className="px-6 sm:px-8 py-3 text-sm sm:text-base w-full sm:w-auto order-1 sm:order-2"
                 >
                   Submit Enquiry
                 </LoadingButton>
