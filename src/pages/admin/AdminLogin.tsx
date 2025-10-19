@@ -3,6 +3,7 @@ import { Navigate } from "react-router-dom";
 import { useAuth } from "../../contexts/AuthContext";
 import { Lock, User, Eye, EyeOff, AlertCircle } from "lucide-react";
 import Input from "../../components/common/Input/Input";
+import Button from "../../components/common/Button/Button";
 
 const AdminLogin = () => {
   const [credentials, setCredentials] = useState({
@@ -32,7 +33,7 @@ const AdminLogin = () => {
       if (!success) {
         setError("Invalid username or password");
       }
-    } catch (err) {
+    } catch {
       setError("Login failed. Please try again.");
     } finally {
       setIsLoading(false);
@@ -51,32 +52,34 @@ const AdminLogin = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-primary-50 to-blue-50 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-md w-full space-y-8">
-        <div className="bg-white rounded-2xl shadow-xl p-8">
+    <div className="min-h-screen bg-gradient-to-br from-primary-50 to-blue-50 flex items-center justify-center py-8 sm:py-12 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-md w-full space-y-6 sm:space-y-8">
+        <div className="bg-white rounded-2xl shadow-xl p-6 sm:p-8">
           {/* Header */}
-          <div className="text-center mb-8">
-            <div className="bg-primary-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
-              <Lock className="w-8 h-8 text-primary-500" />
+          <div className="text-center mb-6 sm:mb-8">
+            <div className="bg-primary-100 rounded-full w-12 h-12 sm:w-16 sm:h-16 flex items-center justify-center mx-auto mb-3 sm:mb-4">
+              <Lock className="w-6 h-6 sm:w-8 sm:h-8 text-primary-500" />
             </div>
-            <h2 className="text-3xl font-bold text-gray-900">Admin Login</h2>
-            <p className="text-gray-600 mt-2">
+            <h2 className="text-2xl sm:text-3xl font-bold text-gray-900">
+              Admin Login
+            </h2>
+            <p className="text-sm sm:text-base text-gray-600 mt-2">
               Access the High Bees Holidays admin panel
             </p>
           </div>
 
           {/* Error Message */}
           {error && (
-            <div className="bg-red-50 border border-red-200 rounded-lg p-4 mb-6">
+            <div className="bg-red-50 border border-red-200 rounded-lg p-3 sm:p-4 mb-4 sm:mb-6">
               <div className="flex items-center space-x-2">
-                <AlertCircle className="w-5 h-5 text-red-500" />
-                <span className="text-sm text-red-700">{error}</span>
+                <AlertCircle className="w-4 h-4 sm:w-5 sm:h-5 text-red-500" />
+                <span className="text-xs sm:text-sm text-red-700">{error}</span>
               </div>
             </div>
           )}
 
           {/* Login Form */}
-          <form onSubmit={handleSubmit} className="space-y-6">
+          <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
             <div>
               <Input
                 id="username"
@@ -118,25 +121,25 @@ const AdminLogin = () => {
               />
             </div>
 
-            <button
+            <Button
               type="submit"
               disabled={isLoading}
-              className="w-full bg-primary-500 hover:bg-primary-600 disabled:bg-primary-300 text-white font-semibold py-3 px-4 rounded-lg transition-colors flex items-center justify-center space-x-2"
+              isLoading={isLoading}
+              loadingText="Signing In..."
+              variant="primary"
+              size="md"
+              icon={Lock}
+              iconPosition="left"
+              fullWidth
+              className="text-sm sm:text-base"
             >
-              {isLoading ? (
-                <div className="animate-spin rounded-full h-5 w-5 border-2 border-white border-t-transparent" />
-              ) : (
-                <>
-                  <Lock className="w-5 h-5" />
-                  <span>Sign In</span>
-                </>
-              )}
-            </button>
+              Sign In
+            </Button>
           </form>
 
           {/* Footer */}
-          <div className="mt-6 text-center">
-            <p className="text-sm text-gray-500">
+          <div className="mt-4 sm:mt-6 text-center">
+            <p className="text-xs sm:text-sm text-gray-500">
               Secure admin access for High Bees Holidays
             </p>
           </div>

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useAuth } from "../../contexts/AuthContext";
 import {
@@ -17,7 +17,6 @@ import {
 import Select from "../../components/common/Input/Select";
 import EnquiryModal from "../../components/EnquiryModal";
 import PageLoader from "../../components/PageLoader";
-import { TableRowSkeleton } from "../../components/SkeletonLoader";
 import { useLoading } from "../../hooks/useLoading";
 import Input from "../../components/common/Input/Input";
 
@@ -25,9 +24,9 @@ const AdminEnquiries = () => {
   const { logout } = useAuth();
   const [searchTerm, setSearchTerm] = useState("");
   const [statusFilter, setStatusFilter] = useState("all");
-  const [selectedEnquiry, setSelectedEnquiry] = useState(null);
+  const [selectedEnquiry, setSelectedEnquiry] = useState<any>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [enquiries, setEnquiries] = useState([]);
+  const [enquiries, setEnquiries] = useState<any[]>([]);
   const { isLoading, withLoading } = useLoading(true);
 
   useEffect(() => {
@@ -210,18 +209,18 @@ const AdminEnquiries = () => {
     }
   };
 
-  const handleViewEnquiry = (enquiry) => {
+  const handleViewEnquiry = (enquiry: any) => {
     setSelectedEnquiry(enquiry);
     setIsModalOpen(true);
   };
 
   const handleStatusUpdate = (id: number, newStatus: string) => {
-    setEnquiries((prev) =>
-      prev.map((enquiry) =>
+    setEnquiries((prev: any[]) =>
+      prev.map((enquiry: any) =>
         enquiry.id === id ? { ...enquiry, status: newStatus } : enquiry
       )
     );
-    setSelectedEnquiry((prev) =>
+    setSelectedEnquiry((prev: any) =>
       prev ? { ...prev, status: newStatus } : null
     );
   };
@@ -245,48 +244,48 @@ const AdminEnquiries = () => {
       {/* Header */}
       <header className="bg-white shadow-sm border-b">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
-            <div className="flex items-center space-x-4">
+          <div className="flex justify-between items-center h-14 sm:h-16">
+            <div className="flex items-center space-x-2 sm:space-x-4">
               <Link
                 to="/admin/dashboard"
                 className="text-gray-600 hover:text-gray-900"
               >
-                <ArrowLeft className="w-5 h-5" />
+                <ArrowLeft className="w-4 h-4 sm:w-5 sm:h-5" />
               </Link>
               <img
                 src="/logo.png"
                 alt="High Bees Holidays"
-                className="h-8 w-auto"
+                className="h-6 sm:h-8 w-auto"
               />
-              <h1 className="text-xl font-bold text-gray-900">
+              <h1 className="text-lg sm:text-xl font-bold text-gray-900">
                 Travel Enquiries
               </h1>
             </div>
             <button
               onClick={logout}
-              className="flex items-center space-x-2 text-gray-600 hover:text-gray-900 transition-colors"
+              className="flex items-center space-x-1 sm:space-x-2 text-gray-600 hover:text-gray-900 transition-colors text-sm sm:text-base"
             >
-              <LogOut className="w-5 h-5" />
-              <span>Logout</span>
+              <LogOut className="w-4 h-4 sm:w-5 sm:h-5" />
+              <span className="hidden sm:inline">Logout</span>
             </button>
           </div>
         </div>
       </header>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
         {/* Page Header */}
-        <div className="mb-8">
-          <h2 className="text-2xl font-bold text-gray-900 mb-2">
+        <div className="mb-6 sm:mb-8">
+          <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-2">
             Travel Enquiries
           </h2>
-          <p className="text-gray-600">
+          <p className="text-sm sm:text-base text-gray-600">
             Manage and respond to customer travel enquiries
           </p>
         </div>
 
         {/* Filters */}
-        <div className="bg-white rounded-lg shadow-sm p-6 mb-6">
-          <div className="flex flex-col md:flex-row gap-4">
+        <div className="bg-white rounded-lg shadow-sm p-4 sm:p-6 mb-4 sm:mb-6">
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
             <div className="flex-1">
               <Input
                 type="text"
@@ -297,12 +296,12 @@ const AdminEnquiries = () => {
               />
             </div>
             <div className="flex items-center space-x-2">
-              <Filter className="w-5 h-5 text-gray-400" />
+              <Filter className="w-4 h-4 sm:w-5 sm:h-5 text-gray-400" />
               <Select
                 value={statusFilter}
                 onChange={(e) => setStatusFilter(e.target.value)}
                 placeholder="All Status"
-                className="min-w-[180px]"
+                className="min-w-[140px] sm:min-w-[180px]"
               >
                 <option value="all">All Status</option>
                 <option value="new">New</option>
@@ -315,36 +314,40 @@ const AdminEnquiries = () => {
         </div>
 
         {/* Stats */}
-        <div className="grid grid-cols-1 md:grid-cols-5 gap-4 mb-6">
-          <div className="bg-white rounded-lg shadow-sm p-4">
-            <div className="text-2xl font-bold text-blue-600">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-4 mb-4 sm:mb-6">
+          <div className="bg-white rounded-lg shadow-sm p-3 sm:p-4">
+            <div className="text-xl sm:text-2xl font-bold text-blue-600">
               {enquiries.filter((e) => e.status === "New").length}
             </div>
-            <div className="text-sm text-gray-600">New Enquiries</div>
+            <div className="text-xs sm:text-sm text-gray-600">
+              New Enquiries
+            </div>
           </div>
-          <div className="bg-white rounded-lg shadow-sm p-4">
-            <div className="text-2xl font-bold text-yellow-600">
+          <div className="bg-white rounded-lg shadow-sm p-3 sm:p-4">
+            <div className="text-xl sm:text-2xl font-bold text-yellow-600">
               {enquiries.filter((e) => e.status === "In Progress").length}
             </div>
-            <div className="text-sm text-gray-600">In Progress</div>
+            <div className="text-xs sm:text-sm text-gray-600">In Progress</div>
           </div>
-          <div className="bg-white rounded-lg shadow-sm p-4">
-            <div className="text-2xl font-bold text-green-600">
+          <div className="bg-white rounded-lg shadow-sm p-3 sm:p-4">
+            <div className="text-xl sm:text-2xl font-bold text-green-600">
               {convertedEnquiries}
             </div>
-            <div className="text-sm text-gray-600">Converted</div>
+            <div className="text-xs sm:text-sm text-gray-600">Converted</div>
           </div>
-          <div className="bg-white rounded-lg shadow-sm p-4">
-            <div className="text-2xl font-bold text-gray-600">
+          <div className="bg-white rounded-lg shadow-sm p-3 sm:p-4">
+            <div className="text-xl sm:text-2xl font-bold text-gray-600">
               {enquiries.filter((e) => e.status === "Closed").length}
             </div>
-            <div className="text-sm text-gray-600">Closed</div>
+            <div className="text-xs sm:text-sm text-gray-600">Closed</div>
           </div>
-          <div className="bg-white rounded-lg shadow-sm p-4">
-            <div className="text-2xl font-bold text-primary-600">
+          <div className="bg-white rounded-lg shadow-sm p-3 sm:p-4">
+            <div className="text-xl sm:text-2xl font-bold text-primary-600">
               {conversionRate}%
             </div>
-            <div className="text-sm text-gray-600">Conversion Rate</div>
+            <div className="text-xs sm:text-sm text-gray-600">
+              Conversion Rate
+            </div>
           </div>
         </div>
 
@@ -354,22 +357,22 @@ const AdminEnquiries = () => {
             <table className="min-w-full divide-y divide-gray-200">
               <thead className="bg-gray-50">
                 <tr>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  <th className="px-3 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                     Customer
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  <th className="px-3 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider hidden sm:table-cell">
                     Trip Details
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  <th className="px-3 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider hidden lg:table-cell">
                     Travel Info
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  <th className="px-3 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                     Status
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  <th className="px-3 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider hidden md:table-cell">
                     Submitted
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  <th className="px-3 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                     Actions
                   </th>
                 </tr>
@@ -377,22 +380,32 @@ const AdminEnquiries = () => {
               <tbody className="bg-white divide-y divide-gray-200">
                 {filteredEnquiries.map((enquiry) => (
                   <tr key={enquiry.id} className="hover:bg-gray-50">
-                    <td className="px-6 py-4 whitespace-nowrap">
+                    <td className="px-3 sm:px-6 py-4 whitespace-nowrap">
                       <div>
                         <div className="text-sm font-medium text-gray-900">
                           {enquiry.name}
                         </div>
-                        <div className="text-sm text-gray-500 flex items-center space-x-1">
+                        <div className="text-xs sm:text-sm text-gray-500 flex items-center space-x-1">
                           <Mail className="w-3 h-3" />
-                          <span>{enquiry.email}</span>
+                          <span className="truncate">{enquiry.email}</span>
                         </div>
-                        <div className="text-sm text-gray-500 flex items-center space-x-1">
+                        <div className="text-xs sm:text-sm text-gray-500 flex items-center space-x-1">
                           <Phone className="w-3 h-3" />
                           <span>{enquiry.phone}</span>
                         </div>
+                        {/* Mobile: Show trip details inline */}
+                        <div className="sm:hidden mt-2">
+                          <div className="text-xs text-gray-900 flex items-center space-x-1">
+                            <MapPin className="w-3 h-3" />
+                            <span>{enquiry.destination}</span>
+                          </div>
+                          <div className="text-xs text-gray-500">
+                            {enquiry.departureDate} • {enquiry.duration}
+                          </div>
+                        </div>
                       </div>
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap">
+                    <td className="px-3 sm:px-6 py-4 whitespace-nowrap hidden sm:table-cell">
                       <div>
                         <div className="text-sm font-medium text-gray-900 flex items-center space-x-1">
                           <MapPin className="w-3 h-3" />
@@ -404,7 +417,7 @@ const AdminEnquiries = () => {
                         </div>
                       </div>
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap">
+                    <td className="px-3 sm:px-6 py-4 whitespace-nowrap hidden lg:table-cell">
                       <div>
                         <div className="text-sm text-gray-900 flex items-center space-x-1">
                           <Calendar className="w-3 h-3" />
@@ -421,7 +434,7 @@ const AdminEnquiries = () => {
                         </div>
                       </div>
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap">
+                    <td className="px-3 sm:px-6 py-4 whitespace-nowrap">
                       <span
                         className={`inline-flex px-2 py-1 text-xs font-semibold rounded-full ${getStatusColor(
                           enquiry.status
@@ -430,16 +443,16 @@ const AdminEnquiries = () => {
                         {enquiry.status}
                       </span>
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                    <td className="px-3 sm:px-6 py-4 whitespace-nowrap text-sm text-gray-500 hidden md:table-cell">
                       {enquiry.submittedAt}
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                    <td className="px-3 sm:px-6 py-4 whitespace-nowrap text-sm font-medium">
                       <button
                         onClick={() => handleViewEnquiry(enquiry)}
                         className="text-primary-600 hover:text-primary-900 flex items-center space-x-1"
                       >
                         <Eye className="w-4 h-4" />
-                        <span>View</span>
+                        <span className="hidden sm:inline">View</span>
                       </button>
                     </td>
                   </tr>
@@ -449,14 +462,14 @@ const AdminEnquiries = () => {
           </div>
 
           {filteredEnquiries.length === 0 && (
-            <div className="text-center py-12">
-              <div className="text-gray-400 mb-4">
-                <Search className="w-12 h-12 mx-auto" />
+            <div className="text-center py-8 sm:py-12">
+              <div className="text-gray-400 mb-3 sm:mb-4">
+                <Search className="w-10 h-10 sm:w-12 sm:h-12 mx-auto" />
               </div>
-              <h3 className="text-lg font-medium text-gray-900 mb-2">
+              <h3 className="text-base sm:text-lg font-medium text-gray-900 mb-2">
                 No enquiries found
               </h3>
-              <p className="text-gray-500">
+              <p className="text-sm sm:text-base text-gray-500">
                 Try adjusting your search criteria
               </p>
             </div>
