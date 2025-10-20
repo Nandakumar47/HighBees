@@ -22,6 +22,8 @@ import PageLoader from "../components/PageLoader";
 import Enquiry from "./Enquiry";
 import BackButton from "../components/common/BackButton/BackButton";
 import { useLoading } from "../hooks/useLoading";
+import { useToast } from "../components/common/Toast/Toast";
+import { getErrorMessage } from "../utils/apiErrorHandler";
 import { ROUTES } from "../utils/constants";
 import axios from "axios";
 
@@ -34,6 +36,7 @@ const DestinationDetail = () => {
   const [isGalleryModalOpen, setIsGalleryModalOpen] = useState(false);
   const [activeTab, setActiveTab] = useState("overview");
   const { isLoading: pageLoading, withLoading } = useLoading(true);
+  const { showError } = useToast();
 
   // Smooth scroll to top of tab content when tab changes
   const scrollToTabContent = () => {
@@ -57,19 +60,27 @@ const DestinationDetail = () => {
 
   useEffect(() => {
     const loadDestination = async () => {
-      await withLoading(async () => {
-        if (destinationId) {
-          const destinationDetails = await getDestinationById(destinationId);
-          setDestination(destinationDetails);
-          if (destinationDetails && destinationDetails.itineraries.length > 0) {
-            setSelectedItinerary(destinationDetails.itineraries[0].id);
+      try {
+        await withLoading(async () => {
+          if (destinationId) {
+            const destinationDetails = await getDestinationById(destinationId);
+            setDestination(destinationDetails);
+            if (
+              destinationDetails &&
+              destinationDetails.itineraries.length > 0
+            ) {
+              setSelectedItinerary(destinationDetails.itineraries[0].id);
+            }
           }
-        }
-      });
+        });
+      } catch (error) {
+        const errorMessage = getErrorMessage(error);
+        showError(errorMessage);
+      }
     };
 
     loadDestination();
-  }, [destinationId, withLoading]);
+  }, [destinationId, withLoading, showError]);
   const getDestinationById = async (destinationId: number) => {
     try {
       const response = await axios.get(`/api/destination/${destinationId}`);

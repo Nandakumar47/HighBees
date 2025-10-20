@@ -11,6 +11,8 @@ import LoadingButton from "../components/LoadingButton";
 import { useLoading } from "../hooks/useLoading";
 import Select from "../components/common/Input/Select";
 import Input from "../components/common/Input/Input";
+import { useToast } from "../components/common/Toast/Toast";
+import { getErrorMessage } from "../utils/apiErrorHandler";
 import axios from "axios";
 
 interface EnquiryProps {
@@ -54,6 +56,7 @@ const Enquiry: React.FC<EnquiryProps> = ({
   const [isSubmitted, setIsSubmitted] = useState(false);
   const { isLoading, withLoading } = useLoading();
   const [destinations, setDestinations] = useState<string[]>([]);
+  const { showSuccess, showError } = useToast();
 
   const setDestinationsToState = useCallback(async () => {
     try {
@@ -69,6 +72,7 @@ const Enquiry: React.FC<EnquiryProps> = ({
     } catch (error) {
       console.log(error);
       setDestinations([]);
+      // Don't show error toast for destinations loading as it's not critical
     }
   }, []);
 
@@ -159,8 +163,14 @@ const Enquiry: React.FC<EnquiryProps> = ({
       });
 
       console.log("Enquiry created successfully:", response.data);
+      showSuccess(
+        "Travel enquiry submitted successfully! Our travel experts will get back to you within 24 hours."
+      );
     } catch (error) {
       console.error("Error creating enquiry:", error);
+      const errorMessage = getErrorMessage(error);
+      showError(errorMessage);
+      throw error; // Re-throw to prevent setIsSubmitted from being called
     }
   };
   const handleInputChange = (
@@ -200,8 +210,12 @@ const Enquiry: React.FC<EnquiryProps> = ({
     }
 
     await withLoading(async () => {
-      createEnquiry();
-      setIsSubmitted(true);
+      try {
+        await createEnquiry();
+        setIsSubmitted(true);
+      } catch {
+        // Error handling is done in createEnquiry function
+      }
     });
   };
 

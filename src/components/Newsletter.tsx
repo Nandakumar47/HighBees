@@ -3,11 +3,13 @@ import { Mail, Send, CheckCircle, Gift, Globe, Plane } from "lucide-react";
 import LoadingButton from "./LoadingButton";
 import Input from "./common/Input/Input";
 import { useLoading } from "../hooks/useLoading";
+import { useToast } from "./common/Toast/Toast";
 
 const Newsletter = () => {
   const [email, setEmail] = useState("");
   const [isSubscribed, setIsSubscribed] = useState(false);
   const { isLoading, withLoading } = useLoading();
+  const { showSuccess, showError } = useToast();
 
   const benefits = [
     {
@@ -33,10 +35,15 @@ const Newsletter = () => {
     if (!email) return;
 
     await withLoading(async () => {
-      // Simulate API call
-      await new Promise((resolve) => setTimeout(resolve, 1500));
-      setIsSubscribed(true);
-      setEmail("");
+      try {
+        // Simulate API call - in real implementation, this would be an actual API call
+        await new Promise((resolve) => setTimeout(resolve, 1500));
+        setIsSubscribed(true);
+        setEmail("");
+        showSuccess("Successfully subscribed to our newsletter!");
+      } catch (error) {
+        showError("Failed to subscribe to newsletter. Please try again.");
+      }
     });
   };
 

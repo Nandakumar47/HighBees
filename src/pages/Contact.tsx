@@ -11,6 +11,8 @@ import {
 import LoadingButton from "../components/LoadingButton";
 import { useLoading } from "../hooks/useLoading";
 import Input from "../components/common/Input/Input";
+import { useToast } from "../components/common/Toast/Toast";
+import { getErrorMessage } from "../utils/apiErrorHandler";
 import axios from "axios";
 import { CONTACT_INFO } from "../utils/constants";
 
@@ -38,6 +40,7 @@ const Contact = () => {
   const [errors, setErrors] = useState<FormErrors>({});
   const [isSubmitted, setIsSubmitted] = useState(false);
   const { isLoading, withLoading } = useLoading();
+  const { showSuccess, showError } = useToast();
 
   const validateForm = () => {
     const newErrors: FormErrors = {};
@@ -140,10 +143,15 @@ const Contact = () => {
           phone: "",
           message: "",
         });
+        showSuccess(
+          "Message sent successfully! We'll get back to you within 24 hours."
+        );
       }
       console.log("Enquiry created successfully:", response.data);
     } catch (error) {
       console.error("Error creating enquiry:", error);
+      const errorMessage = getErrorMessage(error);
+      showError(errorMessage);
     }
   };
   return (

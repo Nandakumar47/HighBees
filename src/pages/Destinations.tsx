@@ -3,6 +3,8 @@ import { Search } from "lucide-react";
 import Select from "../components/common/Input/Select";
 import { useLoading } from "../hooks/useLoading";
 import { CardSkeleton } from "../components/common/SkeletonLoader/SkeletonLoader";
+import { useToast } from "../components/common/Toast/Toast";
+import { getErrorMessage } from "../utils/apiErrorHandler";
 import axios from "axios";
 import { Destination } from "../types";
 import DestinationCard from "../components/common/DestinationCard";
@@ -29,26 +31,32 @@ const Destinations = () => {
   const [selectedCountry, setSelectedCountry] = useState("all");
   const [destinations, setDestinations] = useState<DestinationsType>([]);
   const { isLoading, withLoading } = useLoading(true);
+  const { showError } = useToast();
 
   useEffect(() => {
     const loadDestinations = async () => {
-      await withLoading(async () => {
-        const allDestinations = await getDestinations();
-        const destinationsData = allDestinations.map((dest) => ({
-          id: dest.id,
-          name: dest.name,
-          country: dest.country || dest.name,
-          slug: dest.name.toLowerCase(),
-          image: dest.hero_image,
-          description: dest.description,
-        }));
+      try {
+        await withLoading(async () => {
+          const allDestinations = await getDestinations();
+          const destinationsData = allDestinations.map((dest) => ({
+            id: dest.id,
+            name: dest.name,
+            country: dest.country || dest.name,
+            slug: dest.name.toLowerCase(),
+            image: dest.hero_image,
+            description: dest.description,
+          }));
 
-        setDestinations(destinationsData);
-      });
+          setDestinations(destinationsData);
+        });
+      } catch (error) {
+        const errorMessage = getErrorMessage(error);
+        showError(errorMessage);
+      }
     };
 
     loadDestinations();
-  }, [withLoading]);
+  }, [withLoading, showError]);
   const getDestinations = async (
     offset?: number,
     limit?: number

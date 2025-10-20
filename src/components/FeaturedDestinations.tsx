@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { CardSkeleton } from "./common/SkeletonLoader/SkeletonLoader";
 import { useLoading } from "../hooks/useLoading";
+import { useToast } from "./common/Toast/Toast";
+import { getErrorMessage } from "../utils/apiErrorHandler";
 import axios from "axios";
 import { Destination } from "../types";
 import DestinationCard from "./common/DestinationCard";
@@ -17,12 +19,39 @@ interface ApiDestination {
 const FeaturedDestinations = () => {
   const { isLoading, withLoading } = useLoading(true);
   const [destinations, setDestinations] = useState<Destinations>([]);
+  const { showError } = useToast();
 
   useEffect(() => {
     const loadDestinations = async () => {
+      try {
+        await withLoading(async () => {
+          const allDestinations = await getDestinations();
+          // Convert to the format expected by the component
+          const destinationsData = allDestinations.map(
+            (dest: ApiDestination) => ({
+              id: dest.id,
+              name: dest.name,
+              country: dest.country || dest.name,
+              slug: dest.name.toLowerCase(),
+              image: dest.hero_image,
+              description: dest.description,
+            })
+          );
+
+          setDestinations(destinationsData);
+        });
+      } catch (error) {
+        const errorMessage = getErrorMessage(error);
+        showError(errorMessage);
+      }
+    };
+
+    loadDestinations();
+  }, [withLoading, showError]);
+  const handleReload = async () => {
+    try {
       await withLoading(async () => {
         const allDestinations = await getDestinations();
-        // Convert to the format expected by the component
         const destinationsData = allDestinations.map(
           (dest: ApiDestination) => ({
             id: dest.id,
@@ -33,26 +62,12 @@ const FeaturedDestinations = () => {
             description: dest.description,
           })
         );
-
         setDestinations(destinationsData);
       });
-    };
-
-    loadDestinations();
-  }, [withLoading]);
-  const handleReload = async () => {
-    await withLoading(async () => {
-      const allDestinations = await getDestinations();
-      const destinationsData = allDestinations.map((dest: ApiDestination) => ({
-        id: dest.id,
-        name: dest.name,
-        country: dest.country || dest.name,
-        slug: dest.name.toLowerCase(),
-        image: dest.hero_image,
-        description: dest.description,
-      }));
-      setDestinations(destinationsData);
-    });
+    } catch (error) {
+      const errorMessage = getErrorMessage(error);
+      showError(errorMessage);
+    }
   };
   const getDestinations = async ({ offset = 0, limit = 6 } = {}): Promise<
     ApiDestination[]
