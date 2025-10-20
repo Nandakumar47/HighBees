@@ -53,6 +53,10 @@ const App: React.FC = () => {
                 <Route path={ROUTES.ADMIN.LOGIN} element={<AdminLogin />} />
                 <Route path="admin" element={<AdminLayout />}>
                   <Route
+                    index
+                    element={<Navigate to={ROUTES.ADMIN.DASHBOARD} replace />}
+                  />
+                  <Route
                     path={ROUTES.ADMIN.DASHBOARD}
                     element={<AdminDashboard />}
                   />

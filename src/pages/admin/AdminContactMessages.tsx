@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useAuth } from "../../contexts/AuthContext";
 import {
@@ -11,144 +11,48 @@ import {
   Phone,
   Calendar,
   MessageSquare,
+  Trash2,
 } from "lucide-react";
 import Select from "../../components/common/Input/Select";
 import MessageModal from "../../components/MessageModal";
 import Input from "../../components/common/Input/Input";
+import { contactService } from "../../services/contactService";
+import { ContactMessage } from "../../services/types/contact.types";
+import { useToast } from "../../components/common/Toast/Toast";
+import { useLoading } from "../../hooks/useLoading";
+import PageLoader from "../../components/PageLoader";
 
 const AdminContactMessages = () => {
   const { logout } = useAuth();
+  const { showToast } = useToast();
+  const { isLoading, withLoading } = useLoading(true);
   const [searchTerm, setSearchTerm] = useState("");
   const [statusFilter, setStatusFilter] = useState("all");
-  const [selectedMessage, setSelectedMessage] = useState(null);
+  const [selectedMessage, setSelectedMessage] = useState<ContactMessage | null>(
+    null
+  );
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [messages, setMessages] = useState<ContactMessage[]>([]);
 
-  // Mock data - In production, this would come from an API
-  const [messages, setMessages] = useState([
-    {
-      id: 1,
-      name: "Emma Wilson",
-      email: "emma.wilson@email.com",
-      phone: "+1 (555) 321-0987",
-      subject: "Group booking inquiry for family reunion",
-      message:
-        "Hi, I'm planning a family reunion trip for 15 people to Greece. We're looking for accommodations and activities suitable for all ages. Could you help us plan this? We have a budget of around $30,000 for the entire group and are flexible with dates in June or July.",
-      status: "New",
-      submittedAt: "2024-01-15 3:45 PM",
-      priority: "High",
-      communicationHistory: [],
-    },
-    {
-      id: 2,
-      name: "David Brown",
-      email: "david.brown@email.com",
-      phone: "+1 (555) 654-3210",
-      subject: "Travel insurance question",
-      message:
-        "I have a question about travel insurance coverage for my upcoming trip to Iceland. What options do you recommend for adventure activities like glacier hiking and Northern Lights tours? I want to make sure I'm fully covered.",
-      status: "In Progress",
-      submittedAt: "2024-01-14 11:20 AM",
-      priority: "Medium",
-      communicationHistory: [
-        {
-          date: "2024-01-14 2:00 PM",
-          type: "email",
-          content:
-            "Sent comprehensive travel insurance options and coverage details.",
-          agent: "Sarah Chen",
-        },
-      ],
-    },
-    {
-      id: 3,
-      name: "Lisa Garcia",
-      email: "lisa.garcia@email.com",
-      phone: "+1 (555) 789-0123",
-      subject: "Cancellation policy inquiry",
-      message:
-        "I need to understand your cancellation policy for international trips. My travel dates might change due to work commitments. What are the penalties and how close to the departure date can I cancel?",
-      status: "Responded",
-      submittedAt: "2024-01-13 9:15 AM",
-      priority: "Low",
-      communicationHistory: [
-        {
-          date: "2024-01-13 11:00 AM",
-          type: "email",
-          content:
-            "Provided detailed cancellation policy and flexible booking options.",
-          agent: "Michael Rodriguez",
-        },
-        {
-          date: "2024-01-13 3:30 PM",
-          type: "phone",
-          content:
-            "Follow-up call to clarify specific concerns about work schedule.",
-          agent: "Michael Rodriguez",
-        },
-      ],
-    },
-    {
-      id: 4,
-      name: "Robert Johnson",
-      email: "robert.j@email.com",
-      phone: "+1 (555) 456-7890",
-      subject: "Honeymoon package customization",
-      message:
-        "We're interested in your honeymoon packages but would like to customize the itinerary. Can we discuss options for a romantic trip to Santorini? We're looking for private dining experiences and couples spa treatments.",
-      status: "New",
-      submittedAt: "2024-01-12 2:30 PM",
-      priority: "High",
-      communicationHistory: [],
-    },
-    {
-      id: 5,
-      name: "Maria Rodriguez",
-      email: "maria.rodriguez@email.com",
-      phone: "+1 (555) 234-5678",
-      subject: "Accessibility requirements",
-      message:
-        "I'm traveling with my elderly mother who uses a wheelchair. Do you have experience with accessible travel arrangements? We're interested in a European tour but need to ensure all accommodations and transportation are wheelchair accessible.",
-      status: "In Progress",
-      submittedAt: "2024-01-11 4:50 PM",
-      priority: "High",
-      communicationHistory: [
-        {
-          date: "2024-01-12 9:00 AM",
-          type: "email",
-          content:
-            "Sent accessible travel options and specialized tour packages.",
-          agent: "Emma Thompson",
-        },
-      ],
-    },
-    {
-      id: 6,
-      name: "James Wilson",
-      email: "james.wilson@email.com",
-      phone: "+1 (555) 345-6789",
-      subject: "Corporate travel rates",
-      message:
-        "Our company is interested in establishing a corporate travel account. Could you provide information about business rates and services? We typically book 20-30 trips per year for our executives.",
-      status: "Responded",
-      submittedAt: "2024-01-10 10:15 AM",
-      priority: "Medium",
-      communicationHistory: [
-        {
-          date: "2024-01-10 2:00 PM",
-          type: "email",
-          content:
-            "Sent corporate travel packages and volume discount information.",
-          agent: "David Park",
-        },
-        {
-          date: "2024-01-11 10:00 AM",
-          type: "phone",
-          content: "Discussed specific corporate needs and contract terms.",
-          agent: "David Park",
-        },
-      ],
-    },
-  ]);
+  useEffect(() => {
+    const loadMessages = async () => {
+      await withLoading(async () => {
+        try {
+          const messagesData = await contactService.getAllMessages();
+          setMessages(messagesData);
+        } catch (error) {
+          console.error("Error loading messages:", error);
+          showToast("Failed to load messages. Please try again.", "error");
+        }
+      });
+    };
+
+    loadMessages();
+  }, [withLoading, showToast]);
+
+  if (isLoading) {
+    return <PageLoader message="Loading messages..." />;
+  }
 
   const filteredMessages = messages.filter((message) => {
     const matchesSearch =
@@ -176,33 +80,69 @@ const AdminContactMessages = () => {
     }
   };
 
-  const getPriorityColor = (priority: string) => {
-    switch (priority) {
-      case "High":
-        return "bg-red-100 text-red-800";
-      case "Medium":
-        return "bg-yellow-100 text-yellow-800";
-      case "Low":
-        return "bg-green-100 text-green-800";
-      default:
-        return "bg-gray-100 text-gray-800";
-    }
-  };
-
-  const handleViewMessage = (message) => {
+  const handleViewMessage = (message: ContactMessage) => {
     setSelectedMessage(message);
     setIsModalOpen(true);
   };
 
-  const handleStatusUpdate = (id: number, newStatus: string) => {
-    setMessages((prev) =>
-      prev.map((message) =>
-        message.id === id ? { ...message, status: newStatus } : message
+  const handleStatusUpdate = async (id: number, newStatus: string) => {
+    try {
+      await contactService.updateMessage({
+        id,
+        status: newStatus as "New" | "In Progress" | "Responded" | "Closed",
+      });
+
+      setMessages((prev: ContactMessage[]) =>
+        prev.map((message: ContactMessage) =>
+          message.id === id
+            ? {
+                ...message,
+                status: newStatus as
+                  | "New"
+                  | "In Progress"
+                  | "Responded"
+                  | "Closed",
+              }
+            : message
+        )
+      );
+      setSelectedMessage((prev: ContactMessage | null) =>
+        prev
+          ? {
+              ...prev,
+              status: newStatus as
+                | "New"
+                | "In Progress"
+                | "Responded"
+                | "Closed",
+            }
+          : null
+      );
+
+      showToast("Message status updated successfully", "success");
+    } catch (error) {
+      console.error("Error updating message status:", error);
+      showToast("Failed to update message status. Please try again.", "error");
+    }
+  };
+
+  const handleDeleteMessage = async (id: number) => {
+    if (
+      window.confirm(
+        "Are you sure you want to delete this message? This action cannot be undone."
       )
-    );
-    setSelectedMessage((prev) =>
-      prev ? { ...prev, status: newStatus } : null
-    );
+    ) {
+      try {
+        await contactService.deleteMessage(id);
+        setMessages((prev: ContactMessage[]) =>
+          prev.filter((message) => message.id !== id)
+        );
+        showToast("Message deleted successfully", "success");
+      } catch (error) {
+        console.error("Error deleting message:", error);
+        showToast("Failed to delete message. Please try again.", "error");
+      }
+    }
   };
 
   return (
@@ -331,13 +271,6 @@ const AdminContactMessages = () => {
                         >
                           {message.status}
                         </span>
-                        <span
-                          className={`inline-flex px-2 py-1 text-xs font-semibold rounded-full ${getPriorityColor(
-                            message.priority
-                          )}`}
-                        >
-                          {message.priority} Priority
-                        </span>
                       </div>
                     </div>
 
@@ -367,13 +300,22 @@ const AdminContactMessages = () => {
                   </div>
 
                   <div className="ml-2 sm:ml-4 flex-shrink-0">
-                    <button
-                      onClick={() => handleViewMessage(message)}
-                      className="text-primary-600 hover:text-primary-900 flex items-center space-x-1"
-                    >
-                      <Eye className="w-4 h-4" />
-                      <span className="hidden sm:inline">View</span>
-                    </button>
+                    <div className="flex items-center space-x-2">
+                      <button
+                        onClick={() => handleViewMessage(message)}
+                        className="text-primary-600 hover:text-primary-900 flex items-center space-x-1"
+                      >
+                        <Eye className="w-4 h-4" />
+                        <span className="hidden sm:inline">View</span>
+                      </button>
+                      <button
+                        onClick={() => handleDeleteMessage(message.id)}
+                        className="text-red-600 hover:text-red-900 flex items-center space-x-1"
+                      >
+                        <Trash2 className="w-4 h-4" />
+                        <span className="hidden sm:inline">Delete</span>
+                      </button>
+                    </div>
                   </div>
                 </div>
               </div>

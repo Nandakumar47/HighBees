@@ -4,27 +4,10 @@ import LoadingButton from "./LoadingButton";
 import Button from "./common/Button/Button";
 import Select from "./common/Input/Select";
 import { useLoading } from "../hooks/useLoading";
-
-interface Message {
-  id: number;
-  name: string;
-  email: string;
-  phone?: string;
-  subject: string;
-  message: string;
-  status: string;
-  submittedAt: string;
-  priority: string;
-  communicationHistory?: Array<{
-    date: string;
-    type: "email" | "phone" | "note";
-    content: string;
-    agent: string;
-  }>;
-}
+import { ContactMessage } from "../services/types/contact.types";
 
 interface MessageModalProps {
-  message: Message | null;
+  message: ContactMessage | null;
   isOpen: boolean;
   onClose: () => void;
   onStatusUpdate: (id: number, newStatus: string) => void;
@@ -71,19 +54,6 @@ const MessageModal: React.FC<MessageModalProps> = ({
     return statusOption?.color || "bg-gray-100 text-gray-800";
   };
 
-  const getPriorityColor = (priority: string) => {
-    switch (priority) {
-      case "High":
-        return "bg-red-100 text-red-800";
-      case "Medium":
-        return "bg-yellow-100 text-yellow-800";
-      case "Low":
-        return "bg-green-100 text-green-800";
-      default:
-        return "bg-gray-100 text-gray-800";
-    }
-  };
-
   if (!isOpen || !message) return null;
 
   return (
@@ -121,13 +91,6 @@ const MessageModal: React.FC<MessageModalProps> = ({
                   )}`}
                 >
                   {message.status}
-                </span>
-                <span
-                  className={`inline-flex px-2 sm:px-3 py-1 text-xs sm:text-sm font-semibold rounded-full ${getPriorityColor(
-                    message.priority
-                  )}`}
-                >
-                  {message.priority} Priority
                 </span>
               </div>
             </div>
@@ -237,45 +200,6 @@ const MessageModal: React.FC<MessageModalProps> = ({
               </div>
             </div>
           </div>
-
-          {/* Communication History */}
-          {message.communicationHistory &&
-            message.communicationHistory.length > 0 && (
-              <div>
-                <h3 className="text-lg font-semibold text-gray-900 mb-4">
-                  Communication History
-                </h3>
-                <div className="space-y-4">
-                  {message.communicationHistory.map((comm, index) => (
-                    <div key={index} className="bg-gray-50 rounded-lg p-4">
-                      <div className="flex items-center justify-between mb-2">
-                        <div className="flex items-center space-x-2">
-                          <span
-                            className={`inline-flex px-2 py-1 text-xs font-semibold rounded-full ${
-                              comm.type === "email"
-                                ? "bg-blue-100 text-blue-800"
-                                : comm.type === "phone"
-                                ? "bg-green-100 text-green-800"
-                                : "bg-gray-100 text-gray-800"
-                            }`}
-                          >
-                            {comm.type.charAt(0).toUpperCase() +
-                              comm.type.slice(1)}
-                          </span>
-                          <span className="text-sm text-gray-600">
-                            by {comm.agent}
-                          </span>
-                        </div>
-                        <span className="text-sm text-gray-500">
-                          {comm.date}
-                        </span>
-                      </div>
-                      <p className="text-gray-700">{comm.content}</p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            )}
         </div>
 
         {/* Footer */}

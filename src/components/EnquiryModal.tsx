@@ -15,29 +15,8 @@ import LoadingButton from "./LoadingButton";
 import Button from "./common/Button/Button";
 import Select from "./common/Input/Select";
 import { useLoading } from "../hooks/useLoading";
-
-interface Enquiry {
-  id: number;
-  name: string;
-  email: string;
-  phone: string;
-  adults: number;
-  children: number;
-  destination: string;
-  departureCity: string;
-  departureDate: string;
-  duration: string;
-  budget: string;
-  status: string;
-  submittedAt: string;
-  message?: string;
-  communicationHistory?: Array<{
-    date: string;
-    type: string;
-    content: string;
-    agent: string;
-  }>;
-}
+import { Enquiry } from "../services/types/enquiry.types";
+import { useToast } from "./common/Toast/Toast";
 
 interface EnquiryModalProps {
   enquiry: Enquiry | null;
@@ -54,6 +33,7 @@ const EnquiryModal: React.FC<EnquiryModalProps> = ({
 }) => {
   const [currentStatus, setCurrentStatus] = useState(enquiry?.status || "");
   const { isLoading, withLoading } = useLoading();
+  const { showToast } = useToast();
 
   const statusOptions = [
     { value: "New", label: "New", color: "bg-blue-100 text-blue-800" },
@@ -74,9 +54,13 @@ const EnquiryModal: React.FC<EnquiryModalProps> = ({
     if (!enquiry || currentStatus === enquiry.status) return;
 
     await withLoading(async () => {
-      // Simulate API call
-      await new Promise((resolve) => setTimeout(resolve, 1000));
-      onStatusUpdate(enquiry.id, currentStatus);
+      try {
+        onStatusUpdate(enquiry.id, currentStatus);
+        showToast("Status updated successfully", "success");
+      } catch (error) {
+        console.error("Error updating status:", error);
+        showToast("Failed to update status. Please try again.", "error");
+      }
     });
   };
 

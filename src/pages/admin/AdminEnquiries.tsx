@@ -13,175 +13,42 @@ import {
   MapPin,
   Users,
   DollarSign,
+  Trash2,
 } from "lucide-react";
 import Select from "../../components/common/Input/Select";
 import EnquiryModal from "../../components/EnquiryModal";
 import PageLoader from "../../components/PageLoader";
 import { useLoading } from "../../hooks/useLoading";
 import Input from "../../components/common/Input/Input";
+import { enquiryService } from "../../services/enquiryService";
+import { Enquiry } from "../../services/types/enquiry.types";
+import { useToast } from "../../components/common/Toast/Toast";
 
 const AdminEnquiries = () => {
   const { logout } = useAuth();
+  const { showToast } = useToast();
   const [searchTerm, setSearchTerm] = useState("");
   const [statusFilter, setStatusFilter] = useState("all");
-  const [selectedEnquiry, setSelectedEnquiry] = useState<any>(null);
+  const [selectedEnquiry, setSelectedEnquiry] = useState<Enquiry | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [enquiries, setEnquiries] = useState<any[]>([]);
+  const [enquiries, setEnquiries] = useState<Enquiry[]>([]);
   const { isLoading, withLoading } = useLoading(true);
 
   useEffect(() => {
     const loadEnquiries = async () => {
       await withLoading(async () => {
-        // Simulate API call
-        await new Promise((resolve) => setTimeout(resolve, 1500));
-
-        const enquiriesData = [
-          {
-            id: 1,
-            name: "John Smith",
-            email: "john.smith@email.com",
-            phone: "+1 (555) 123-4567",
-            adults: 2,
-            children: 1,
-            destination: "Santorini, Greece",
-            departureCity: "New York",
-            departureDate: "2024-03-15",
-            duration: "7 days",
-            budget: "$2,000 - $3,000",
-            status: "New",
-            submittedAt: "2024-01-15 10:30 AM",
-            message:
-              "We are looking for a romantic getaway with our child. Would prefer family-friendly accommodations with beautiful sunset views.",
-            communicationHistory: [
-              {
-                date: "2024-01-15 2:30 PM",
-                type: "email",
-                content: "Initial enquiry received and acknowledged.",
-                agent: "Sarah Chen",
-              },
-            ],
-          },
-          {
-            id: 2,
-            name: "Sarah Johnson",
-            email: "sarah.j@email.com",
-            phone: "+1 (555) 987-6543",
-            adults: 2,
-            children: 0,
-            destination: "Maldives",
-            departureCity: "Los Angeles",
-            departureDate: "2024-04-20",
-            duration: "5 days",
-            budget: "$5,000 - $10,000",
-            status: "In Progress",
-            submittedAt: "2024-01-14 2:15 PM",
-            message:
-              "Honeymoon trip. Looking for overwater bungalows and spa treatments.",
-            communicationHistory: [
-              {
-                date: "2024-01-14 3:00 PM",
-                type: "email",
-                content: "Sent initial honeymoon package options.",
-                agent: "Michael Rodriguez",
-              },
-              {
-                date: "2024-01-15 10:00 AM",
-                type: "phone",
-                content:
-                  "Discussed specific resort preferences and dietary requirements.",
-                agent: "Michael Rodriguez",
-              },
-            ],
-          },
-          {
-            id: 3,
-            name: "Mike Chen",
-            email: "mike.chen@email.com",
-            phone: "+1 (555) 456-7890",
-            adults: 1,
-            children: 0,
-            destination: "Kyoto, Japan",
-            departureCity: "San Francisco",
-            departureDate: "2024-05-10",
-            duration: "10 days",
-            budget: "$3,000 - $5,000",
-            status: "Converted",
-            submittedAt: "2024-01-13 9:45 AM",
-            message:
-              "Solo cultural trip. Interested in traditional experiences and temples.",
-            communicationHistory: [
-              {
-                date: "2024-01-13 11:00 AM",
-                type: "email",
-                content: "Sent cultural tour itinerary options.",
-                agent: "Emma Thompson",
-              },
-              {
-                date: "2024-01-14 2:00 PM",
-                type: "phone",
-                content: "Finalized booking and payment processed.",
-                agent: "Emma Thompson",
-              },
-            ],
-          },
-          {
-            id: 4,
-            name: "Emma Wilson",
-            email: "emma.wilson@email.com",
-            phone: "+1 (555) 321-0987",
-            adults: 4,
-            children: 2,
-            destination: "Costa Rica",
-            departureCity: "Miami",
-            departureDate: "2024-06-01",
-            duration: "8 days",
-            budget: "$1,000 - $2,000",
-            status: "New",
-            submittedAt: "2024-01-12 4:20 PM",
-            message:
-              "Family adventure trip with teenagers. Looking for eco-friendly accommodations and wildlife experiences.",
-            communicationHistory: [],
-          },
-          {
-            id: 5,
-            name: "David Brown",
-            email: "david.brown@email.com",
-            phone: "+1 (555) 654-3210",
-            adults: 2,
-            children: 0,
-            destination: "Northern Lights, Iceland",
-            departureCity: "Boston",
-            departureDate: "2024-02-28",
-            duration: "6 days",
-            budget: "$2,000 - $3,000",
-            status: "Closed",
-            submittedAt: "2024-01-11 11:10 AM",
-            message:
-              "Winter trip to see Northern Lights. Interested in glacier tours and hot springs.",
-            communicationHistory: [
-              {
-                date: "2024-01-11 1:00 PM",
-                type: "email",
-                content: "Sent Northern Lights tour packages.",
-                agent: "David Park",
-              },
-              {
-                date: "2024-01-12 9:00 AM",
-                type: "note",
-                content:
-                  "Customer decided to postpone trip due to personal reasons.",
-                agent: "David Park",
-              },
-            ],
-          },
-        ];
-
-        setEnquiries(enquiriesData);
+        try {
+          const enquiriesData = await enquiryService.getAllEnquiries();
+          setEnquiries(enquiriesData);
+        } catch (error) {
+          console.error("Error loading enquiries:", error);
+          showToast("Failed to load enquiries. Please try again.", "error");
+        }
       });
     };
 
     loadEnquiries();
-  }, [withLoading]);
+  }, [withLoading, showToast]);
 
   const filteredEnquiries = enquiries.filter((enquiry) => {
     const matchesSearch =
@@ -209,20 +76,69 @@ const AdminEnquiries = () => {
     }
   };
 
-  const handleViewEnquiry = (enquiry: any) => {
+  const handleViewEnquiry = (enquiry: Enquiry) => {
     setSelectedEnquiry(enquiry);
     setIsModalOpen(true);
   };
 
-  const handleStatusUpdate = (id: number, newStatus: string) => {
-    setEnquiries((prev: any[]) =>
-      prev.map((enquiry: any) =>
-        enquiry.id === id ? { ...enquiry, status: newStatus } : enquiry
+  const handleStatusUpdate = async (id: number, newStatus: string) => {
+    try {
+      await enquiryService.updateEnquiry({
+        id,
+        status: newStatus as "New" | "In Progress" | "Converted" | "Closed",
+      });
+
+      setEnquiries((prev: Enquiry[]) =>
+        prev.map((enquiry: Enquiry) =>
+          enquiry.id === id
+            ? {
+                ...enquiry,
+                status: newStatus as
+                  | "New"
+                  | "In Progress"
+                  | "Converted"
+                  | "Closed",
+              }
+            : enquiry
+        )
+      );
+      setSelectedEnquiry((prev: Enquiry | null) =>
+        prev
+          ? {
+              ...prev,
+              status: newStatus as
+                | "New"
+                | "In Progress"
+                | "Converted"
+                | "Closed",
+            }
+          : null
+      );
+
+      showToast("Enquiry status updated successfully", "success");
+    } catch (error) {
+      console.error("Error updating enquiry status:", error);
+      showToast("Failed to update enquiry status. Please try again.", "error");
+    }
+  };
+
+  const handleDeleteEnquiry = async (id: number) => {
+    if (
+      window.confirm(
+        "Are you sure you want to delete this enquiry? This action cannot be undone."
       )
-    );
-    setSelectedEnquiry((prev: any) =>
-      prev ? { ...prev, status: newStatus } : null
-    );
+    ) {
+      try {
+        await enquiryService.deleteEnquiry(id);
+        setEnquiries((prev: Enquiry[]) =>
+          prev.filter((enquiry) => enquiry.id !== id)
+        );
+        showToast("Enquiry deleted successfully", "success");
+      } catch (error) {
+        console.error("Error deleting enquiry:", error);
+        showToast("Failed to delete enquiry. Please try again.", "error");
+      }
+    }
   };
 
   // Calculate conversion rate
@@ -343,7 +259,7 @@ const AdminEnquiries = () => {
           </div>
           <div className="bg-white rounded-lg shadow-sm p-3 sm:p-4">
             <div className="text-xl sm:text-2xl font-bold text-primary-600">
-              {conversionRate}%
+              {conversionRate ? `${conversionRate}%` : "-"}
             </div>
             <div className="text-xs sm:text-sm text-gray-600">
               Conversion Rate
@@ -447,13 +363,22 @@ const AdminEnquiries = () => {
                       {enquiry.submittedAt}
                     </td>
                     <td className="px-3 sm:px-6 py-4 whitespace-nowrap text-sm font-medium">
-                      <button
-                        onClick={() => handleViewEnquiry(enquiry)}
-                        className="text-primary-600 hover:text-primary-900 flex items-center space-x-1"
-                      >
-                        <Eye className="w-4 h-4" />
-                        <span className="hidden sm:inline">View</span>
-                      </button>
+                      <div className="flex items-center space-x-2">
+                        <button
+                          onClick={() => handleViewEnquiry(enquiry)}
+                          className="text-primary-600 hover:text-primary-900 flex items-center space-x-1"
+                        >
+                          <Eye className="w-4 h-4" />
+                          <span className="hidden sm:inline">View</span>
+                        </button>
+                        <button
+                          onClick={() => handleDeleteEnquiry(enquiry.id)}
+                          className="text-red-600 hover:text-red-900 flex items-center space-x-1"
+                        >
+                          <Trash2 className="w-4 h-4" />
+                          <span className="hidden sm:inline">Delete</span>
+                        </button>
+                      </div>
                     </td>
                   </tr>
                 ))}

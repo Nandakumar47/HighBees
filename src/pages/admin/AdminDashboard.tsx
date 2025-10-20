@@ -11,141 +11,133 @@ import {
 } from "lucide-react";
 import PageLoader from "../../components/PageLoader";
 import { useLoading } from "../../hooks/useLoading";
+import { enquiryService } from "../../services/enquiryService";
+import { contactService } from "../../services/contactService";
+import { Enquiry } from "../../services/types/enquiry.types";
+import { ContactMessage } from "../../services/types/contact.types";
+import { DashboardData } from "./types/admin.types";
+import { useToast } from "../../components/common/Toast/Toast";
 
 const AdminDashboard = () => {
   const { logout } = useAuth();
+  const { showToast } = useToast();
   const { isLoading, withLoading } = useLoading(true);
-  const [dashboardData, setDashboardData] = useState(null);
+  const [dashboardData, setDashboardData] = useState<DashboardData | null>(
+    null
+  );
 
   useEffect(() => {
     const loadDashboardData = async () => {
       await withLoading(async () => {
-        // Simulate API call
-        await new Promise((resolve) => setTimeout(resolve, 1500));
+        try {
+          // Fetch real data from APIs
+          const [enquiries, messages] = await Promise.all([
+            enquiryService.getAllEnquiries(),
+            contactService.getAllMessages(),
+          ]);
 
-        // Mock data for calculations
-        const enquiries = [
-          { id: 1, status: "New" },
-          { id: 2, status: "In Progress" },
-          { id: 3, status: "Converted" },
-          { id: 4, status: "New" },
-          { id: 5, status: "Closed" },
-          { id: 6, status: "Converted" },
-          { id: 7, status: "In Progress" },
-          { id: 8, status: "Converted" },
-        ];
+          // Calculate conversion rate
+          const totalEnquiries = enquiries.length;
+          const convertedEnquiries = enquiries.filter(
+            (e) => e.status === "Converted"
+          ).length;
+          const conversionRate =
+            totalEnquiries > 0
+              ? Math.round((convertedEnquiries / totalEnquiries) * 100)
+              : 0;
 
-        const messages = [
-          { id: 1, status: "New" },
-          { id: 2, status: "In Progress" },
-          { id: 3, status: "Responded" },
-          { id: 4, status: "New" },
-          { id: 5, status: "In Progress" },
-          { id: 6, status: "Responded" },
-        ];
+          // Get recent enquiries (last 3)
+          const recentEnquiries = enquiries
+            .sort(
+              (a, b) =>
+                new Date(b.submittedAt).getTime() -
+                new Date(a.submittedAt).getTime()
+            )
+            .slice(0, 3)
+            .map((enquiry) => ({
+              id: enquiry.id,
+              name: enquiry.name,
+              destination: enquiry.destination,
+              date: new Date(enquiry.submittedAt).toLocaleDateString(),
+              status: enquiry.status,
+            }));
 
-        // Calculate conversion rate
-        const totalEnquiries = enquiries.length;
-        const convertedEnquiries = enquiries.filter(
-          (e) => e.status === "Converted"
-        ).length;
-        const conversionRate =
-          totalEnquiries > 0
-            ? Math.round((convertedEnquiries / totalEnquiries) * 100)
-            : 0;
+          // Get recent messages (last 3)
+          const recentMessages = messages
+            .sort(
+              (a, b) =>
+                new Date(b.submittedAt).getTime() -
+                new Date(a.submittedAt).getTime()
+            )
+            .slice(0, 3)
+            .map((message) => ({
+              id: message.id,
+              name: message.name,
+              email: message.email,
+              subject: message.subject,
+              date: new Date(message.submittedAt).toLocaleDateString(),
+            }));
 
-        const stats = [
-          {
-            title: "Total Enquiries",
-            value: totalEnquiries.toString(),
-            change: "+12%",
-            icon: Users,
-            color: "bg-blue-500",
-          },
-          {
-            title: "Contact Messages",
-            value: messages.length.toString(),
-            change: "+8%",
-            icon: MessageSquare,
-            color: "bg-green-500",
-          },
-          {
-            title: "This Month",
-            value: "45",
-            change: "+23%",
-            icon: Calendar,
-            color: "bg-purple-500",
-          },
-          {
-            title: "Conversion Rate",
-            value: `${conversionRate}%`,
-            change: conversionRate >= 30 ? "+5%" : "-2%",
-            icon: Target,
-            color: "bg-orange-500",
-          },
-        ];
+          const stats = [
+            {
+              title: "Total Enquiries",
+              value: totalEnquiries.toString(),
+              change: "+12%", // This could be calculated from historical data
+              icon: Users,
+              color: "bg-blue-500",
+            },
+            {
+              title: "Contact Messages",
+              value: messages.length.toString(),
+              change: "+8%", // This could be calculated from historical data
+              icon: MessageSquare,
+              color: "bg-green-500",
+            },
+            {
+              title: "This Month",
+              value: enquiries
+                .filter((e) => {
+                  const enquiryDate = new Date(e.submittedAt);
+                  const now = new Date();
+                  return (
+                    enquiryDate.getMonth() === now.getMonth() &&
+                    enquiryDate.getFullYear() === now.getFullYear()
+                  );
+                })
+                .length.toString(),
+              change: "+23%", // This could be calculated from historical data
+              icon: Calendar,
+              color: "bg-purple-500",
+            },
+            {
+              title: "Conversion Rate",
+              value: `${conversionRate}%`,
+              change: conversionRate >= 30 ? "+5%" : "-2%",
+              icon: Target,
+              color: "bg-orange-500",
+            },
+          ];
 
-        const recentEnquiries = [
-          {
-            id: 1,
-            name: "John Smith",
-            destination: "Santorini, Greece",
-            date: "2024-01-15",
-            status: "New",
-          },
-          {
-            id: 2,
-            name: "Sarah Johnson",
-            destination: "Maldives",
-            date: "2024-01-14",
-            status: "In Progress",
-          },
-          {
-            id: 3,
-            name: "Mike Chen",
-            destination: "Kyoto, Japan",
-            date: "2024-01-13",
-            status: "Converted",
-          },
-        ];
-
-        const recentMessages = [
-          {
-            id: 1,
-            name: "Emma Wilson",
-            email: "emma@email.com",
-            subject: "Group booking inquiry",
-            date: "2024-01-15",
-          },
-          {
-            id: 2,
-            name: "David Brown",
-            email: "david@email.com",
-            subject: "Travel insurance question",
-            date: "2024-01-14",
-          },
-          {
-            id: 3,
-            name: "Lisa Garcia",
-            email: "lisa@email.com",
-            subject: "Cancellation policy",
-            date: "2024-01-13",
-          },
-        ];
-
-        setDashboardData({
-          stats,
-          recentEnquiries,
-          recentMessages,
-          totalEnquiries,
-          convertedEnquiries,
-          conversionRate,
-        });
+          setDashboardData({
+            stats,
+            recentEnquiries,
+            recentMessages,
+            totalEnquiries,
+            convertedEnquiries,
+            conversionRate,
+          });
+        } catch (error) {
+          console.error("Error loading dashboard data:", error);
+          showToast(
+            "Failed to load dashboard data. Please try again.",
+            "error"
+          );
+        }
       });
     };
 
     loadDashboardData();
-  }, [withLoading]);
+  }, [withLoading, showToast]);
 
   if (isLoading) {
     return <PageLoader message="Loading dashboard..." />;
@@ -233,7 +225,7 @@ const AdminDashboard = () => {
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6">
             <div className="text-center">
               <div className="text-2xl sm:text-3xl font-bold text-blue-600 mb-1 sm:mb-2">
-                {dashboardData?.totalEnquiries}
+                {dashboardData?.totalEnquiries ?? "-"}
               </div>
               <div className="text-xs sm:text-sm text-gray-600">
                 Total Enquiries
@@ -241,13 +233,15 @@ const AdminDashboard = () => {
             </div>
             <div className="text-center">
               <div className="text-2xl sm:text-3xl font-bold text-green-600 mb-1 sm:mb-2">
-                {dashboardData?.convertedEnquiries}
+                {dashboardData?.convertedEnquiries ?? "-"}
               </div>
               <div className="text-xs sm:text-sm text-gray-600">Converted</div>
             </div>
             <div className="text-center">
               <div className="text-2xl sm:text-3xl font-bold text-primary-600 mb-1 sm:mb-2">
-                {dashboardData?.conversionRate}%
+                {dashboardData?.conversionRate
+                  ? `${dashboardData.conversionRate}%`
+                  : "-"}
               </div>
               <div className="text-xs sm:text-sm text-gray-600">
                 Conversion Rate
@@ -257,13 +251,15 @@ const AdminDashboard = () => {
           <div className="mt-4 bg-gray-200 rounded-full h-2">
             <div
               className="bg-primary-500 h-2 rounded-full transition-all duration-300"
-              style={{ width: `${dashboardData?.conversionRate}%` }}
+              style={{ width: `${dashboardData?.conversionRate || 0}%` }}
             ></div>
           </div>
           <p className="text-xs sm:text-sm text-gray-600 mt-2">
-            {dashboardData?.conversionRate >= 30
-              ? "Excellent conversion rate!"
-              : "Room for improvement in conversion rate."}
+            {dashboardData?.conversionRate
+              ? dashboardData.conversionRate >= 30
+                ? "Excellent conversion rate!"
+                : "Room for improvement in conversion rate."
+              : "No data available for conversion analysis."}
           </p>
         </div>
 
