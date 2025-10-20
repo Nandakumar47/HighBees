@@ -76,7 +76,7 @@ const DestinationDetail = () => {
       return response.data.data.destination;
     } catch (error) {
       console.error("Error fetching destinations:", error);
-      return {};
+      return null;
     }
   };
 
