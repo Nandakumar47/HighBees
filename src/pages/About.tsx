@@ -151,7 +151,7 @@ const About = () => {
       {/* Stats Section with improved mobile hierarchy */}
       <section className="py-8 sm:py-12 lg:py-16 bg-white">
         <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-12">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 lg:gap-10">
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8 lg:gap-10">
             {stats.map((stat, index) => {
               const Icon = stat.icon;
               return (
