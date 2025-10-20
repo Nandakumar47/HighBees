@@ -13,6 +13,7 @@ import DestinationDetail from "./pages/DestinationDetail";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 import Enquiry from "./pages/Enquiry";
+import AdminRegister from "./pages/admin/AdminRegister";
 import ErrorPage from "./pages/ErrorPage";
 import AdminLogin from "./pages/admin/AdminLogin";
 import AdminDashboard from "./pages/admin/AdminDashboard";
@@ -51,6 +52,10 @@ const App: React.FC = () => {
 
                 {/* Admin Routes without shared layout */}
                 <Route path={ROUTES.ADMIN.LOGIN} element={<AdminLogin />} />
+                <Route
+                  path={ROUTES.ADMIN.REGISTER}
+                  element={<AdminRegister />}
+                />
                 <Route path="admin" element={<AdminLayout />}>
                   <Route
                     index

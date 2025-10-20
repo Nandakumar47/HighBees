@@ -8,6 +8,7 @@ export const ROUTES = {
   ERROR: "/error",
   ADMIN: {
     LOGIN: "/admin/login",
+    REGISTER: "/admin/register",
     DASHBOARD: "/admin/dashboard",
     ENQUIRIES: "/admin/enquiries",
     CONTACT_MESSAGES: "/admin/contact-messages",

@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { Navigate } from "react-router-dom";
+import { Navigate, Link } from "react-router-dom";
 import { useAuth } from "../../contexts/AuthContext";
 import { Lock, User, Eye, EyeOff, AlertCircle } from "lucide-react";
 import Input from "../../components/common/Input/Input";
 import Button from "../../components/common/Button/Button";
+import { ROUTES } from "../../utils/constants";
 
 const AdminLogin = () => {
   const [credentials, setCredentials] = useState({
@@ -33,8 +34,20 @@ const AdminLogin = () => {
       if (!success) {
         setError("Invalid username or password");
       }
-    } catch {
-      setError("Login failed. Please try again.");
+    } catch (error: unknown) {
+      console.error("Login error:", error);
+      if (error && typeof error === "object" && "response" in error) {
+        const axiosError = error as { response?: { status?: number } };
+        if (axiosError.response?.status === 401) {
+          setError("Invalid username or password");
+        } else if (axiosError.response?.status === 400) {
+          setError("Please provide both username and password");
+        } else {
+          setError("Login failed. Please try again.");
+        }
+      } else {
+        setError("Login failed. Please try again.");
+      }
     } finally {
       setIsLoading(false);
     }
@@ -142,6 +155,20 @@ const AdminLogin = () => {
             <p className="text-xs sm:text-sm text-gray-500">
               Secure admin access for High Bees Holidays
             </p>
+
+            {/* Register option */}
+            <div className="mt-4 pt-4 border-t border-gray-200">
+              <p className="text-xs sm:text-sm text-gray-500 mb-3">
+                Don't have an account?
+              </p>
+              <Link
+                to={ROUTES.ADMIN.REGISTER}
+                className="inline-flex items-center justify-center px-4 py-2 text-sm font-medium text-white bg-primary-500 hover:bg-primary-600 rounded-lg transition-colors"
+              >
+                <User className="w-4 h-4 mr-2" />
+                Create Account
+              </Link>
+            </div>
           </div>
         </div>
       </div>
