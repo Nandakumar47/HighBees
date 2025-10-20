@@ -68,7 +68,7 @@ const FeaturedDestinations = () => {
     }
   };
   return (
-    <section className="py-12 lg:py-16 bg-gray-50">
+    <section className="pt-6 sm:pt-10 lg:py-16 bg-gray-50">
       <div className="max-w-8xl mx-auto px-6 sm:px-8 lg:px-12">
         {/* Section Header with improved hierarchy */}
         <div className="text-center mb-12">

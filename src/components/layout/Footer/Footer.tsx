@@ -1,21 +1,18 @@
-import React from "react";
 import { Link } from "react-router-dom";
 import {
+  Facebook,
+  Instagram,
   Mail,
   Phone,
-  Facebook,
-  Twitter,
-  Instagram,
-  Youtube,
-  MapPin,
-} from "lucide-react";
+  LocationPin,
+} from "@mui/icons-material";
 import { ROUTES, CONTACT_INFO } from "../../../utils/constants";
 
 const Footer = () => {
   return (
     <footer className="bg-gray-900 text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Company Info */}
           <div className="space-y-4">
             <Link to={ROUTES.HOME} className="flex items-center space-x-3">
@@ -42,14 +39,18 @@ const Footer = () => {
               <a
                 href="https://www.facebook.com/share/1A1KyGTwoj/"
                 className="text-gray-400 hover:text-primary-400 transition-colors"
+                target="_blank"
+                rel="noopener noreferrer"
               >
-                <Facebook className="w-5 h-5" />
+                <Facebook sx={{ fontSize: 20 }} />
               </a>
               <a
                 href="https://www.instagram.com/highbeesholidays/"
                 className="text-gray-400 hover:text-primary-400 transition-colors"
+                target="_blank"
+                rel="noopener noreferrer"
               >
-                <Instagram className="w-5 h-5" />
+                <Instagram sx={{ fontSize: 20 }} />
               </a>
             </div>
           </div>
@@ -154,26 +155,26 @@ const Footer = () => {
             <h3 className="text-lg font-semibold mb-4">Contact Us</h3>
             <div className="space-y-3">
               <div className="flex items-center space-x-3">
-                <Phone className="w-4 h-4 text-primary-400" />
+                <Phone className="w-3 h-3 text-primary-400" />
                 <span className="text-gray-300">{CONTACT_INFO.phone}</span>
               </div>
               <div className="flex items-center space-x-3">
-                <Mail className="w-4 h-4 text-primary-400" />
+                <Mail className="w-3 h-3 text-primary-400" />
                 <span className="text-gray-300">{CONTACT_INFO.email}</span>
               </div>
               <div className="flex items-start space-x-3">
-                <MapPin className="w-4 h-4 text-primary-400 mt-0.5" />
+                <LocationPin className="w-3 h-3 text-primary-400 mt-0.5" />
                 <span className="text-gray-300">{CONTACT_INFO.address}</span>
               </div>
             </div>
           </div>
         </div>
 
-        <div className="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
-          <p className="text-gray-400 text-sm">
+        <div className="border-t border-gray-800 mt-12 pt-8 flex flex-col lg:flex-row justify-between items-center">
+          <p className="text-gray-400 text-sm text-center lg:text-left">
             © 2025 High Bees Holidays. All rights reserved.
           </p>
-          <div className="flex space-x-6 mt-4 md:mt-0">
+          <div className="flex flex-wrap justify-center lg:justify-end gap-4 lg:gap-6 mt-4 lg:mt-0">
             <a
               href="#"
               className="text-gray-400 hover:text-white text-sm transition-colors"

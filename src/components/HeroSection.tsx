@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
-import { ArrowRight, ChevronDown } from "lucide-react";
 import { useRouteNavigation } from "../hooks/useRouteNavigation";
-
+import { ArrowForward, KeyboardArrowDown } from "@mui/icons-material";
 const HeroSection = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [showScrollIndicator, setShowScrollIndicator] = useState(true);
@@ -42,7 +41,7 @@ const HeroSection = () => {
       </div>
 
       {/* Main Content with improved mobile optimization */}
-      <div className="relative min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-16 py-8 sm:py-12 lg:py-16 xl:py-20">
+      <div className="relative min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-16 py-4 sm:py-12 lg:py-16 xl:py-20">
         <div className="max-w-7xl mx-auto w-full">
           <div className="flex flex-col lg:flex-row items-center gap-6 sm:gap-8 lg:gap-12 xl:gap-16">
             {/* Left Side - Content */}
@@ -50,7 +49,7 @@ const HeroSection = () => {
               <div className="max-w-2xl mx-auto lg:mx-0">
                 {/* Bold Headline with better mobile scaling */}
                 <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-gray-900 mb-4 sm:mb-6 lg:mb-8 leading-tight">
-                  <span className="text-[#FFAA05]"> Explore</span> the World{" "}
+                  <span className="text-[#FFAA05]"> Explore</span> the World,{" "}
                   Live the Story.
                 </h1>
 
@@ -59,8 +58,8 @@ const HeroSection = () => {
                   Join <span className="font-bold">High Bees Holidays</span> and
                   discover extraordinary destinations around the world. From
                   pristine beaches to majestic mountains, we craft unforgettable
-                  travel experiences tailored just for{" "}
-                  <span className="font-bold">You!</span>
+                  travel experiences tailored{" "}
+                  <span className="font-bold"> just for you!</span>
                 </p>
 
                 {/* Buttons with improved mobile layout */}
@@ -71,7 +70,7 @@ const HeroSection = () => {
                     onClick={navigateToDestinations}
                   >
                     <span>Start Your Adventure</span>
-                    <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6 ml-2 transition-transform duration-300 group-hover:translate-x-1" />
+                    <ArrowForward className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6 ml-2 transition-transform duration-300 group-hover:translate-x-1" />
                   </button>
 
                   {/* Secondary Link */}
@@ -120,11 +119,11 @@ const HeroSection = () => {
         </div>
       </div>
 
-      {/* Scroll Indicator with improved mobile visibility */}
+      {/* Scroll Indicator - hidden on mobile */}
       {showScrollIndicator && (
-        <div className="absolute bottom-4 sm:bottom-6 lg:bottom-8 left-1/2 transform -translate-x-1/2 text-gray-400 animate-bounce">
+        <div className="hidden sm:block absolute bottom-4 sm:bottom-6 lg:bottom-8 left-1/2 transform -translate-x-1/2 text-gray-400 animate-bounce">
           <div className="flex flex-col items-center space-y-1 sm:space-y-2">
-            <ChevronDown className="w-5 h-5 sm:w-6 sm:h-6" />
+            <KeyboardArrowDown className="w-5 h-5 sm:w-6 sm:h-6" />
             <span className="text-xs font-medium tracking-wide uppercase">
               Scroll
             </span>
