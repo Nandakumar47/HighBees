@@ -9,14 +9,6 @@ import axios from "axios";
 import { Destination } from "../types";
 import DestinationCard from "../components/common/DestinationCard";
 import Input from "../components/common/Input/Input";
-const countries = [
-  { id: "all", name: "All countries" },
-  { id: "india", name: "India" },
-  { id: "africa", name: "Africa" },
-  { id: "europe", name: "Europe" },
-  { id: "americas", name: "Americas" },
-  { id: "oceania", name: "Oceania" },
-];
 
 type DestinationsType = Array<Destination>;
 interface ApiDestination {
@@ -30,6 +22,9 @@ const Destinations = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCountry, setSelectedCountry] = useState("all");
   const [destinations, setDestinations] = useState<DestinationsType>([]);
+  const [countryOptions, setCountryOptions] = useState<
+    Array<{ id: string; name: string }>
+  >([{ id: "all", name: "All countries" }]);
   const { isLoading, withLoading } = useLoading(true);
   const { showError } = useToast();
 
@@ -48,6 +43,20 @@ const Destinations = () => {
           }));
 
           setDestinations(destinationsData);
+
+          // Build unique country list from fetched data for the filter dropdown
+          const uniqueCountries = Array.from(
+            new Set(
+              destinationsData
+                .map((d) => d.country)
+                .filter((c): c is string => Boolean(c))
+            )
+          ).sort((a, b) => a.localeCompare(b));
+
+          setCountryOptions([
+            { id: "all", name: "All countries" },
+            ...uniqueCountries.map((c) => ({ id: c.toLowerCase(), name: c })),
+          ]);
         });
       } catch (error) {
         const errorMessage = getErrorMessage(error);
@@ -72,10 +81,16 @@ const Destinations = () => {
     }
   };
   const filteredDestinations = destinations.filter((destination) => {
+    const lowerSearch = searchTerm.toLowerCase();
     const matchesSearch =
-      destination.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      destination.country.toLowerCase().includes(searchTerm.toLowerCase());
-    return matchesSearch;
+      destination.name.toLowerCase().includes(lowerSearch) ||
+      destination.country.toLowerCase().includes(lowerSearch);
+
+    const matchesCountry =
+      selectedCountry === "all" ||
+      destination.country.toLowerCase() === selectedCountry;
+
+    return matchesSearch && matchesCountry;
   });
 
   return (
@@ -106,14 +121,14 @@ const Destinations = () => {
               />
             </div>
 
-            {/* country Filter */}
+            {/* Country Filter */}
             <div className="sm:col-span-2 lg:col-span-1">
               <Select
                 value={selectedCountry}
                 onChange={(e) => setSelectedCountry(e.target.value)}
                 placeholder="All countries"
               >
-                {countries.map((country) => (
+                {countryOptions.map((country) => (
                   <option key={country.id} value={country.id}>
                     {country.name}
                   </option>
