@@ -19,6 +19,7 @@ import AdminLogin from "./pages/admin/AdminLogin";
 import AdminDashboard from "./pages/admin/AdminDashboard";
 import AdminEnquiries from "./pages/admin/AdminEnquiries";
 import AdminContactMessages from "./pages/admin/AdminContactMessages";
+import AdminAddDestination from "./pages/admin/AdminAddDestination";
 import { ROUTES } from "./utils/constants";
 import ScrollToTop from "./components/layout/ScrollToTop/ScrollToTop";
 import AdminLayout from "./components/layout/AdminLayout";
@@ -72,6 +73,10 @@ const App: React.FC = () => {
                   <Route
                     path={ROUTES.ADMIN.CONTACT_MESSAGES}
                     element={<AdminContactMessages />}
+                  />
+                  <Route
+                    path={ROUTES.ADMIN.ADD_DESTINATION}
+                    element={<AdminAddDestination />}
                   />
                 </Route>
 

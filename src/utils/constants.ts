@@ -12,6 +12,7 @@ export const ROUTES = {
     DASHBOARD: "/admin/dashboard",
     ENQUIRIES: "/admin/enquiries",
     CONTACT_MESSAGES: "/admin/contact-messages",
+    ADD_DESTINATION: "/admin/add-destination",
   },
 } as const;
 

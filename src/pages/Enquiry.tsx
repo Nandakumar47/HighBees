@@ -149,7 +149,7 @@ const Enquiry: React.FC<EnquiryProps> = ({
 
   const createEnquiry = async () => {
     try {
-      const response = await axios.post("/api/enquiry/create", {
+      const response = await axios.post("/api/enquiry", {
         name: formData.name,
         email: formData.email,
         phoneNumber: formData.phone,

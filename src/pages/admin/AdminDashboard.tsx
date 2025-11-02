@@ -8,13 +8,13 @@ import {
   LogOut,
   Mail,
   Target,
+  MapPin,
+  Plus,
 } from "lucide-react";
 import PageLoader from "../../components/PageLoader";
 import { useLoading } from "../../hooks/useLoading";
 import { enquiryService } from "../../services/enquiryService";
 import { contactService } from "../../services/contactService";
-import { Enquiry } from "../../services/types/enquiry.types";
-import { ContactMessage } from "../../services/types/contact.types";
 import { DashboardData } from "./types/admin.types";
 import { useToast } from "../../components/common/Toast/Toast";
 
@@ -264,7 +264,7 @@ const AdminDashboard = () => {
         </div>
 
         {/* Quick Actions */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 mb-6 sm:mb-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mb-6 sm:mb-8">
           <Link
             to="/admin/enquiries"
             className="bg-white rounded-lg shadow-sm p-4 sm:p-6 hover:shadow-md transition-shadow group"
@@ -298,6 +298,26 @@ const AdminDashboard = () => {
                 </h3>
                 <p className="text-sm sm:text-base text-gray-600">
                   View and respond to customer messages
+                </p>
+              </div>
+            </div>
+          </Link>
+
+          <Link
+            to="/admin/add-destination"
+            className="bg-white rounded-lg shadow-sm p-4 sm:p-6 hover:shadow-md transition-shadow group border-2 border-dashed border-primary-300 hover:border-primary-500"
+          >
+            <div className="flex items-center space-x-3 sm:space-x-4">
+              <div className="bg-purple-100 rounded-lg p-2 sm:p-3 group-hover:bg-purple-200 transition-colors">
+                <MapPin className="w-6 h-6 sm:w-8 sm:h-8 text-purple-600" />
+              </div>
+              <div>
+                <h3 className="text-base sm:text-lg font-semibold text-gray-900 flex items-center gap-2">
+                  Add New Destination
+                  <Plus className="w-4 h-4 text-primary-500" />
+                </h3>
+                <p className="text-sm sm:text-base text-gray-600">
+                  Create and add a new destination to the platform
                 </p>
               </div>
             </div>
