@@ -7,6 +7,7 @@ import { getErrorMessage } from "../utils/apiErrorHandler";
 import axios from "axios";
 import { Destination } from "../types";
 import DestinationCard from "./common/DestinationCard";
+import { API_ENDPOINTS, ROUTES } from "../utils/constants";
 
 type Destinations = Array<Destination>;
 interface ApiDestination {
@@ -73,7 +74,7 @@ const FeaturedDestinations = () => {
     ApiDestination[]
   > => {
     try {
-      const response = await axios.get("/api/destinations", {
+      const response = await axios.get(API_ENDPOINTS.DESTINATIONS, {
         params: { offset, limit },
       });
       return response.data.data.destinations;
@@ -139,7 +140,7 @@ const FeaturedDestinations = () => {
                     Reload
                   </button>
                   <Link
-                    to="/destinations"
+                    to={ROUTES.DESTINATIONS}
                     className="inline-flex items-center justify-center rounded-lg border border-gray-300 bg-white text-gray-700 px-6 py-3 font-medium hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 transition-colors"
                   >
                     Browse all destinations

@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X, User, LogOut } from "lucide-react";
-import { ROUTES } from "../../../utils/constants";
+import { ROUTES, ASSETS } from "../../../utils/constants";
 import { useAuth } from "../../../contexts/AuthContext";
 
 const Header = () => {
@@ -72,7 +72,7 @@ const Header = () => {
             className="flex items-center space-x-2 sm:space-x-3 group"
           >
             <img
-              src="/logo.png "
+              src={ASSETS.LOGO}
               alt="High Bees Holidays"
               className="h-8 sm:h-10 w-auto -mt-[6px] sm:-mt-[8px] rounded-full"
             />

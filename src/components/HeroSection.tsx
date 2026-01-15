@@ -1,14 +1,15 @@
 import { useState, useEffect } from "react";
 import { useRouteNavigation } from "../hooks/useRouteNavigation";
 import { ArrowForward, KeyboardArrowDown } from "@mui/icons-material";
+import { ASSETS } from "../utils/constants";
 const HeroSection = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [showScrollIndicator, setShowScrollIndicator] = useState(true);
   const { navigateToDestinations } = useRouteNavigation();
   const destinationImages = [
-    "https://images.pexels.com/photos/1107717/pexels-photo-1107717.jpeg?auto=compress&cs=tinysrgb&w=1920",
-    "https://images.pexels.com/photos/1285625/pexels-photo-1285625.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1280",
-    "https://images.pexels.com/photos/1470502/pexels-photo-1470502.jpeg?auto=compress&cs=tinysrgb&w=1920",
+    ASSETS.HERO.SLIDE_1,
+    ASSETS.HERO.SLIDE_2,
+    ASSETS.HERO.SLIDE_3,
   ];
 
   useEffect(() => {

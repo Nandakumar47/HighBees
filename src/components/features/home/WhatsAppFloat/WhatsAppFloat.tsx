@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { MessageCircle } from 'lucide-react';
-import { CONTACT_INFO } from '../../../../utils/constants';
+import { CONTACT_INFO, ROUTES } from '../../../../utils/constants';
 import { getDestinationBySlug } from '../../../../data/destinationsData';
 
 const WhatsAppFloat = () => {
@@ -9,8 +9,8 @@ const WhatsAppFloat = () => {
   const location = useLocation();
   
   // Check if we're on a destination detail page
-  const isDestinationPage = location.pathname.startsWith('/destinations/');
-  const destinationSlug = isDestinationPage ? location.pathname.split('/destinations/')[1] : null;
+  const isDestinationPage = location.pathname.startsWith(ROUTES.DESTINATIONS + "/");
+  const destinationSlug = isDestinationPage ? location.pathname.split(ROUTES.DESTINATIONS + "/")[1] : null;
   const destination = destinationSlug ? getDestinationBySlug(destinationSlug) : null;
   
   // Create context-aware message

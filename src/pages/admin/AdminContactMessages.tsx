@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useAuth } from "../../contexts/AuthContext";
+import { ROUTES, ASSETS } from "../../utils/constants";
 import {
   ArrowLeft,
   LogOut,
@@ -153,13 +154,13 @@ const AdminContactMessages = () => {
           <div className="flex justify-between items-center h-14 sm:h-16">
             <div className="flex items-center space-x-2 sm:space-x-4">
               <Link
-                to="/admin/dashboard"
+                to={ROUTES.ADMIN.DASHBOARD}
                 className="text-gray-600 hover:text-gray-900"
               >
                 <ArrowLeft className="w-4 h-4 sm:w-5 sm:h-5" />
               </Link>
               <img
-                src="/logo.png"
+                src={ASSETS.LOGO}
                 alt="High Bees Holidays"
                 className="h-6 sm:h-8 w-auto"
               />

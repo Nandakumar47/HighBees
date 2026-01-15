@@ -6,7 +6,7 @@ import {
   Phone,
   LocationPin,
 } from "@mui/icons-material";
-import { ROUTES, CONTACT_INFO } from "../../../utils/constants";
+import { ROUTES, CONTACT_INFO, SOCIAL_LINKS, ASSETS } from "../../../utils/constants";
 
 const Footer = () => {
   return (
@@ -17,7 +17,7 @@ const Footer = () => {
           <div className="space-y-4">
             <Link to={ROUTES.HOME} className="flex items-center space-x-3">
               <img
-                src="/logo.png"
+                src={ASSETS.LOGO}
                 alt="High Bees Holidays"
                 className="h-16 w-auto"
               />
@@ -37,7 +37,7 @@ const Footer = () => {
             </p>
             <div className="flex space-x-4">
               <a
-                href="https://www.facebook.com/share/1A1KyGTwoj/"
+                href={SOCIAL_LINKS.FACEBOOK}
                 className="text-gray-400 hover:text-primary-400 transition-colors"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -45,7 +45,7 @@ const Footer = () => {
                 <Facebook sx={{ fontSize: 20 }} />
               </a>
               <a
-                href="https://www.instagram.com/highbeesholidays/"
+                href={SOCIAL_LINKS.INSTAGRAM}
                 className="text-gray-400 hover:text-primary-400 transition-colors"
                 target="_blank"
                 rel="noopener noreferrer"

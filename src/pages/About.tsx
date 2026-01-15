@@ -11,7 +11,7 @@ import {
   Shield,
   Star,
 } from "lucide-react";
-import { CONTACT_INFO } from "../utils/constants";
+import { CONTACT_INFO, ASSETS } from "../utils/constants";
 import { useRouteNavigation } from "../hooks/useRouteNavigation";
 
 const About = () => {
@@ -85,16 +85,14 @@ const About = () => {
     {
       name: "Sarah Chen",
       role: "Founder & CEO",
-      image:
-        "https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=300",
+      image: ASSETS.ABOUT.IMAGE_1,
       bio: "With over 20 years in the travel industry, Sarah founded High Bees Holidays to make luxury travel accessible to everyone.",
       specialties: ["Luxury Travel", "Asia Pacific", "Executive Leadership"],
     },
     {
       name: "Michael Rodriguez",
       role: "Head of Operations",
-      image:
-        "https://images.pexels.com/photos/2379005/pexels-photo-2379005.jpeg?auto=compress&cs=tinysrgb&w=300",
+      image: ASSETS.ABOUT.IMAGE_2,
       bio: "Michael ensures every trip runs smoothly with his expertise in logistics and customer service excellence.",
       specialties: [
         "Operations Management",
@@ -105,16 +103,14 @@ const About = () => {
     {
       name: "Emma Thompson",
       role: "Senior Travel Advisor",
-      image:
-        "https://images.pexels.com/photos/1181690/pexels-photo-1181690.jpeg?auto=compress&cs=tinysrgb&w=300",
+      image: ASSETS.ABOUT.IMAGE_3,
       bio: "Emma specializes in European destinations and has personally visited over 100 cities across the continent.",
       specialties: ["European Travel", "Cultural Tours", "Adventure Planning"],
     },
     {
       name: "David Park",
       role: "Adventure Specialist",
-      image:
-        "https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&w=300",
+      image: ASSETS.ABOUT.IMAGE_4,
       bio: "David designs thrilling adventure tours and has led expeditions to some of the world's most remote locations.",
       specialties: [
         "Adventure Travel",

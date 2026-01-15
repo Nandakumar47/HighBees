@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { ChevronLeft, ChevronRight, Star, Quote } from "lucide-react";
 
+import { ASSETS } from "../utils/constants";
 const Testimonials = () => {
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
 
@@ -11,8 +12,7 @@ const Testimonials = () => {
       location: "New York, USA",
       rating: 5,
       text: "WanderLux made our honeymoon in Santorini absolutely magical. Every detail was perfectly planned, from the romantic sunset dinner to the private yacht tour. The customer service was exceptional throughout our entire journey.",
-      image:
-        "https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=150",
+      image: ASSETS.TESTIMONIALS.SARAH,
       trip: "Santorini Honeymoon Package",
       date: "October 2023",
     },
@@ -22,8 +22,7 @@ const Testimonials = () => {
       location: "Toronto, Canada",
       rating: 5,
       text: "The Japan cultural tour exceeded all my expectations. The guides were knowledgeable, the accommodations were top-notch, and experiencing the traditional tea ceremony was unforgettable. Highly recommend WanderLux!",
-      image:
-        "https://images.pexels.com/photos/2379005/pexels-photo-2379005.jpeg?auto=compress&cs=tinysrgb&w=150",
+      image: ASSETS.TESTIMONIALS.MICHAEL,
       trip: "Japan Cultural Experience",
       date: "September 2023",
     },
@@ -33,8 +32,7 @@ const Testimonials = () => {
       location: "Madrid, Spain",
       rating: 5,
       text: "Our family safari in Kenya was the adventure of a lifetime. Seeing the Great Migration up close was breathtaking. The kids loved every moment, and the accommodations were comfortable for the whole family.",
-      image:
-        "https://images.pexels.com/photos/1181690/pexels-photo-1181690.jpeg?auto=compress&cs=tinysrgb&w=150",
+      image: ASSETS.TESTIMONIALS.EMMA,
       trip: "Kenya Family Safari",
       date: "August 2023",
     },
@@ -44,8 +42,7 @@ const Testimonials = () => {
       location: "London, UK",
       rating: 5,
       text: "The Northern Lights tour in Iceland was absolutely spectacular. WanderLux arranged everything perfectly - from the glacier hiking to the Aurora hunting. Professional guides and stunning locations made this trip unforgettable.",
-      image:
-        "https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&w=150",
+      image: ASSETS.TESTIMONIALS.DAVID,
       trip: "Iceland Northern Lights",
       date: "November 2023",
     },
@@ -55,8 +52,7 @@ const Testimonials = () => {
       location: "Seoul, South Korea",
       rating: 5,
       text: "My solo trip to Peru was incredible thanks to WanderLux. The Machu Picchu trek was challenging but rewarding, and I felt safe and supported throughout. The local guides shared amazing stories about Inca history.",
-      image:
-        "https://images.pexels.com/photos/1130626/pexels-photo-1130626.jpeg?auto=compress&cs=tinysrgb&w=150",
+      image: ASSETS.TESTIMONIALS.LISA,
       trip: "Peru Machu Picchu Trek",
       date: "July 2023",
     },
@@ -66,8 +62,7 @@ const Testimonials = () => {
       location: "Sydney, Australia",
       rating: 5,
       text: "The Maldives luxury package was pure paradise. The overwater villa was stunning, the coral reefs were pristine for snorkeling, and the spa treatments were world-class. WanderLux delivered excellence in every aspect.",
-      image:
-        "https://images.pexels.com/photos/1043471/pexels-photo-1043471.jpeg?auto=compress&cs=tinysrgb&w=150",
+      image: ASSETS.TESTIMONIALS.ROBERT,
       trip: "Maldives Luxury Resort",
       date: "December 2023",
     },

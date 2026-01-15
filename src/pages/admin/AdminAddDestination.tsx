@@ -9,6 +9,7 @@ import { destinationService } from "../../services/destinationService";
 import { CreateDestinationData } from "../../services/types/destination.types";
 import { getErrorMessage } from "../../utils/apiErrorHandler";
 import PageLoader from "../../components/PageLoader";
+import { ROUTES } from "../../utils/constants";
 
 const AdminAddDestination = () => {
   const { logout } = useAuth();
@@ -393,7 +394,7 @@ const AdminAddDestination = () => {
       try {
         await destinationService.createDestination(formData);
         showToast("Destination added successfully!", "success");
-        navigate("/admin/dashboard");
+        navigate(ROUTES.ADMIN.DASHBOARD);
       } catch (error) {
         const errorMessage = getErrorMessage(error);
         showToast(errorMessage, "error");
@@ -413,7 +414,7 @@ const AdminAddDestination = () => {
           <div className="flex justify-between items-center h-14 sm:h-16">
             <div className="flex items-center space-x-2 sm:space-x-4">
               <Link
-                to="/admin/dashboard"
+                to={ROUTES.ADMIN.DASHBOARD}
                 className="p-1 hover:bg-gray-100 rounded"
               >
                 <ArrowLeft className="w-5 h-5 text-gray-600" />

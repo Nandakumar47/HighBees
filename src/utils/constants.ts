@@ -76,3 +76,82 @@ export const BREADCRUMBS = {
     { label: "Destinations", href: ROUTES.DESTINATIONS },
   ],
 } as const;
+
+export const SOCIAL_LINKS = {
+  FACEBOOK: "https://www.facebook.com/share/1A1KyGTwoj/",
+  INSTAGRAM: "https://www.instagram.com/highbeesholidays/",
+} as const;
+
+export const ASSETS = {
+  LOGO: "/logo.png",
+  HERO: {
+    SLIDE_1:
+      "https://images.pexels.com/photos/1107717/pexels-photo-1107717.jpeg?auto=compress&cs=tinysrgb&w=1920",
+    SLIDE_2:
+      "https://images.pexels.com/photos/1285625/pexels-photo-1285625.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1280",
+    SLIDE_3:
+      "https://images.pexels.com/photos/1470502/pexels-photo-1470502.jpeg?auto=compress&cs=tinysrgb&w=1920",
+  },
+  TESTIMONIALS: {
+    SARAH:
+      "https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=150",
+    MICHAEL:
+      "https://images.pexels.com/photos/2379005/pexels-photo-2379005.jpeg?auto=compress&cs=tinysrgb&w=150",
+    EMMA:
+      "https://images.pexels.com/photos/1181690/pexels-photo-1181690.jpeg?auto=compress&cs=tinysrgb&w=150",
+    DAVID:
+      "https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&w=150",
+    LISA:
+      "https://images.pexels.com/photos/1130626/pexels-photo-1130626.jpeg?auto=compress&cs=tinysrgb&w=150",
+    ROBERT:
+      "https://images.pexels.com/photos/1043471/pexels-photo-1043471.jpeg?auto=compress&cs=tinysrgb&w=150",
+  },
+  SPECIAL_OFFERS: {
+    EARLY_BIRD:
+      "https://images.pexels.com/photos/1591373/pexels-photo-1591373.jpeg?auto=compress&cs=tinysrgb&w=600",
+    HONEYMOON:
+      "https://images.pexels.com/photos/1024993/pexels-photo-1024993.jpeg?auto=compress&cs=tinysrgb&w=600",
+    GROUP:
+      "https://images.pexels.com/photos/1647962/pexels-photo-1647962.jpeg?auto=compress&cs=tinysrgb&w=600",
+    BALI:
+      "https://images.pexels.com/photos/2474690/pexels-photo-2474690.jpeg?auto=compress&cs=tinysrgb&w=400",
+    DUBAI:
+      "https://images.pexels.com/photos/1470502/pexels-photo-1470502.jpeg?auto=compress&cs=tinysrgb&w=400",
+    COSTA_RICA:
+      "https://images.pexels.com/photos/1119783/pexels-photo-1119783.jpeg?auto=compress&cs=tinysrgb&w=400",
+  },
+  TRIP_TYPES: {
+    HONEYMOON:
+      "https://images.pexels.com/photos/1024993/pexels-photo-1024993.jpeg?auto=compress&cs=tinysrgb&w=800",
+    FAMILY:
+      "https://images.pexels.com/photos/1647962/pexels-photo-1647962.jpeg?auto=compress&cs=tinysrgb&w=800",
+    ADVENTURE:
+      "https://images.pexels.com/photos/2356045/pexels-photo-2356045.jpeg?auto=compress&cs=tinysrgb&w=800",
+    CULTURAL:
+      "https://images.pexels.com/photos/402028/pexels-photo-402028.jpeg?auto=compress&cs=tinysrgb&w=800",
+    LUXURY:
+      "https://images.pexels.com/photos/1287460/pexels-photo-1287460.jpeg?auto=compress&cs=tinysrgb&w=800",
+    BEACH:
+      "https://images.pexels.com/photos/1591373/pexels-photo-1591373.jpeg?auto=compress&cs=tinysrgb&w=800",
+    NATURE:
+      "https://images.pexels.com/photos/1285625/pexels-photo-1285625.jpeg?auto=compress&cs=tinysrgb&w=800",
+    SOLO:
+      "https://images.pexels.com/photos/1107717/pexels-photo-1107717.jpeg?auto=compress&cs=tinysrgb&w=800",
+  },
+  ABOUT: {
+    IMAGE_1:
+      "https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=300",
+    IMAGE_2:
+      "https://images.pexels.com/photos/2379005/pexels-photo-2379005.jpeg?auto=compress&cs=tinysrgb&w=300",
+    IMAGE_3:
+      "https://images.pexels.com/photos/1181690/pexels-photo-1181690.jpeg?auto=compress&cs=tinysrgb&w=300",
+    IMAGE_4:
+      "https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&w=300",
+  },
+} as const;
+
+export const API_ENDPOINTS = {
+  DESTINATIONS: "/api/destinations",
+  ENQUIRY: "/api/enquiry",
+  CONTACT: "/api/contact",
+} as const;

@@ -61,7 +61,7 @@ const AdminLogin = () => {
 
   // Redirect if already authenticated
   if (isAuthenticated) {
-    return <Navigate to={"/admin/dashboard"} replace />;
+    return <Navigate to={ROUTES.ADMIN.DASHBOARD} replace />;
   }
 
   return (

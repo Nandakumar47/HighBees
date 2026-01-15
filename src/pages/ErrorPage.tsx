@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Button from "../components/common/Button/Button";
+import { ROUTES } from "../utils/constants";
 // import { getStoredError, clearStoredError } from "../utils/errorHandler";
 
 interface ErrorPageProps {
@@ -13,7 +14,7 @@ const ErrorPage: React.FC<ErrorPageProps> = ({ isNotFound = true }) => {
   const navigate = useNavigate();
 
   const handleGoHome = () => {
-    navigate("/");
+    navigate(ROUTES.HOME);
   };
 
   const handleRefresh = () => {
@@ -74,7 +75,7 @@ const ErrorPage: React.FC<ErrorPageProps> = ({ isNotFound = true }) => {
           <p className="text-sm text-gray-500">
             Need help?{" "}
             <a
-              href="/contact"
+              href={ROUTES.CONTACT}
               className="font-medium text-blue-600 hover:text-blue-500"
             >
               Contact our support team

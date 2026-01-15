@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Clock, Gift, Calendar, MapPin, Star, Users, Tag } from "lucide-react";
 import { getAllDestinations } from "../data/destinationsData";
 
+import { ASSETS } from "../utils/constants";
 const SpecialOffers = () => {
   const [selectedCategory, setSelectedCategory] = useState("all");
 
@@ -22,8 +23,7 @@ const SpecialOffers = () => {
       category: "early-bird",
       description:
         "Save up to 30% on select destinations when you book your dream vacation 3 months ahead.",
-      image:
-        "https://images.pexels.com/photos/1591373/pexels-photo-1591373.jpeg?auto=compress&cs=tinysrgb&w=800",
+      image: ASSETS.TRIP_TYPES.BEACH,
       validUntil: "2024-03-31",
       code: "EARLY30",
       destinations: ["Santorini", "Maldives", "Bali", "Dubai"],
@@ -38,8 +38,7 @@ const SpecialOffers = () => {
       category: "last-minute",
       description:
         "Incredible savings on last-minute bookings. Perfect for spontaneous adventures.",
-      image:
-        "https://images.pexels.com/photos/1024993/pexels-photo-1024993.jpeg?auto=compress&cs=tinysrgb&w=800",
+      image: ASSETS.TRIP_TYPES.HONEYMOON,
       validUntil: "2024-02-29",
       code: "FLASH40",
       destinations: ["Iceland", "Costa Rica", "Kenya", "Japan"],
@@ -53,8 +52,7 @@ const SpecialOffers = () => {
       category: "group",
       description:
         "Special rates for groups of 6 or more. Perfect for family reunions and friend getaways.",
-      image:
-        "https://images.pexels.com/photos/1647962/pexels-photo-1647962.jpeg?auto=compress&cs=tinysrgb&w=800",
+      image: ASSETS.TRIP_TYPES.FAMILY,
       validUntil: "2024-05-15",
       code: "GROUP25",
       destinations: ["Peru", "Greece", "Morocco", "Thailand"],

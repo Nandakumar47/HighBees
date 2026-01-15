@@ -6,6 +6,7 @@ import { CardSkeleton } from "../components/common/SkeletonLoader/SkeletonLoader
 import { useToast } from "../components/common/Toast/Toast";
 import { getErrorMessage } from "../utils/apiErrorHandler";
 import axios from "axios";
+import { API_ENDPOINTS } from "../utils/constants";
 import { Destination } from "../types";
 import DestinationCard from "../components/common/DestinationCard";
 import Input from "../components/common/Input/Input";
@@ -71,7 +72,7 @@ const Destinations = () => {
     limit?: number
   ): Promise<ApiDestination[]> => {
     try {
-      const response = await axios.get("/api/destinations", {
+      const response = await axios.get(API_ENDPOINTS.DESTINATIONS, {
         params: { offset, limit },
       });
       return response.data.data.destinations;

@@ -17,6 +17,7 @@ import { enquiryService } from "../../services/enquiryService";
 import { contactService } from "../../services/contactService";
 import { DashboardData } from "./types/admin.types";
 import { useToast } from "../../components/common/Toast/Toast";
+import { ROUTES, ASSETS } from "../../utils/constants";
 
 const AdminDashboard = () => {
   const { logout } = useAuth();
@@ -151,7 +152,7 @@ const AdminDashboard = () => {
           <div className="flex justify-between items-center h-14 sm:h-16">
             <div className="flex items-center space-x-2 sm:space-x-4">
               <img
-                src="/logo.png"
+                src={ASSETS.LOGO}
                 alt="High Bees Holidays"
                 className="h-6 sm:h-8 w-auto"
               />
@@ -266,7 +267,7 @@ const AdminDashboard = () => {
         {/* Quick Actions */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mb-6 sm:mb-8">
           <Link
-            to="/admin/enquiries"
+            to={ROUTES.ADMIN.ENQUIRIES}
             className="bg-white rounded-lg shadow-sm p-4 sm:p-6 hover:shadow-md transition-shadow group"
           >
             <div className="flex items-center space-x-3 sm:space-x-4">
@@ -285,7 +286,7 @@ const AdminDashboard = () => {
           </Link>
 
           <Link
-            to="/admin/contact-messages"
+            to={ROUTES.ADMIN.CONTACT_MESSAGES}
             className="bg-white rounded-lg shadow-sm p-4 sm:p-6 hover:shadow-md transition-shadow group"
           >
             <div className="flex items-center space-x-3 sm:space-x-4">
@@ -304,7 +305,7 @@ const AdminDashboard = () => {
           </Link>
 
           <Link
-            to="/admin/add-destination"
+            to={ROUTES.ADMIN.ADD_DESTINATION}
             className="bg-white rounded-lg shadow-sm p-4 sm:p-6 hover:shadow-md transition-shadow group border-2 border-dashed border-primary-300 hover:border-primary-500"
           >
             <div className="flex items-center space-x-3 sm:space-x-4">
@@ -370,7 +371,7 @@ const AdminDashboard = () => {
                 ))}
               </div>
               <Link
-                to="/admin/enquiries"
+                to={ROUTES.ADMIN.ENQUIRIES}
                 className="block text-center text-primary-500 hover:text-primary-600 font-medium mt-3 sm:mt-4 text-sm sm:text-base"
               >
                 View All Enquiries
@@ -410,7 +411,7 @@ const AdminDashboard = () => {
                 ))}
               </div>
               <Link
-                to="/admin/contact-messages"
+                to={ROUTES.ADMIN.CONTACT_MESSAGES}
                 className="block text-center text-primary-500 hover:text-primary-600 font-medium mt-3 sm:mt-4 text-sm sm:text-base"
               >
                 View All Messages

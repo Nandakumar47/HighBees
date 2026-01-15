@@ -12,6 +12,7 @@ import { useLoading } from "../hooks/useLoading";
 import Select from "../components/common/Input/Select";
 import Input from "../components/common/Input/Input";
 import { useToast } from "../components/common/Toast/Toast";
+import { API_ENDPOINTS, ROUTES } from "../utils/constants";
 import { getErrorMessage } from "../utils/apiErrorHandler";
 import axios from "axios";
 
@@ -84,7 +85,7 @@ const Enquiry: React.FC<EnquiryProps> = ({
     limit?: number
   ): Promise<ApiDestination[]> => {
     try {
-      const response = await axios.get("/api/destinations", {
+      const response = await axios.get(API_ENDPOINTS.DESTINATIONS, {
         params: { offset, limit },
       });
       return response.data.data.destinations;
@@ -149,7 +150,7 @@ const Enquiry: React.FC<EnquiryProps> = ({
 
   const createEnquiry = async () => {
     try {
-      const response = await axios.post("/api/enquiry", {
+      const response = await axios.post(API_ENDPOINTS.ENQUIRY, {
         name: formData.name,
         email: formData.email,
         phoneNumber: formData.phone,
@@ -267,7 +268,7 @@ const Enquiry: React.FC<EnquiryProps> = ({
                 Submit Another Enquiry
               </LoadingButton>
               <LoadingButton
-                onClick={() => (window.location.href = "/")}
+                onClick={() => (window.location.href = ROUTES.HOME)}
                 fullWidth
                 variant="outline"
                 className="px-8 py-4 text-base"

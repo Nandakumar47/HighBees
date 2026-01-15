@@ -1,6 +1,7 @@
 import React from 'react';
 import { Clock, Percent, Gift, ArrowRight, Calendar } from 'lucide-react';
 
+import { ASSETS } from "../utils/constants";
 const SpecialOffers = () => {
   const offers = [
     {
@@ -9,7 +10,7 @@ const SpecialOffers = () => {
       subtitle: 'Book 3 months in advance',
       discount: 30,
       description: 'Save up to 30% on select destinations when you book your dream vacation 3 months ahead.',
-      image: 'https://images.pexels.com/photos/1591373/pexels-photo-1591373.jpeg?auto=compress&cs=tinysrgb&w=600',
+      image: ASSETS.SPECIAL_OFFERS.EARLY_BIRD,
       validUntil: '2024-03-31',
       code: 'EARLY30',
       bgColor: 'from-blue-500 to-blue-600',
@@ -21,7 +22,7 @@ const SpecialOffers = () => {
       subtitle: 'Romance & luxury combined',
       discount: 25,
       description: 'Celebrate your love with exclusive honeymoon packages featuring luxury accommodations and romantic experiences.',
-      image: 'https://images.pexels.com/photos/1024993/pexels-photo-1024993.jpeg?auto=compress&cs=tinysrgb&w=600',
+      image: ASSETS.SPECIAL_OFFERS.HONEYMOON,
       validUntil: '2024-06-30',
       code: 'ROMANCE25',
       bgColor: 'from-pink-500 to-rose-600',
@@ -33,7 +34,7 @@ const SpecialOffers = () => {
       subtitle: 'Travel with friends & family',
       discount: 20,
       description: 'Special rates for groups of 6 or more. Perfect for family reunions, friend getaways, or corporate retreats.',
-      image: 'https://images.pexels.com/photos/1647962/pexels-photo-1647962.jpeg?auto=compress&cs=tinysrgb&w=600',
+      image: ASSETS.SPECIAL_OFFERS.GROUP,
       validUntil: '2024-05-15',
       code: 'GROUP20',
       bgColor: 'from-green-500 to-emerald-600',
@@ -47,7 +48,7 @@ const SpecialOffers = () => {
       originalPrice: 1299,
       salePrice: 899,
       saving: 400,
-      image: 'https://images.pexels.com/photos/2474690/pexels-photo-2474690.jpeg?auto=compress&cs=tinysrgb&w=400',
+      image: ASSETS.SPECIAL_OFFERS.BALI,
       duration: '7 days',
       endDate: '2024-02-29'
     },
@@ -56,7 +57,7 @@ const SpecialOffers = () => {
       originalPrice: 1599,
       salePrice: 1199,
       saving: 400,
-      image: 'https://images.pexels.com/photos/1470502/pexels-photo-1470502.jpeg?auto=compress&cs=tinysrgb&w=400',
+      image: ASSETS.SPECIAL_OFFERS.DUBAI,
       duration: '5 days',
       endDate: '2024-03-15'
     },
@@ -65,7 +66,7 @@ const SpecialOffers = () => {
       originalPrice: 1099,
       salePrice: 799,
       saving: 300,
-      image: 'https://images.pexels.com/photos/1119783/pexels-photo-1119783.jpeg?auto=compress&cs=tinysrgb&w=400',
+      image: ASSETS.SPECIAL_OFFERS.COSTA_RICA,
       duration: '8 days',
       endDate: '2024-03-31'
     }

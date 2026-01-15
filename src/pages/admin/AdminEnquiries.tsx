@@ -23,6 +23,7 @@ import Input from "../../components/common/Input/Input";
 import { enquiryService } from "../../services/enquiryService";
 import { Enquiry } from "../../services/types/enquiry.types";
 import { useToast } from "../../components/common/Toast/Toast";
+import { ROUTES, ASSETS } from "../../utils/constants";
 
 const AdminEnquiries = () => {
   const { logout } = useAuth();
@@ -163,13 +164,13 @@ const AdminEnquiries = () => {
           <div className="flex justify-between items-center h-14 sm:h-16">
             <div className="flex items-center space-x-2 sm:space-x-4">
               <Link
-                to="/admin/dashboard"
+                to={ROUTES.ADMIN.DASHBOARD}
                 className="text-gray-600 hover:text-gray-900"
               >
                 <ArrowLeft className="w-4 h-4 sm:w-5 sm:h-5" />
               </Link>
               <img
-                src="/logo.png"
+                src={ASSETS.LOGO}
                 alt="High Bees Holidays"
                 className="h-6 sm:h-8 w-auto"
               />

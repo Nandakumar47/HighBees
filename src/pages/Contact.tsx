@@ -14,7 +14,7 @@ import Input from "../components/common/Input/Input";
 import { useToast } from "../components/common/Toast/Toast";
 import { getErrorMessage } from "../utils/apiErrorHandler";
 import axios from "axios";
-import { CONTACT_INFO } from "../utils/constants";
+import { CONTACT_INFO, API_ENDPOINTS } from "../utils/constants";
 
 interface FormData {
   name: string;
@@ -129,7 +129,7 @@ const Contact = () => {
   ];
   const sendEnquiry = async () => {
     try {
-      const response = await axios.post("/api/contact", {
+      const response = await axios.post(API_ENDPOINTS.CONTACT, {
         name: formData.name,
         contactNo: formData.phone,
         emailId: formData.email,

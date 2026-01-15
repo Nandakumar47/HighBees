@@ -10,6 +10,7 @@ import {
   TreePine,
 } from "lucide-react";
 
+import { ASSETS } from "../utils/constants";
 const TripTypes = () => {
   const tripTypes = [
     {
@@ -18,8 +19,7 @@ const TripTypes = () => {
       description:
         "Perfect for couples seeking intimate and unforgettable experiences",
       icon: Heart,
-      image:
-        "https://images.pexels.com/photos/1024993/pexels-photo-1024993.jpeg?auto=compress&cs=tinysrgb&w=800",
+      image: ASSETS.TRIP_TYPES.HONEYMOON,
       features: [
         "Private dinners",
         "Couples spa treatments",
@@ -37,8 +37,7 @@ const TripTypes = () => {
       description:
         "Fun-filled trips designed for families with children of all ages",
       icon: Users,
-      image:
-        "https://images.pexels.com/photos/1647962/pexels-photo-1647962.jpeg?auto=compress&cs=tinysrgb&w=800",
+      image: ASSETS.TRIP_TYPES.FAMILY,
       features: [
         "Kid-friendly activities",
         "Family accommodations",
@@ -56,8 +55,7 @@ const TripTypes = () => {
       description:
         "Thrilling journeys for adrenaline seekers and outdoor enthusiasts",
       icon: Mountain,
-      image:
-        "https://images.pexels.com/photos/2356045/pexels-photo-2356045.jpeg?auto=compress&cs=tinysrgb&w=800",
+      image: ASSETS.TRIP_TYPES.ADVENTURE,
       features: [
         "Extreme sports",
         "Trekking & hiking",
@@ -75,8 +73,7 @@ const TripTypes = () => {
       description:
         "Deep dive into local cultures, traditions, and authentic experiences",
       icon: Compass,
-      image:
-        "https://images.pexels.com/photos/402028/pexels-photo-402028.jpeg?auto=compress&cs=tinysrgb&w=800",
+      image: ASSETS.TRIP_TYPES.CULTURAL,
       features: [
         "Local guides",
         "Traditional experiences",
@@ -94,8 +91,7 @@ const TripTypes = () => {
       description:
         "Premium experiences with world-class service and accommodations",
       icon: Star,
-      image:
-        "https://images.pexels.com/photos/1287460/pexels-photo-1287460.jpeg?auto=compress&cs=tinysrgb&w=800",
+      image: ASSETS.TRIP_TYPES.LUXURY,
       features: [
         "5-star hotels",
         "Private transfers",
@@ -113,8 +109,7 @@ const TripTypes = () => {
       description:
         "Capture stunning landscapes and moments with expert photography guides",
       icon: Camera,
-      image:
-        "https://images.pexels.com/photos/1591373/pexels-photo-1591373.jpeg?auto=compress&cs=tinysrgb&w=800",
+      image: ASSETS.TRIP_TYPES.BEACH,
       features: [
         "Photography workshops",
         "Golden hour sessions",
@@ -131,8 +126,7 @@ const TripTypes = () => {
       title: "Beach & Island",
       description: "Relax and unwind on pristine beaches and tropical islands",
       icon: Waves,
-      image:
-        "https://images.pexels.com/photos/1285625/pexels-photo-1285625.jpeg?auto=compress&cs=tinysrgb&w=800",
+      image: ASSETS.TRIP_TYPES.NATURE,
       features: [
         "Beach resorts",
         "Water activities",
@@ -150,8 +144,7 @@ const TripTypes = () => {
       description:
         "Sustainable travel focused on nature conservation and wildlife protection",
       icon: TreePine,
-      image:
-        "https://images.pexels.com/photos/1107717/pexels-photo-1107717.jpeg?auto=compress&cs=tinysrgb&w=800",
+      image: ASSETS.TRIP_TYPES.SOLO,
       features: [
         "Eco-lodges",
         "Wildlife viewing",
