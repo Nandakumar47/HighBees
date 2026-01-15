@@ -15,15 +15,10 @@ import LoadingButton from "./LoadingButton";
 import Button from "./common/Button/Button";
 import Select from "./common/Input/Select";
 import { useLoading } from "../hooks/useLoading";
-import { Enquiry } from "../services/types/enquiry.types";
+
 import { useToast } from "./common/Toast/Toast";
 
-interface EnquiryModalProps {
-  enquiry: Enquiry | null;
-  isOpen: boolean;
-  onClose: () => void;
-  onStatusUpdate: (id: number, newStatus: string) => void;
-}
+import { EnquiryModalProps } from "../types/components";
 
 const EnquiryModal: React.FC<EnquiryModalProps> = ({
   enquiry,

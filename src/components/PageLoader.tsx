@@ -1,10 +1,7 @@
 import React from 'react';
 import LoadingSpinner from './common/LoadingSpinner/LoadingSpinner';
 
-interface PageLoaderProps {
-  message?: string;
-  fullScreen?: boolean;
-}
+import { PageLoaderProps } from "../types/components";
 
 const PageLoader: React.FC<PageLoaderProps> = ({ 
   message = 'Loading page...', 

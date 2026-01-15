@@ -4,14 +4,9 @@ import LoadingButton from "./LoadingButton";
 import Button from "./common/Button/Button";
 import Select from "./common/Input/Select";
 import { useLoading } from "../hooks/useLoading";
-import { ContactMessage } from "../services/types/contact.types";
 
-interface MessageModalProps {
-  message: ContactMessage | null;
-  isOpen: boolean;
-  onClose: () => void;
-  onStatusUpdate: (id: number, newStatus: string) => void;
-}
+
+import { MessageModalProps } from "../types/components";
 
 const MessageModal: React.FC<MessageModalProps> = ({
   message,

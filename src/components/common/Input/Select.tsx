@@ -2,14 +2,7 @@ import React, { useCallback, useEffect, useMemo, useState } from "react";
 import { ChevronDown, Check } from "lucide-react";
 import { useClickOutside } from "../../../hooks/common/useClickOutside";
 
-interface SelectProps extends React.SelectHTMLAttributes<HTMLSelectElement> {
-  label?: string;
-  error?: string;
-  helperText?: string;
-  placeholder?: string;
-}
-
-type ParsedOption = { value: string; label: string };
+import { SelectProps, ParsedOption } from "../../../types/components";
 
 const Select: React.FC<SelectProps> = ({
   label,

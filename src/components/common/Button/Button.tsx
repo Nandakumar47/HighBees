@@ -1,15 +1,7 @@
 import React from "react";
 import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
 
-interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: "primary" | "secondary" | "outline" | "ghost" | "danger";
-  size?: "sm" | "md" | "lg";
-  isLoading?: boolean;
-  loadingText?: string;
-  icon?: React.ComponentType<{ className?: string }>;
-  iconPosition?: "left" | "right";
-  fullWidth?: boolean;
-}
+import { ButtonProps } from "../../../types/components";
 
 const Button: React.FC<ButtonProps> = ({
   children,

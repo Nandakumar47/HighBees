@@ -1,20 +1,7 @@
 import React from "react";
 import Button from "./common/Button/Button";
 
-interface LoadingButtonProps {
-  children: React.ReactNode;
-  isLoading?: boolean;
-  loadingText?: string;
-  variant?: "primary" | "secondary" | "outline" | "ghost" | "danger";
-  size?: "sm" | "md" | "lg";
-  className?: string;
-  type?: "button" | "submit" | "reset";
-  onClick?: () => void;
-  disabled?: boolean;
-  icon?: React.ComponentType<{ className?: string }>;
-  iconPosition?: "left" | "right";
-  fullWidth?: boolean;
-}
+import { LoadingButtonProps } from "../types/components";
 
 const LoadingButton: React.FC<LoadingButtonProps> = ({
   children,
