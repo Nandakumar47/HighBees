@@ -33,14 +33,11 @@ const Select: React.FC<SelectProps> = ({
   }, []);
 
   const options: ParsedOption[] = useMemo(() => {
-    const childrenArray = React.Children.toArray(children) as Array<
-      React.ReactElement<{
-        value?: string | number;
-        children?: React.ReactNode;
-      }>
-    >;
-    return childrenArray
-      .filter((child) => child && child.type === "option")
+    return React.Children.toArray(children)
+      .filter(
+        (child): child is React.ReactElement<{ value?: string | number; children?: React.ReactNode }> =>
+          React.isValidElement(child) && child.type === "option"
+      )
       .map((child) => {
         const labelRaw = getTextFromNode(child.props.children);
         const label = labelRaw.replace(/\s+/g, " ").trim();
@@ -75,7 +72,14 @@ const Select: React.FC<SelectProps> = ({
     if (onChange) {
       const syntheticEvent = {
         target: { value: newValue, name: props.name },
-      } as unknown as React.ChangeEvent<HTMLSelectElement>;
+        currentTarget: { value: newValue, name: props.name },
+        preventDefault: () => {},
+        stopPropagation: () => {},
+        nativeEvent: new Event("change"),
+        isDefaultPrevented: () => false,
+        isPropagationStopped: () => false,
+        persist: () => {},
+      } as React.ChangeEvent<HTMLSelectElement>;
       onChange(syntheticEvent);
     }
     setIsOpen(false);

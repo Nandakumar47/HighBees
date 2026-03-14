@@ -56,6 +56,11 @@ export interface SelectProps extends React.SelectHTMLAttributes<HTMLSelectElemen
   placeholder?: string;
 }
 
+export interface ParsedOption {
+  value: string;
+  label: string;
+}
+
 
 export interface PageLoaderProps {
   message?: string;

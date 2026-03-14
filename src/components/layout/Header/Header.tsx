@@ -26,7 +26,8 @@ const Header = () => {
     const handleClickOutside = (event: MouseEvent) => {
       if (
         userMenuRef.current &&
-        !userMenuRef.current.contains(event.target as Node)
+        event.target instanceof Node &&
+        !userMenuRef.current.contains(event.target)
       ) {
         setShowUserMenu(false);
       }
